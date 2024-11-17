@@ -1,0 +1,83 @@
+### Contents of CPatternSyntaxExceptionExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class CPatternSyntaxExceptionExample {
+    public static void main(String[] args) {
+        try {
+            // This regex is invalid because the character class [a-z is not closed
+            String regex = "[a-z"; // Invalid regex pattern
+            Pattern pattern = Pattern.compile(regex);
+        } catch (PatternSyntaxException e) {
+            System.out.println("PatternSyntaxException caught: " + e.getMessage());
+        }
+    }
+}
+
+### Contents of MatcherClassExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class MatcherClassExample {
+    public boolean containsPattern(String text, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        return matcher.find(); // Checks if the pattern is found in the text
+    }
+}
+
+### Contents of MatchResultExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class MatchResultExample {
+    public void printMatchDetails(String text, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            MatchResult result = matcher.toMatchResult();
+            System.out.println("Matched: " + result.group());
+            System.out.println("Start index: " + result.start());
+            System.out.println("End index: " + result.end());
+        }
+    }
+}
+
+### Contents of PatternClassExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class PatternClassExample {
+    public boolean checkPatternMatch(String text, String regex) {
+        // Compile the regular expression
+        Pattern pattern = Pattern.compile(regex);
+        // Create a matcher object to match the regex with input text
+        Matcher matcher = pattern.matcher(text);
+        // Return whether the text matches the pattern
+        return matcher.matches();
+    }
+}
+
+### Contents of PatternSyntaxExceptionExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class PatternSyntaxExceptionExample {
+    public void validatePattern(String regex) {
+        try {
+            // Attempt to compile the regex
+            Pattern.compile(regex);
+        } catch (PatternSyntaxException e) {
+            System.out.println("Regex syntax error: " + e.getDescription());
+            System.out.println("Pattern: " + e.getPattern());
+            System.out.println("Index: " + e.getIndex());
+        }
+    }
+}
+

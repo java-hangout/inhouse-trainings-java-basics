@@ -3,6 +3,7 @@ package com.jh.iht.java.basics.collection1;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,18 +22,13 @@ public class BIteratorInterfaceTest {
 
     @Test
     public void testIterator() {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
         IteratorInterface iteratorInterface = new IteratorInterface();
-        List<String> fruits = iteratorInterface.getFruits();
-
+        StringBuilder actualOutput = iteratorInterface.getFruits(fruits);
         String expectedOutput = "Apple\nBanana\nCherry\n";
-        StringBuilder actualOutput = new StringBuilder();
-
-        // Using Iterator to iterate through the list
-        Iterator<String> iterator = fruits.iterator();
-        while (iterator.hasNext()) {
-            actualOutput.append(iterator.next()).append("\n");
-        }
-
         Assertions.assertEquals(expectedOutput, actualOutput.toString());
     }
 }

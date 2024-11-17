@@ -1,0 +1,75 @@
+### Contents of CollectionComparison.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.*;
+
+public class CollectionComparison {
+
+    public List<String> getList() {
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Apple"); // Duplicates allowed
+        return list;
+    }
+
+    public Set<String> getSet() {
+        Set<String> set = new HashSet<>();
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Apple"); // Duplicates not allowed
+        return set;
+    }
+
+    public Map<String, String> getMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("Apple", "1");
+        map.put("Banana", "2");
+        map.put("Apple", "3"); // Duplicate keys not allowed
+        return map;
+    }
+}
+
+### Contents of HashTableExample.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.Hashtable;
+
+public class HashTableExample {
+    public Hashtable<String, String> getCountryCodes() {
+        Hashtable<String, String> countryCodes = new Hashtable<>();
+        countryCodes.put("US", "1");
+        countryCodes.put("IN", "91");
+        countryCodes.put("DE", "49");
+        return countryCodes;
+    }
+}
+
+### Contents of MapInterface.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapInterface {
+    public Map<String, String> getCapitalCities() {
+        Map<String, String> capitals = new HashMap<>();
+        capitals.put("US", "Washington, D.C.");
+        capitals.put("IN", "New Delhi");
+        capitals.put("UK", "London");
+        return capitals;
+    }
+}
+
+### Contents of SetInterface.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetInterface {
+    public int getUniqueElements(Set<String> set) {
+        return set.size();
+    }
+}
+

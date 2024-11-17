@@ -1,9 +1,9 @@
 package com.jh.iht.java.basics.exceptions;
 
 class FinallyBlockDemo {
-    public String demonstrateFinallyBlock() {
+    public String demonstrateFinallyBlock(int a, int b) {
         try {
-            int result = 10 / 0;  // This will throw ArithmeticException
+            int result = a / b;  // This will throw ArithmeticException
             return "Result: " + result;
         } catch (ArithmeticException e) {
             return "Caught ArithmeticException: " + e.getMessage();
@@ -16,6 +16,6 @@ class FinallyBlockDemo {
 public class FinallyBlockExample {
     public static void main(String[] args) {
         FinallyBlockDemo demo = new FinallyBlockDemo();
-        System.out.println(demo.demonstrateFinallyBlock());
+        System.out.println(demo.demonstrateFinallyBlock(10,10));
     }
 }

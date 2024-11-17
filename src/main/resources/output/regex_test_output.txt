@@ -1,0 +1,138 @@
+### Contents of APatternClassExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The Pattern class is used to define regular expressions. 
+ * Checks if a given text matches a pattern using Pattern and Matcher classes.
+ * Input:
+ * - Text: "hello123"
+ * - Regex: "^[a-z]+\\d+$"
+ * Expected Output:
+ * - true (text matches the pattern)
+ */
+public class APatternClassExampleTest {
+
+    @Test
+    public void testPatternMatch() {
+        PatternClassExample patternClassExample = new PatternClassExample();
+        boolean result = patternClassExample.checkPatternMatch("hello123", "^[a-z]+\\d+$");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void testPatternMatch_Negative() {
+        PatternClassExample patternClassExample = new PatternClassExample();
+        boolean result = patternClassExample.checkPatternMatch("hello1231qw", "^[a-z]+\\d+$");
+        Assertions.assertFalse(result);
+    }
+}
+
+### Contents of BMatcherClassExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The Matcher class is used to perform regular expression matching on an input string.
+ * This test checks if a given pattern is found in the input text.
+ * Input:
+ * - Text: "Hello world"
+ * - Regex: "world"
+ * Expected Output:
+ * - true (the pattern is found in the text)
+ */
+public class BMatcherClassExampleTest {
+
+    @Test
+    public void testContainsPattern() {
+        MatcherClassExample matcherClassExample = new MatcherClassExample();
+        boolean result = matcherClassExample.containsPattern("Hello world", "world");
+        Assertions.assertTrue(result);
+    }
+}
+
+### Contents of CPatternSyntaxExceptionExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/**
+ * Problem Statement:
+ * Test that a PatternSyntaxException is thrown when an invalid regular expression is passed to Pattern.compile().
+ * The test will focus on the invalid regex [a-z, which is an incomplete character class.
+ * Expected Behavior:
+ * The invalid regex should throw a PatternSyntaxException and check the exception message to ensure it indicates an unclosed character class.
+ * Test Scenario:
+ * Test with the invalid regex [a-z to ensure that a PatternSyntaxException is thrown.
+ */
+
+public class CPatternSyntaxExceptionExampleTest {
+
+    @Test
+    public void testPatternSyntaxException() {
+        String invalidRegex = "[a-z";  // This is an invalid regex
+
+        // Check that a PatternSyntaxException is thrown
+        PatternSyntaxException exception = assertThrows(PatternSyntaxException.class, () -> {
+            Pattern.compile(invalidRegex);
+        });
+
+        // Verify the message indicates that the character class is unclosed
+        assertTrue(exception.getMessage().contains("Unclosed character class"));
+    }
+}
+
+### Contents of DMatchResultExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Problem Statement:
+ * The MatchResult interface provides methods to retrieve details about the matched pattern.
+ * Checks if the start and end indices of a matched pattern are correctly returned.
+ * Input:
+ * - Text: "Java regex example"
+ * - Regex: "regex"
+ * Expected Output:
+ * - Matched: "regex"
+ * - Start index: 5
+ * - End index: 9
+ */
+public class DMatchResultExampleTest {
+
+    @Test
+    public void testMatchResult() {
+        MatchResultExample matchResultExample = new MatchResultExample();
+        
+        // Expected output for the regex "regex" in the text "Java regex example"
+        matchResultExample.printMatchDetails("Java regex example", "regex");
+        
+        // Since we're testing the output, we can also assert the matched results
+        Pattern pattern = Pattern.compile("regex");
+        Matcher matcher = pattern.matcher("Java regex example");
+        if (matcher.find()) {
+            MatchResult result = matcher.toMatchResult();
+            Assertions.assertEquals("regex", result.group());
+            Assertions.assertEquals(5, result.start());
+            Assertions.assertEquals(10, result.end());
+        }
+    }
+}
+

@@ -8,11 +8,9 @@ import java.util.Map;
 /**
  * Problem Statement:
  * The Map interface allows storing key-value pairs where each key is unique.
- * This test verifies that the capitals are correctly mapped to their respective countries.
- * 
+ * Verifies that the capitals are correctly mapped to their respective countries.
  * Input:
  * - Map of country codes to capital cities {"US" -> "Washington, D.C.", "IN" -> "New Delhi", "UK" -> "London"}
- * 
  * Expected Output:
  * - Capital of US: "Washington, D.C.", Contains "India": false
  */

@@ -1,0 +1,2546 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\App.java ###
+package com.jh.iht.java.basics;
+
+/**
+ * Hello world!
+ */
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\cee\ChainingExceptions.java ###
+package com.jh.iht.java.basics.cee;
+
+import java.sql.SQLException;
+class DatabaseConnectionException extends Exception {
+    public DatabaseConnectionException(String message) {
+        super(message);
+    }
+
+    // Constructor to chain exceptions
+    public DatabaseConnectionException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+
+public class ChainingExceptions {
+    public static void connectToDatabase() throws DatabaseConnectionException {
+        try {
+            // Simulate a database connection failure (e.g., SQLException)
+            throw new SQLException("Unable to connect to the database.");
+        } catch (SQLException e) {
+            // Wrapping the SQLException in a custom exception
+            throw new DatabaseConnectionException("Database connection failed.", e);
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            connectToDatabase();
+        } catch (DatabaseConnectionException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+            System.out.println("Cause: " + e.getCause().getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\cee\CustomException.java ###
+package com.jh.iht.java.basics.cee;
+
+// Custom exception class
+class InvalidAgeException extends Exception {
+    // Constructor with custom message
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class CustomException {
+    public static void validateAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or older.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            validateAge(15);  // This will throw the custom exception
+        } catch (InvalidAgeException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\AClassesAndObjects.java ###
+package com.jh.iht.java.basics.co;
+
+// Class definition
+class Car1 {
+    // Attributes (Fields)
+    String model;
+    int year;
+
+    // Constructor
+    public Car1(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // Method to display car details
+    public void displayDetails() {
+        System.out.println("Car Model: " + model + ", Year: " + year);
+    }
+}
+
+/**
+ * @author Veeresh N
+ * @version 1.0
+ */
+
+public class AClassesAndObjects {
+    public static void main(String[] args) {
+        // Creating objects (instances of the Car class)
+        Car1 car1 = new Car1("Tesla Model 3", 2022);
+        Car1 car2 = new Car1("BMW M3", 2023);
+
+        // Accessing methods using objects
+        car1.displayDetails();
+        car2.displayDetails();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\BProceduralProgramming.java ###
+package com.jh.iht.java.basics.co;
+
+/**
+ * @author Veeresh N
+ * @version 1.0
+ */
+
+public class BProceduralProgramming {
+
+    // Method to sum the elements of an array
+    public int sumArray(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        BProceduralProgramming pp = new BProceduralProgramming();
+        int[] numbers = {1, 2, 3, 4, 5};
+        int result = pp.sumArray(numbers);
+        System.out.println("Sum of array: " + result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\CEncapsulationExample.java ###
+package com.jh.iht.java.basics.co;
+
+public class CEncapsulationExample {
+
+    // Private attributes
+    private String name;
+    private int age;
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter method for age
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\DAbstractionExample.java ###
+package com.jh.iht.java.basics.co;
+
+abstract class Animal {
+    public abstract String sound(); // Abstract method
+}
+
+class Dog extends Animal {
+    @Override
+    public String sound() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public String sound() {
+        System.out.println("Cat meows");
+        return "Cat meows";
+    }
+}
+
+public class DAbstractionExample {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sound(); // Outputs: Dog barks
+
+        Animal cat = new Cat();
+        cat.sound(); // Outputs: Cat meows
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\ECouplingExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Engine2 {
+    public String start() {
+        System.out.println("Engine started");
+        return "Engine started";
+    }
+}
+
+class Car2 {
+    private Engine2 engine;
+
+    // Constructor Injection (Loose coupling)
+    public Car2(Engine2 engine) {
+        this.engine = engine;
+    }
+
+    public String startCar() {
+        return engine.start(); // Car depends on Engine to start
+    }
+}
+
+public class ECouplingExample {
+    public static void main(String[] args) {
+        Engine2 engine = new Engine2();
+        Car2 car = new Car2(engine);
+        car.startCar(); // Outputs: Engine started
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\FReducingCoupling.java ###
+package com.jh.iht.java.basics.co;
+
+// Interface for Engine
+interface Engine3 {
+    String start();
+}
+
+// Concrete class for Electric Engine
+class ElectricEngine3 implements Engine3 {
+    @Override
+    public String start() {
+        System.out.println("Electric Engine3 started.");
+        return "Electric Engine3 started.";
+    }
+}
+
+// Concrete class for Gas Engine
+class GasEngine3 implements Engine3 {
+    @Override
+    public String start() {
+        System.out.println("Gas Engine3 started.");
+        return "Gas Engine3 started.";
+    }
+}
+
+// Car class that uses Engine interface to reduce coupling
+class Car3 {
+    private final Engine3 engine1;  // Loose coupling: Car doesn't depend on a specific Engine type
+
+    // Constructor injection to set the engine
+    public Car3(Engine3 engine1) {
+        this.engine1 = engine1;
+    }
+
+    public String startCar() {
+        return engine1.start();
+    }
+}
+
+public class FReducingCoupling {
+    public static void main(String[] args) {
+        // We can easily switch engine types
+        Engine3 electricEngine1 = new ElectricEngine3();
+        Car3 electricCar1 = new Car3(electricEngine1);
+        electricCar1.startCar();  // Outputs: Electric Engine started.
+
+        Engine3 gasEngine1 = new GasEngine3();
+        Car3 gasCar1 = new Car3(gasEngine1);
+        gasCar1.startCar();  // Outputs: Gas Engine started.
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\GConstructorsExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Person {
+    String name;
+    int age;
+
+    // Constructor to initialize the name and age
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display person details
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class GConstructorsExample {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 30);  // Using the constructor to create a Person object
+        person.displayInfo();  // Outputs: Name: Alice, Age: 30
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\HMethodOverloadingExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Calculator {
+    // Overloaded method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method to add two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+public class HMethodOverloadingExample {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        
+        System.out.println("Sum of integers: " + calculator.add(2, 3));   // Uses int version
+        System.out.println("Sum of doubles: " + calculator.add(2.5, 3.5)); // Uses double version
+        System.out.println("Sum of three integers: " + calculator.add(1, 2, 3)); // Uses three int version
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\IConstructorOverloadingExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Person1 {
+    String name;
+    int age;
+
+    // Constructor with no parameters
+    public Person1() {
+        this.name = "Unknown";
+        this.age = 0;
+    }
+
+    // Constructor with parameters
+    public Person1(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class IConstructorOverloadingExample {
+    public static void main(String[] args) {
+        Person1 person1 = new Person1();  // Using the default constructor
+        person1.displayInfo();  // Outputs: Name: Unknown, Age: 0
+
+        Person1 person2 = new Person1("John", 25);  // Using the parameterized constructor
+        person2.displayInfo();  // Outputs: Name: John, Age: 25
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\co\JStaticMembersExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Counter {
+    static int count = 0;  // Static variable
+
+    public Counter() {
+        count++;  // Increment the count whenever an object is created
+    }
+
+    public static int getCount() {
+        return count;  // Static method to access the static variable
+    }
+}
+
+public class JStaticMembersExample {
+    public
+
+ static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        System.out.println("Number of Counter objects created: " + Counter.getCount());  // Outputs: 3
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\CollectionInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class CollectionInterface {
+    public Collection<String> getItems() {
+        Collection<String> collection = new ArrayList<>();
+        collection.add("Apple");
+        collection.add("Banana");
+        collection.add("Cherry");
+        return collection;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\ComparableInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Person implements Comparable<Person> {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age); // Compare by age
+    }
+
+    @Override
+    public String toString() {
+        return name + ": " + age;
+    }
+}
+
+public class ComparableInterface {
+    public List<Person> getPeople(List<Person> people ) {
+        // Sort people by age
+        Collections.sort(people);
+        return people;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\ComparatorInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Person1{
+    String name;
+    int age;
+
+    Person1(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return name + ": " + age;
+    }
+}
+
+public class ComparatorInterface {
+    public List<Person1> getPeople(List<Person1> people) {
+        // Sort exceptedResult by name using the Comparator
+        Collections.sort(people, sortByName());
+        return people;
+    }
+
+    // Comparator to sort by name
+    public Comparator<Person1> sortByName() {
+        return (p1, p2) -> p1.name.compareTo(p2.name);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\IterableInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterableInterface {
+    public StringBuilder getProgrammingLanguages(List<String> languages) {
+        StringBuilder actualOutput = new StringBuilder();
+        // Iterate using the enhanced for loop (which uses the Iterable interface)
+        for (String language : languages) {
+            actualOutput.append(language).append("\n");
+        }
+        return actualOutput;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\IteratorInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class IteratorInterface {
+    public StringBuilder getFruits(List<String> fruits) {
+        StringBuilder actualOutput = new StringBuilder();
+        // Using Iterator to iterate through the list
+        Iterator<String> iterator = fruits.iterator();
+        while (iterator.hasNext()) {
+            actualOutput.append(iterator.next()).append("\n");
+        }
+        return actualOutput;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\ListInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListInterface {
+    public List<String> getFruits() {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        return fruits;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection1\QueueInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueInterface {
+    public Queue<String> getQueue() {
+        Queue<String> queue = new LinkedList<>();
+        queue.add("Task 1");
+        queue.add("Task 2");
+        queue.add("Task 3");
+        return queue;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection2\CollectionComparison.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.*;
+
+public class CollectionComparison {
+
+    public List<String> getList() {
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Apple"); // Duplicates allowed
+        return list;
+    }
+
+    public Set<String> getSet() {
+        Set<String> set = new HashSet<>();
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Apple"); // Duplicates not allowed
+        return set;
+    }
+
+    public Map<String, String> getMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("Apple", "1");
+        map.put("Banana", "2");
+        map.put("Apple", "3"); // Duplicate keys not allowed
+        return map;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection2\HashTableExample.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.Hashtable;
+
+public class HashTableExample {
+    public Hashtable<String, String> getCountryCodes() {
+        Hashtable<String, String> countryCodes = new Hashtable<>();
+        countryCodes.put("US", "1");
+        countryCodes.put("IN", "91");
+        countryCodes.put("DE", "49");
+        return countryCodes;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection2\MapInterface.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapInterface {
+    public Map<String, String> getCapitalCities() {
+        Map<String, String> capitals = new HashMap<>();
+        capitals.put("US", "Washington, D.C.");
+        capitals.put("IN", "New Delhi");
+        capitals.put("UK", "London");
+        return capitals;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\collection2\SetInterface.java ###
+package com.jh.iht.java.basics.collection2;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetInterface {
+    public int getUniqueElements(Set<String> set) {
+        return set.size();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\AComparisonOperators.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class AComparisonOperators {
+    // Method to compare two numbers using comparison operators
+    public boolean compareNumbers(int a, int b) {
+        return a > b; // Returns true if a is greater than b
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\BLogicalOperators.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class BLogicalOperators {
+    // Method to check if both conditions are true using logical AND
+    public boolean checkLogicalOperators(int a, int b) {
+        return (a > b) && (b > 0);  // Returns true if both conditions are true
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\CIfStatements.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class CIfStatements {
+    // Method to check if a number is positive, negative, or zero
+    public String checkNumber(int num) {
+        if (num > 0) {
+            return "Positive";
+        } else if (num < 0) {
+            return "Negative";
+        } else {
+            return "Zero";
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\DSimplifyingIfStatements.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class DSimplifyingIfStatements {
+    // Method to check if a number is even or odd using simplified if-else
+    public String checkEvenOrOdd(int num) {
+        return (num % 2 == 0) ? "Even" : "Odd";  // Simplified using ternary operator
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\ETernaryOperator.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class ETernaryOperator {
+    // Method to check if a number is positive or negative using ternary operator
+    public String checkPositiveNegative(int num) {
+        return (num >= 0) ? "Positive" : "Negative";  // Ternary operator
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\FSwitchStatements.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class FSwitchStatements {
+    // Method to return day of the week based on the number
+    public String getDayOfWeek(int day) {
+        switch (day) {
+            case 1: return "Monday";
+            case 2: return "Tuesday";
+            case 3: return "Wednesday";
+            case 4: return "Thursday";
+            case 5: return "Friday";
+            case 6: return "Saturday";
+            case 7: return "Sunday";
+            default: return "Invalid Day";
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\GFizzBuzz.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class GFizzBuzz {
+    // Method to print "Fizz", "Buzz" or "FizzBuzz" based on divisibility
+    public String fizzBuzz(int num) {
+        if (num % 3 == 0 && num % 5 == 0) {
+            return "FizzBuzz";
+        } else if (num % 3 == 0) {
+            return "Fizz";
+        } else if (num % 5 == 0) {
+            return "Buzz";
+        } else {
+            return String.valueOf(num);
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\HForLoops.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class HForLoops {
+    // Method to sum numbers from 1 to n using a for loop
+    public int sumUsingForLoop(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\IWhileLoops.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class IWhileLoops {
+    // Method to sum numbers from 1 to n using a while loop
+    public int sumUsingWhileLoop(int n) {
+        int sum = 0;
+        int i = 1;
+        while (i <= n) {
+            sum += i;
+            i++;
+        }
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\JDoWhileLoops.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class JDoWhileLoops {
+    // Method to sum numbers from 1 to n using a do-while loop
+    public int sumUsingDoWhileLoop(int n) {
+        int sum = 0;
+        int i = 1;
+        do {
+            sum += i;
+            i++;
+        } while (i <= n);
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\KBreakContinue.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class KBreakContinue {
+    // Method to return a list of even numbers from 1 to n, using continue
+    public String listEvenNumbers(int n) {
+        StringBuilder evenNumbers = new StringBuilder();
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 != 0) {
+                continue;  // Skip odd numbers
+            }
+            evenNumbers.append(i).append(" ");
+        }
+        return evenNumbers.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\controlflow\LForEachLoop.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class LForEachLoop {
+    // Method to sum elements in an array using for-each loop
+    public int sumUsingForEachLoop(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\dda\ATypesOfErrors.java ###
+package com.jh.iht.java.basics.dda;
+
+/*
+public class ATypesOfErrors {
+
+    // Method to demonstrate a runtime error (division by zero)
+    public int divideByZero() {
+        int result = 10 / 0; // This will throw an ArithmeticException
+        return result;
+    }
+
+    // Method to demonstrate a logical error
+    public int addNumbers(int a, int b) {
+        return a - b;  // Logical error: should be a + b
+    }
+
+    // Method to demonstrate a syntax error (missing semicolon)
+    public void printMessage() {
+        System.out.println("This is a message") // Syntax error: missing semicolon
+    }
+}*/
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\dda\BCommonSyntaxErrors.java ###
+package com.jh.iht.java.basics.dda;
+
+/*
+public class BCommonSyntaxErrors {
+
+    // Method with a missing semicolon (compilation error)
+    public void missingSemicolon() {
+        System.out.println("Hello, world") // Missing semicolon will cause a compilation error
+    }
+
+    // Method with mismatched parentheses (compilation error)
+    public void mismatchedParentheses() {
+        if (true { // Mismatched parentheses will cause a compilation error
+            System.out.println("This will cause an error");
+        }
+    }
+
+    // Method with undeclared variable (compilation error)
+    public void undeclaredVariable() {
+        int x;
+        x = 5;
+        y = 10;  // y is undeclared and will cause a compilation error
+    }
+}*/
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\dda\CDebuggingExample.java ###
+package com.jh.iht.java.basics.dda;
+
+public class CDebuggingExample {
+
+    // Method that contains a bug (returns incorrect sum)
+    public int addNumbers(int a, int b) {
+        int sum = a * b; // Bug: multiplication instead of addition
+        return sum;
+    }
+
+    // Method to simulate a logical error to debug
+    public int findMax(int[] numbers) {
+        int max = numbers[0];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        return max; // Bug: This will cause an IndexOutOfBoundsException if the array is empty
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\dda\DPackagingExample.java ###
+package com.jh.iht.java.basics.dda;
+
+public class DPackagingExample {
+
+    // Simple method to demonstrate a Java program that could be packaged
+    public String greet(String name) {
+        return "Hello, " + name + "!";
+    }
+
+    public static void main(String[] args) {
+        DPackagingExample example = new DPackagingExample();
+        System.out.println(example.greet("World"));
+    }
+    /*#### **Packaging Instructions**
+
+            1. **Compile the Java files**:
+            - Open a terminal/command prompt and navigate to the directory containing the Java file(s).
+            - Compile the files using the following command:
+            ```bash
+    javac PackagingExample.java
+     ```
+
+             2. **Create a manifest file** (`manifest.txt`):
+    Create a file named `manifest.txt` with the following content:
+            ```
+    Main-Class: PackagingExample
+   ```
+
+           3. **Package the class files into a JAR file**:
+            - In the terminal, run the following command:
+            ```bash
+    jar cfm PackagingExample.jar manifest.txt PackagingExample.class
+     ```
+
+             4. **Running the JAR file**:
+            - After creating the JAR, you can run it with:
+            ```bash
+    java -jar PackagingExample.jar
+     ```
+
+             #### **JUnit Test Case (PackagingExampleTest.java)**
+
+    JUnit tests are not applicable for packaging because JUnit tests focus on code functionality. However, you can verify that the application works by testing the class methods as shown earlier.
+*/
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\CatchingExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+// Class to demonstrate catching exceptions
+class Division {
+    public int divide(int numerator, int denominator) throws ArithmeticException {
+        if (denominator == 0) {
+            throw new ArithmeticException("Cannot divide by zero.");
+        }
+        return numerator / denominator;
+    }
+}
+
+public class CatchingExceptionsExample {
+    public static void main(String[] args) {
+        Division division = new Division();
+        
+        try {
+            int result = division.divide(10, 2);  // Expected: 5
+            System.out.println("Result: " + result);
+            result = division.divide(10, 0);  // Should throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());  // Expected output: Cannot divide by zero.
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\CatchMultipleExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class MultipleExceptionHandling {
+    public String divide(int numerator, int denominator) {
+        try {
+            int result = numerator / denominator;  // Division by zero could occur
+            return "Result: " + result;
+        } catch (ArithmeticException e) {
+            return "Error: Division by zero.";
+        } catch (Exception e) {
+            return "General error: " + e.getMessage();
+        }
+    }
+}
+
+public class CatchMultipleExceptionsExample {
+    public static void main(String[] args) {
+        MultipleExceptionHandling handler = new MultipleExceptionHandling();
+        System.out.println(handler.divide(10, 0));  // Should catch ArithmeticException
+        System.out.println(handler.divide(10, 2));  // Should not throw any exception
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\ExceptionHierarchyExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+// Base class Exception
+class BaseException extends Exception {
+    public BaseException(String message) {
+        super(message);
+    }
+}
+
+// Derived class for specific type of exception
+class SpecificException extends BaseException {
+    public SpecificException(String message) {
+        super(message);
+    }
+}
+
+// Class demonstrating exception hierarchy
+class Demo {
+    public String performAction(int value) throws SpecificException {
+        if (value < 0) {
+            throw new SpecificException("Negative value is not allowed.");
+        } else {
+            String result = "Action performed with value: " + value;
+            System.out.println(result);
+            return result;
+        }
+    }
+}
+
+public class ExceptionHierarchyExample {
+    public static void main(String[] args) {
+        Demo demo = new Demo();
+
+        try {
+            demo.performAction(10);  // Expected output: Action performed with value: 10
+            demo.performAction(-5);  // Should throw SpecificException
+        } catch (SpecificException e) {
+            System.out.println(e.getMessage());  // Expected output: Negative value is not allowed.
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\ExceptionTypesExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+// Custom exception class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+// Person class to demonstrate exception handling
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) throws InvalidAgeException {
+        this.name = name;
+        if (age < 0) {
+            throw new InvalidAgeException("Age cannot be negative.");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class ExceptionTypesExample {
+    public static void main(String[] args) {
+        try {
+            Person person = new Person("John", 30);  // Valid person
+            System.out.println("Age: " + person.getAge());  // Expected output: 30
+
+            // Invalid person creation (throws InvalidAgeException)
+            Person invalidPerson = new Person("Alice", -5);  // Should throw InvalidAgeException
+
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());  // Expected output: "Age cannot be negative."
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\FinallyBlockExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class FinallyBlockDemo {
+    public String demonstrateFinallyBlock(int a, int b) {
+        try {
+            int result = a / b;  // This will throw ArithmeticException
+            return "Result: " + result;
+        } catch (ArithmeticException e) {
+            return "Caught ArithmeticException: " + e.getMessage();
+        } finally {
+            return "Finally block always runs";  // Finally block always runs
+        }
+    }
+}
+
+public class FinallyBlockExample {
+    public static void main(String[] args) {
+        FinallyBlockDemo demo = new FinallyBlockDemo();
+        System.out.println(demo.demonstrateFinallyBlock(10,10));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\ReThrowingExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class ReThrowingDemo {
+    public String process() throws Exception {
+        try {
+            throw new Exception("Initial exception");
+        } catch (Exception e) {
+            System.out.println("Caught exception: " + e.getMessage());
+            throw
+
+                    e;  // Re-throwing the caught exception
+        }
+    }
+}
+
+public class ReThrowingExceptionsExample {
+    public static void main(String[] args) {
+        ReThrowingDemo demo = new ReThrowingDemo();
+
+        try {
+            demo.process();  // Will re-throw the exception after catching it
+        } catch (Exception e) {
+            System.out.println("Final caught exception: " + e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\ThrowingExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class InvalidAgeException1 extends Exception {
+    public InvalidAgeException1(String message) {
+        super(message);
+    }
+}
+
+class User {
+    private int age;
+
+    public void setAge(int age) throws InvalidAgeException1 {
+        if (age < 0) {
+            throw new InvalidAgeException1("Age cannot be negative");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+}
+
+public class ThrowingExceptionsExample {
+    public static void main(String[] args) {
+        User user = new User();
+        
+        try {
+            user.setAge(-1);  // This should throw InvalidAgeException
+        } catch (InvalidAgeException1 e) {
+            System.out.println(e.getMessage());  // Expected output: "Age cannot be negative"
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\exceptions\TryWithResourcesExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import java.io.*;
+
+class TryWithResourcesDemo {
+    public String readFile(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line = reader.readLine();
+            return "Read line: " + line;
+        } catch (IOException e) {
+            return "IOException: " + e.getMessage();
+        }
+    }
+}
+
+public class TryWithResourcesExample {
+    public static void main(String[] args) {
+        String filePath = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\testfile.txt";
+        TryWithResourcesDemo demo = new TryWithResourcesDemo();
+        System.out.println(demo.readFile(filePath));  // Will throw IOException if the file is not found
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\AInheritanceExample.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal1 {
+    String name;
+
+    public Animal1(String name) {
+        this.name = name;
+    }
+
+    public String speak() {
+        System.out.println(name + " makes a sound");
+        return name + " makes a sound";
+    }
+}
+
+class Dog1 extends Animal1 {
+    public Dog1(String name) {
+        super(name);
+    }
+
+    @Override
+    public String speak() {
+        System.out.println(name + " barks");
+        return name + " barks";
+    }
+}
+
+public class AInheritanceExample {
+    public static void main(String[] args) {
+        Dog1 dog1 = new Dog1("Buddy");
+        dog1.speak(); // Outputs: Buddy barks
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\BObjectClassExample.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Person1 {
+    String name;
+    
+    public Person1(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person1 person = (Person1) obj;
+        return name.equals(person.name);
+    }
+}
+
+public class BObjectClassExample {
+    public static void main(String[] args) {
+        Person1 p1 = new Person1("Alice");
+        Person1 p2 = new Person1("Alice");
+        Person1 p3 = new Person1("Bob");
+
+        System.out.println(p1.toString());  // Outputs: Person{name='Alice'}
+        System.out.println(p1.equals(p2));  // Outputs: true
+        System.out.println(p1.equals(p3));  // Outputs: false
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\CConstructorsAndInheritance.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal2 {
+    String name;
+
+    public Animal2(String name) {
+        this.name = name;
+        System.out.println("Animal constructor called");
+    }
+}
+
+class Dog2 extends Animal2 {
+    public Dog2(String name) {
+        super(name);  // Calling superclass constructor
+        System.out.println("Dog constructor called");
+    }
+}
+
+public class CConstructorsAndInheritance {
+    public static void main(String[] args) {
+        Dog1 dog = new Dog1("Buddy");
+        // Outputs:
+        // Animal constructor called
+        // Dog constructor called
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\DAccessModifiersExample.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Person2 {
+    public String name;  // Accessible from anywhere
+    private int age;  // Only accessible within this class
+
+    public Person2(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class DAccessModifiersExample {
+    public static void main(String[] args) {
+        Person2 p = new Person2("Alice", 30);
+        System.out.println(p.name);  // Accessible
+        // System.out.println(p.age);  // Error: age is private
+        p.displayInfo();  // Outputs: Name: Alice, Age: 30
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\EUpcastingDowncasting.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal3 {
+    public String speak() {
+        System.out.println("Animal speaks");
+        return "Animal speaks";
+    }
+}
+
+class Dog3 extends Animal3 {
+    public String speak() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+public class EUpcastingDowncasting {
+    public static void main(String[] args) {
+        Animal3 animal = new Dog3();  // Upcasting
+        animal.speak();  // Outputs: Dog barks
+
+        Dog3 dog = (Dog3) animal;  // Downcasting
+        dog.speak();  // Outputs: Dog barks
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\FComparingObjects.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Person3 {
+    String name;
+
+    public Person3(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person3 person = (Person3) obj;
+        return name.equals(person.name);
+    }
+}
+
+public class FComparingObjects {
+    public static void main(String[] args) {
+        Person3 p1 = new Person3("Alice");
+        Person3 p2 = new Person3("Alice");
+
+        System.out.println(p1 == p2);  // false, reference comparison
+        System.out.println(p1.equals(p2));  // true, logical equality
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\GAbstractClassesAndMethods.java ###
+package com.jh.iht.java.basics.inheritance;
+
+abstract class Animal4 {
+    abstract String sound();  // Abstract method
+}
+
+class Dog4 extends Animal4 {
+    @Override
+    String sound() {
+        System.out.println("Barks");
+        return "Barks";
+    }
+}
+
+public class GAbstractClassesAndMethods {
+    public static void main(String[] args) {
+        Animal4 dog = new Dog4();
+        dog.sound();  // Outputs: Barks
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\HFinalClassesAndMethods.java ###
+package com.jh.iht.java.basics.inheritance;
+
+final class FinalClass {
+    public String speak() {
+        System.out.println("Final class method");
+        return "Final class method";
+    }
+}
+
+/*
+class AnotherClass extends FinalClass{
+    // This will cause an error:
+    // class SubClass extends FinalClass {}
+}
+*/
+
+public class HFinalClassesAndMethods {
+    public static void main(String[] args) {
+        FinalClass obj = new FinalClass();
+        obj.speak();  // Outputs: Final class method
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\IDeepInheritanceHierarchy.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal5 {
+    public String eat() {
+        System.out.println("Animal eats");
+        return "Animal eats";
+    }
+}
+
+class Mammal5 extends Animal5 {
+    public String walk() {
+        System.out.println("Mammal walks");
+        return "Mammal walks";
+    }
+}
+
+class Dog5 extends Mammal5 {
+    public String bark() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+public class IDeepInheritanceHierarchy {
+    public static void main(String[] args) {
+        Dog5 dog = new Dog5();
+        dog.eat();  // Inherited from Animal
+        dog.walk();  // Inherited from Mammal
+        dog.bark();  // From Dog
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\inheritance\JMultipleInheritance.java ###
+package com.jh.iht.java.basics.inheritance;
+
+interface Animal6 {
+    String eat();
+}
+
+interface Swimmer {
+    String swim();
+}
+
+class Dolphin implements Animal6, Swimmer {
+    public String eat() {
+        System.out.println("Dolphin eats");
+        return "Dolphin eats";
+    }
+
+    public String swim() {
+        System.out.println("Dolphin swims");
+        return "Dolphin swims";
+    }
+}
+
+public class JMultipleInheritance {
+    public static void main(String[] args) {
+        Dolphin dolphin = new Dolphin();
+        dolphin.eat();  // Outputs: Dolphin eats
+        dolphin.swim();  // Outputs: Dolphin swims
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\interfaces\InterfaceExample.java ###
+package com.jh.iht.java.basics.interfaces;
+
+// Step 1: Create the Engine interface
+interface Engine1 {
+    String start();
+}
+
+// Step 2: Implement the Engine interface with the GasEngine class
+class GasEngine implements Engine1 {
+    public String start() {
+        System.out.println("Gas Engine started!");
+        return "Gas Engine started!";
+    }
+}
+
+// Step 3: Implement the Engine interface with the ElectricEngine class
+class ElectricEngine implements Engine1 {
+    public String start() {
+        System.out.println("Electric Engine started!");
+        return "Electric Engine started!";
+    }
+}
+
+// Step 4: Car class uses Engine interface, making it loosely-coupled
+class Car1 {
+    private Engine1 engine;
+    
+    public Car1(Engine1 engine) {
+        this.engine = engine;  // Now Car is not tightly-coupled to a specific Engine class
+    }
+
+    public String startCar() {
+        return engine.start();  // Starts the engine of the car, works for any engine type
+    }
+}
+
+public class InterfaceExample {
+    public static void main(String[] args) {
+        // Create a Car with a GasEngine
+        Car1 gasCar = new Car1(new GasEngine());
+        gasCar.startCar();  // Output: Gas Engine started!
+        
+        // Create a Car with an ElectricEngine
+        Car1 electricCar = new Car1(new ElectricEngine());
+        electricCar.startCar();  // Output: Electric Engine started!
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\interfaces\TightlyCoupledExample.java ###
+package com.jh.iht.java.basics.interfaces;
+
+class Engine {
+    public void start() {
+        System.out.println("Engine started!");
+    }
+}
+
+class Car {
+    private Engine engine;
+    
+    public Car() {
+        // Car is tightly coupled to Engine
+        this.engine = new Engine();  // Car directly depends on Engine class
+    }
+
+    public void startCar() {
+        engine.start();  // Starts the engine of the car
+    }
+}
+
+public class TightlyCoupledExample {
+    public static void main(String[] args) {
+        // Create a Car object which internally creates an Engine object
+        Car car = new Car();
+        // Call startCar() which should invoke the start() method on the Engine instance
+        // We expect the output to be "Engine started!"
+        car.startCar();  // Output: Engine started!
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\io\BufferedIOExample.java ###
+package com.jh.iht.java.basics.io;
+
+import java.io.*;
+
+public class BufferedIOExample {
+    public void writeDataWithBuffer(String fileName, String data) throws IOException {
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(fileName));
+        bufferedOutputStream.write(data.getBytes());
+        bufferedOutputStream.close();
+    }
+
+    public String readDataWithBuffer(String fileName) throws IOException {
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(fileName));
+        StringBuilder data = new StringBuilder();
+        int byteData;
+        while ((byteData = bufferedInputStream.read()) != -1) {
+            data.append((char) byteData);
+        }
+        bufferedInputStream.close();
+        return data.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\io\FileIOExample.java ###
+package com.jh.iht.java.basics.io;
+
+import java.io.*;
+
+public class FileIOExample {
+    public String readFile(String fileName) throws IOException {
+        FileReader fileReader = new FileReader(fileName);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        StringBuilder data = new StringBuilder();
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            data.append(line).append("\n");
+        }
+        bufferedReader.close();
+        return data.toString();
+    }
+
+    public void writeFile(String fileName, String data) throws IOException {
+        FileWriter fileWriter = new FileWriter(fileName);
+        fileWriter.write(data);
+        fileWriter.close();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\io\FileWriterReaderExample.java ###
+package com.jh.iht.java.basics.io;
+
+import java.io.*;
+
+public class FileWriterReaderExample {
+    public void writeFile(String fileName, String data) throws IOException {
+        FileWriter fileWriter = new FileWriter(fileName);
+        fileWriter.write(data);
+        fileWriter.close();
+    }
+
+    public String readFile(String fileName) throws IOException {
+        FileReader fileReader = new FileReader(fileName);
+        StringBuilder data = new StringBuilder();
+        int charData;
+        while ((charData = fileReader.read()) != -1) {
+            data.append((char) charData);
+        }
+        fileReader.close();
+        return data.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\io\InputStreamExample.java ###
+package com.jh.iht.java.basics.io;
+
+import java.io.*;
+
+public class InputStreamExample {
+    public String readDataFromFile(String fileName) throws IOException {
+        InputStream inputStream = new FileInputStream(fileName);
+        StringBuilder data = new StringBuilder();
+        int byteData;
+        while ((byteData = inputStream.read()) != -1) {
+            data.append((char) byteData);
+        }
+        inputStream.close();
+        return data.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\io\OutputStreamExample.java ###
+package com.jh.iht.java.basics.io;
+
+import java.io.*;
+
+public class OutputStreamExample {
+    public void writeDataToFile(String fileName, String data) throws IOException {
+        OutputStream outputStream = new FileOutputStream(fileName);
+        outputStream.write(data.getBytes());
+        outputStream.close();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\molr\Animal.java ###
+package com.jh.iht.java.basics.molr;
+
+// Superclass Animal
+class Animal {
+    public String makeSound() {
+        System.out.println("Animal makes sound");
+        return "Animal makes sound";
+    }
+}
+
+// Subclass Dog that overrides the makeSound method
+class Dog extends Animal {
+    @Override
+    public String makeSound() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\molr\Calculator.java ###
+package com.jh.iht.java.basics.molr;
+
+class Calculator {
+
+    // Overloaded add method with two integer arguments
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded add method with two double arguments
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    // Overloaded add method with three integer arguments
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\molr\Shape.java ###
+package com.jh.iht.java.basics.molr;
+
+// Superclass Shape
+class Shape {
+    public String draw() {
+        System.out.println("Drawing a shape");
+        return "Drawing a shape";
+    }
+}
+
+// Subclass Circle that overrides the draw method
+class Circle extends Shape {
+    @Override
+    public String draw() {
+        System.out.println("Drawing a circle");
+        return "Drawing a circle";
+    }
+}
+
+// Subclass Rectangle that overrides the draw method
+class Rectangle extends Shape {
+    @Override
+    public String draw() {
+        System.out.println("Drawing a rectangle");
+        return "Drawing a rectangle";
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\oops\BenefitsOfOOP.java ###
+package com.jh.iht.java.basics.oops;// A simple example demonstrating the benefits of OOP
+
+class Product {
+    private String name;
+    private double price;
+    
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+    
+    // Encapsulation: Getter methods to access private fields
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    // Reusability and Modularity
+    public double calculateDiscount(double discountPercentage) {
+        return price - (price * discountPercentage / 100);
+    }
+}
+
+class Electronics extends Product {
+    private int warrantyYears;
+    
+    public Electronics(String name, double price, int warrantyYears) {
+        super(name, price);
+        this.warrantyYears = warrantyYears;
+    }
+    
+    // Inheritance: Electronics inherits from Product
+    public int getWarrantyYears() {
+        return warrantyYears;
+    }
+}
+
+public class BenefitsOfOOP {
+    public static void main(String[] args) {
+        // Create Product object using Encapsulation
+        Product product = new Product("Laptop", 1000);
+        
+        // Demonstrate Modularity and Reusability
+        System.out.println("Product: " + product.getName() + ", Price: $" + product.getPrice());
+        double discountedPrice = product.calculateDiscount(10);  // 10% discount
+        System.out.println("Discounted Price: $" + discountedPrice);
+
+        // Create Electronics object using Inheritance
+        Electronics laptop = new Electronics("Laptop", 1000, 2);
+        System.out.println("Laptop Warranty: " + laptop.getWarrantyYears() + " years");
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\oops\OOPConcepts.java ###
+package com.jh.iht.java.basics.oops;
+
+// Encapsulation Example
+class Car {
+    private String model;
+    private int year;
+    
+    // Encapsulation: Getter and Setter methods
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    // Method to display car details
+    public void displayCarDetails() {
+        System.out.println("Model: " + model + ", Year: " + year);
+    }
+}
+
+// Inheritance Example
+class ElectricCar extends Car {
+    private int batteryCapacity;
+
+    // Method to set battery capacity
+    public void setBatteryCapacity(int batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
+    }
+
+    // Overriding method from Car class
+    @Override
+    public void displayCarDetails() {
+        super.displayCarDetails();  // Call parent class method
+        System.out.println("Battery Capacity: " + batteryCapacity + " kWh");
+    }
+}
+
+// Polymorphism Example
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+// Abstraction Example
+abstract class Shape {
+    public abstract void draw();
+}
+
+class Circle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a Circle");
+    }
+}
+
+class Rectangle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a Rectangle");
+    }
+}
+
+public class OOPConcepts {
+    public static void main(String[] args) {
+        // Encapsulation Example
+        Car car = new Car();
+        car.setModel("Tesla Model X");
+        car.setYear(2023);
+        car.displayCarDetails();
+
+        // Inheritance and Polymorphism Example
+        ElectricCar electricCar = new ElectricCar();
+        electricCar.setModel("Tesla Model S");
+        electricCar.setYear(2023);
+        electricCar.setBatteryCapacity(100);
+        electricCar.displayCarDetails();
+
+        // Polymorphism Example
+        Animal animal = new Animal();
+        animal.sound(); // Animal makes a sound
+
+        Animal dog = new Dog();
+        dog.sound(); // Dog barks
+
+        Animal cat = new Cat();
+        cat.sound(); // Cat meows
+
+        // Abstraction Example
+        Shape shape1 = new Circle();
+        shape1.draw();
+
+        Shape shape2 = new Rectangle();
+        shape2.draw();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\pckg\AccessModifiersExample.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class AccessModifiersExample {
+    public static void main(String[] args) {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        System.out.println(p.name);  // Accessible
+        // System.out.println(p.age);  // Error: age is private
+        System.out.println(p.address);  // Accessible within the same package
+        System.out.println(p.city);  // Accessible within the same package
+
+        p.displayInfo();  // Outputs: Name: John, Age: 30, Address: 123 Main St, City: New York
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\pckg\EncapsulationExample.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class EncapsulationExample {
+    public static void main(String[] args) {
+        // Create a new person object
+        Person2 person = new Person2("Alice", 30);
+
+        // Accessing private fields using public getter methods
+        System.out.println("Name: " + person.getName());  // Alice
+        System.out.println("Age: " + person.getAge());  // 30
+
+        // Modifying private fields using setter methods
+        person.setName("Bob");
+        person.setAge(35);
+
+        // Display the updated details
+        person.display();  // Outputs: Name: Bob, Age: 35
+
+        // Attempting to set an invalid age
+        person.setAge(-5);  // Outputs: Age cannot be negative.
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\pckg\PackageExample.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class PackageExample {
+    public static void main(String[] args) {
+        Person p = new Person("Alice", 25);
+        p.display(); // Outputs: Name: Alice, Age: 25
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\pckg\Person.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\pckg\Person1.java ###
+package com.jh.iht.java.basics.pckg;
+
+class Person1 {
+    public String name;  // Accessible from anywhere
+    private int age;     // Only accessible within this class
+    protected String address;  // Accessible within the same package or subclasses
+    String city;  // Default access modifier, accessible within the same package
+
+    public Person1(String name, int age, String address, String city) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.city = city;
+    }
+
+    // Public method to access age (instead of accessing directly from outside)
+   /* public void setAge(int age) throws IllegalAccessException {
+        if (age < 0) {
+            throw new IllegalAccessException("Age cannot be negative");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }*/
+
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Address: " + address + ", City: " + city);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\pckg\Person2.java ###
+package com.jh.iht.java.basics.pckg;
+
+// Class representing a Person with encapsulated fields
+class Person2 {
+    // Private fields
+    private String name;
+    private int age;
+
+    // Constructor to initialize the person object
+    public Person2(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter method for age
+    public void setAge(int age) {
+        if(age >= 0) {  // Validation to ensure non-negative age
+            this.age = age;
+        } else {
+            System.out.println("Age cannot be negative.");
+        }
+    }
+
+    // Display method to show the details of the person
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\regex\CPatternSyntaxExceptionExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class CPatternSyntaxExceptionExample {
+    public static void main(String[] args) {
+        try {
+            // This regex is invalid because the character class [a-z is not closed
+            String regex = "[a-z"; // Invalid regex pattern
+            Pattern pattern = Pattern.compile(regex);
+        } catch (PatternSyntaxException e) {
+            System.out.println("PatternSyntaxException caught: " + e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\regex\MatcherClassExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class MatcherClassExample {
+    public boolean containsPattern(String text, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        return matcher.find(); // Checks if the pattern is found in the text
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\regex\MatchResultExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class MatchResultExample {
+    public void printMatchDetails(String text, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            MatchResult result = matcher.toMatchResult();
+            System.out.println("Matched: " + result.group());
+            System.out.println("Start index: " + result.start());
+            System.out.println("End index: " + result.end());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\regex\PatternClassExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class PatternClassExample {
+    public boolean checkPatternMatch(String text, String regex) {
+        // Compile the regular expression
+        Pattern pattern = Pattern.compile(regex);
+        // Create a matcher object to match the regex with input text
+        Matcher matcher = pattern.matcher(text);
+        // Return whether the text matches the pattern
+        return matcher.matches();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\regex\PatternSyntaxExceptionExample.java ###
+package com.jh.iht.java.basics.regex;
+
+import java.util.regex.*;
+
+public class PatternSyntaxExceptionExample {
+    public void validatePattern(String regex) {
+        try {
+            // Attempt to compile the regex
+            Pattern.compile(regex);
+        } catch (PatternSyntaxException e) {
+            System.out.println("Regex syntax error: " + e.getDescription());
+            System.out.println("Pattern: " + e.getPattern());
+            System.out.println("Index: " + e.getIndex());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\ImmutableStringExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class ImmutableStringExample {
+
+    // Method to demonstrate the immutability of String in Java
+    public String demonstrateImmutableString() {
+        String str1 = "Hello";
+        String str2 = str1;  // str2 points to the same reference as str1
+
+        // Modify str1
+        str1 = str1.concat(" World");
+
+        // Return both strings for validation in test
+        return str1 + ";" + str2;  // Will return "Hello World;Hello"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\Person.java ###
+package com.jh.iht.java.basics.string;
+
+public class Person {
+
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Override toString() to return a custom string representation
+    @Override
+    public String toString() {
+        return "Person [name=" + name + ", age=" + age + "]";
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\StringBufferBuilderExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringBufferBuilderExample {
+
+    // Method to demonstrate StringBuffer usage
+    public String useStringBuffer() {
+        StringBuffer sb = new StringBuffer("Hello");
+        sb.append(" World");
+        sb.insert(5, " Java");
+        return sb.toString();
+    }
+
+    // Method to demonstrate StringBuilder usage
+    public String useStringBuilder() {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+        sb.insert(5, " Java");
+        return sb.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\StringComparisonConcatenation.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringComparisonConcatenation {
+
+    // Method to compare strings using == and equals()
+    public String compareStrings(String str1, String str2, String str3) {
+        boolean comparison1 = (str1 == str2);  // Reference comparison
+        boolean comparison2 = str1.equals(str3);  // Value comparison
+        boolean comparison3 = (str1 == str3);  // Reference comparison
+
+        return comparison1 + ";" + comparison2 + ";" + comparison3;  // return the comparison results
+    }
+
+    // Method to concatenate strings using + and concat()
+    public String concatenateStrings(String str1, String additionalText) {
+        String concatenatedWithPlus = str1 + additionalText;
+        String concatenatedWithConcat = str1.concat(additionalText);
+        return concatenatedWithPlus + ";" + concatenatedWithConcat;  // return concatenated results
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\StringMethodsExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringMethodsExample {
+
+    // Method to demonstrate basic String methods
+    public String stringMethodsExample(String input) {
+        String str = input.trim();                // Removes leading and trailing whitespace
+        str = str.toUpperCase();                   // Converts to uppercase
+        str = str.replace("HELLO", "Hi");          // Replaces "HELLO" with "Hi"
+        System.out.print(str);
+        return str.substring(0, 2);                // Extract first two characters
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\StringTokenizerExample.java ###
+package com.jh.iht.java.basics.string;
+
+import java.util.StringTokenizer;
+
+public class StringTokenizerExample {
+
+    // Method to demonstrate StringTokenizer usage
+    public String tokenizeString(String str) {
+        StringTokenizer tokenizer = new StringTokenizer(str,",");
+        StringBuilder tokens = new StringBuilder();
+        while (tokenizer.hasMoreTokens()) {
+            tokens.append(tokenizer.nextToken()).append(" ");
+        }
+        return tokens.toString().trim();  // Return space-separated tokens
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\StringVsStringBuffer.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringVsStringBuffer {
+
+    // Method to demonstrate String vs StringBuffer performance
+    public String demonstrateStringVsStringBuffer() {
+        String str = "Hello";
+        StringBuffer sb = new StringBuffer("Hello");
+
+        // Modify String (creates new object)
+        str = str.concat(" World");
+
+        // Modify StringBuffer (modifies in-place)
+        sb.append(" World");
+
+        return str + ";" + sb.toString();  // return both results
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\string\SubstringExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class SubstringExample {
+
+    // Method to demonstrate substring extraction
+    public String extractSubstrings(String str) {
+        String subStr1 = str.substring(7);  // Extract from index 7 to end
+        String subStr2 = str.substring(0, 5);  // Extract from index 0 to 5
+        return subStr1 + ";" + subStr2;  // return both substrings
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\AVariables.java ###
+package com.jh.iht.java.basics.types;
+
+public class AVariables {
+    // Method to assign values to variables and return their sum
+    public int sumVariables(int a, int b) {
+        int sum = a + b;
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\BPrimitiveTypes.java ###
+package com.jh.iht.java.basics.types;
+
+public class BPrimitiveTypes {
+    // Method to add two integers
+    public int addIntegers(int a, int b) {
+        return a + b;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\CReferenceTypes.java ###
+package com.jh.iht.java.basics.types;
+
+public class CReferenceTypes {
+    // Method to concatenate two strings and return the result
+    public String concatenateStrings(String a, String b) {
+        return a + b;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\DPrimitiveReferenceExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class DPrimitiveReferenceExample {
+
+    // Method to demonstrate primitive types
+    public int demonstratePrimitiveTypes(int a, int b) {
+        int originalA = a;  // Save original value of a
+
+        // Modify b
+        b = 20;
+
+        // Return the final state as a string that can be tested
+        return b;  // Returning the modified value of b to validate
+    }
+
+    // Method to demonstrate reference types
+    public String demonstrateReferenceTypes(String str1, String str2) {
+        // Modify str2 to demonstrate reference type behavior
+        str2 = "World";
+
+        // Return the final state to validate
+        return str2;  // Return modified str2 for validation
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\EStrings.java ###
+package com.jh.iht.java.basics.types;
+
+public class EStrings {
+    // Method to concatenate two strings
+    public String concatenate(String a, String b) {
+        return (a + b).toUpperCase();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\FEscapeSequences.java ###
+package com.jh.iht.java.basics.types;
+
+public class FEscapeSequences {
+    // Method to demonstrate escape sequences like newline, tab, and backslash
+    public String demonstrateEscapeSequences() {
+        return "Hello\nWorld!\tTab\\Backslash";
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\GArrays.java ###
+package com.jh.iht.java.basics.types;
+
+public class GArrays {
+    // Method to double the values in an array
+    public int[] doubleArrayValues(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] *= 2;
+        }
+        return array;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\HMultiDimensionalArrays.java ###
+package com.jh.iht.java.basics.types;
+
+public class HMultiDimensionalArrays {
+    // Method to sum all elements in a 2D array
+    public int sum2DArray(int[][] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];
+            }
+        }
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\IConstants.java ###
+package com.jh.iht.java.basics.types;
+
+public class IConstants {
+    public static final int CONSTANT_VALUE = 100;  // A constant integer
+
+    // Method to return the constant value
+    public int getConstantValue() {
+        return CONSTANT_VALUE;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\JArithmeticExpressions.java ###
+package com.jh.iht.java.basics.types;
+
+public class JArithmeticExpressions {
+    // Method to perform an arithmetic expression (a + b) * (c - d)
+    public int calculateExpression(int a, int b, int c, int d) {
+        return (a + b) * (c - d);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\KOrderOfOperations.java ###
+package com.jh.iht.java.basics.types;
+
+public class KOrderOfOperations {
+    // Method to demonstrate the order of operations
+    public int calculateOrderOfOperations(int a, int b, int c) {
+        return a + b * c;  // Multiplication has higher precedence than addition
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\LCasting.java ###
+package com.jh.iht.java.basics.types;
+
+public class LCasting {
+    // Method to demonstrate casting between primitive types
+    public int castAndAdd(double a, double b) {
+        int sum = (int) a + (int) b;  // Casting double to int
+        return sum;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\MMathClass.java ###
+package com.jh.iht.java.basics.types;
+
+public class MMathClass {
+    // Method to demonstrate some Math class methods (round, sqrt, and pow)
+    public double computeMathOperations(double a, double b) {
+        double result = Math.pow(a, b); // a raised to the power of b
+        result += Math.sqrt(a); // Add square root of a
+        result = Math.round(result); // Round the result
+        return result;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\NFormattingNumbers.java ###
+package com.jh.iht.java.basics.types;
+
+import java.text.DecimalFormat;
+
+public class NFormattingNumbers {
+    // Method to format a number to two decimal places
+    public String formatToTwoDecimalPlaces(double number) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(number);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\OReadingInput.java ###
+package com.jh.iht.java.basics.types;
+
+import java.util.Scanner;
+
+public class OReadingInput {
+
+    // Method to calculate the square of a number
+    public int calculateSquare(int number) {
+        return number * number;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompting user to input a number
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();  // Reading input
+        
+        // Creating an object of SquareCalculator
+        OReadingInput calculator = new OReadingInput();
+        
+        // Calculating the square of the number
+        int result = calculator.calculateSquare(number);
+        
+        // Printing the result
+        System.out.println("The square of " + number + " is " + result);
+        
+        // Closing the scanner to avoid resource leak
+        scanner.close();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\PStaticExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class PStaticExample {
+    // Static variable
+    public static int count = 0;
+
+    // Static method to increment the count
+    public static void incrementCount() {
+        count++;
+    }
+
+    // Static method to get the count
+    public static int getCount() {
+        return count;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\QFinalExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class QFinalExample {
+    // Final variable
+    public final int CONSTANT_VALUE = 50;
+
+    // Method to demonstrate the use of final variable
+    public int getFinalValue() {
+        return CONSTANT_VALUE;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\types\RKeywordsExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class RKeywordsExample {
+    // Demonstrating the use of 'public', 'private', 'static', and 'final' keywords
+
+    public static final int MAX_VALUE = 100;
+
+    private int value;
+
+    public RKeywordsExample(int value) {
+        this.value = value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public static int getMaxValue() {
+        return MAX_VALUE;
+    }
+}
+

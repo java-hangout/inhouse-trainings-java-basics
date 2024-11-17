@@ -1,0 +1,58 @@
+### Contents of ATightlyCoupledTest.java ###
+package com.jh.iht.java.basics.interfaces;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * In tightly-coupled code, the classes depend heavily on one another, making changes in one class likely
+ * to require changes in the others. The goal of this test is to demonstrate the tightly-coupled nature of the
+ * `Car` and `Engine` classes in the previous example.
+ * Defined Car with startCar () and Engine with start() method. Create instance of Engine inside constructor of Car.
+ * Input: - No specific input is required.
+ * Expected Output: - The engine of the car should start when the `startCar()` method is invoked.
+ */
+public class ATightlyCoupledTest {
+
+    @Test
+    public void testStartCar() {
+        // Create a Car object which internally creates an Engine object
+        Car car = new Car();
+        // Call startCar() which should invoke the start() method on the Engine instance
+        // We expect the output to be "Engine started!"
+        car.startCar();  // This should start the car engine
+    }
+}
+
+### Contents of BInterfaceTest.java ###
+package com.jh.iht.java.basics.interfaces;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The goal of this test is to demonstrate how using interfaces can decouple code, making it more flexible.
+ * The `Car` class no longer depends directly on specific `Engine` classes but depends on the `Engine` interface.
+ * Input:
+ * - Car with GasEngine
+ * - Car with ElectricEngine
+ * Expected Output:
+ * - "Gas Engine started!"
+ * - "Electric Engine started!"
+ */
+public class BInterfaceTest {
+
+    @Test
+    public void testStartCarWithGasEngine() {
+        Car1 gasCar = new Car1(new GasEngine());
+        Assertions.assertEquals("Gas Engine started!", gasCar.startCar());  // This should start the gas engine and print "Gas Engine started!"
+    }
+
+    @Test
+    public void testStartCarWithElectricEngine() {
+        Car1 electricCar = new Car1(new ElectricEngine());
+        Assertions.assertEquals("Electric Engine started!", electricCar.startCar());  // This should start the electric engine and print "Electric Engine started!"
+    }
+}
+

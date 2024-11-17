@@ -1,0 +1,154 @@
+### Contents of CollectionInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class CollectionInterface {
+    public Collection<String> getItems() {
+        Collection<String> collection = new ArrayList<>();
+        collection.add("Apple");
+        collection.add("Banana");
+        collection.add("Cherry");
+        return collection;
+    }
+}
+
+### Contents of ComparableInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Person implements Comparable<Person> {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age); // Compare by age
+    }
+
+    @Override
+    public String toString() {
+        return name + ": " + age;
+    }
+}
+
+public class ComparableInterface {
+    public List<Person> getPeople(List<Person> people ) {
+        // Sort people by age
+        Collections.sort(people);
+        return people;
+    }
+}
+
+### Contents of ComparatorInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Person1{
+    String name;
+    int age;
+
+    Person1(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return name + ": " + age;
+    }
+}
+
+public class ComparatorInterface {
+    public List<Person1> getPeople(List<Person1> people) {
+        // Sort exceptedResult by name using the Comparator
+        Collections.sort(people, sortByName());
+        return people;
+    }
+
+    // Comparator to sort by name
+    public Comparator<Person1> sortByName() {
+        return (p1, p2) -> p1.name.compareTo(p2.name);
+    }
+}
+
+### Contents of IterableInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterableInterface {
+    public StringBuilder getProgrammingLanguages(List<String> languages) {
+        StringBuilder actualOutput = new StringBuilder();
+        // Iterate using the enhanced for loop (which uses the Iterable interface)
+        for (String language : languages) {
+            actualOutput.append(language).append("\n");
+        }
+        return actualOutput;
+    }
+}
+
+### Contents of IteratorInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class IteratorInterface {
+    public StringBuilder getFruits(List<String> fruits) {
+        StringBuilder actualOutput = new StringBuilder();
+        // Using Iterator to iterate through the list
+        Iterator<String> iterator = fruits.iterator();
+        while (iterator.hasNext()) {
+            actualOutput.append(iterator.next()).append("\n");
+        }
+        return actualOutput;
+    }
+}
+
+### Contents of ListInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListInterface {
+    public List<String> getFruits() {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        return fruits;
+    }
+}
+
+### Contents of QueueInterface.java ###
+package com.jh.iht.java.basics.collection1;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueInterface {
+    public Queue<String> getQueue() {
+        Queue<String> queue = new LinkedList<>();
+        queue.add("Task 1");
+        queue.add("Task 2");
+        queue.add("Task 3");
+        return queue;
+    }
+}
+

@@ -1,0 +1,3128 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\cee\ChainingExceptionsTest.java ###
+package com.jh.iht.java.basics.cee;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * Exception chaining allows the original exception to be preserved while throwing a new exception.
+ * This example demonstrates the use of exception chaining for database connection failure.
+ * Define connectToDatabase() throws DatabaseConnectionException which will through custom  SQLException("Unable to connect to the database.")
+ * Catch that exception and re throw new DatabaseConnectionException("Database connection failed.", e);
+ * Input: - SQLException (causing a DatabaseConnectionException)
+ * Expected Output:
+ * - "Database connection failed."
+ * - "Cause: Unable to connect to the database."
+ */
+
+public class ChainingExceptionsTest {
+
+    @Test
+    public void testChainingExceptions() {
+        try {
+            ChainingExceptions.connectToDatabase();
+        } catch (DatabaseConnectionException e) {
+            Assertions.assertEquals("Database connection failed.", e.getMessage());
+            Assertions.assertEquals("Unable to connect to the database.", e.getCause().getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\cee\CustomExceptionTest.java ###
+package com.jh.iht.java.basics.cee;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * Define a custom exceptions allow to define specific error conditions tailored to the application.
+ * Testing a custom exception to validate age restrictions.
+ * Input:
+ * - Age value (e.g., 15)
+ * Expected Output:
+ * - "Age must be 18 or older."
+ */
+public class CustomExceptionTest {
+
+    @Test
+    public void testCustomException() {
+        try {
+            CustomException.validateAge(15);  // Age less than 18, should throw exception
+        } catch (InvalidAgeException e) {
+            Assertions.assertEquals("Age must be 18 or older.", e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\AClassesAndObjectsTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate creation and usage of classes and objects.
+ * Input:- Car objects with model "Tesla Model 3", year 2022 and "BMW M3", year 2023.
+ * Expected Output:- Display the car model and year details for both car objects.
+ */
+public class AClassesAndObjectsTest {
+
+    @Test
+    public void testCarDetails() {
+        Car1 car1 = new Car1("Tesla Model 3", 2022);
+        Car1 car2 = new Car1("BMW M3", 2023);
+
+        // Checking car details
+        Assertions.assertEquals("Tesla Model 3", car1.model);
+        Assertions.assertEquals(2022, car1.year);
+        Assertions.assertEquals("BMW M3", car2.model);
+        Assertions.assertEquals(2023, car2.year);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\BProceduralProgrammingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implementing procedural programming by summing an array of numbers.
+ * Input:- Array of numbers {1, 2, 3, 4, 5}
+ * Expected Output: - Sum = 15
+ */
+public class BProceduralProgrammingTest {
+
+    @Test
+    public void testSumArray() {
+        BProceduralProgramming pp = new BProceduralProgramming();
+        int[] numbers = {1, 2, 3, 4, 5};
+        int expectedSum = 15;
+        Assertions.assertEquals(expectedSum, pp.sumArray(numbers));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\CEncapsulationTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * 1. Creating a class `EncapsulationExample` with private fields `name` and `age`.
+ * 2. Implementing **getter** and **setter** methods for these fields.
+ * 3. Writing test cases to:
+ * - Verify that the **setter methods** correctly set the values of `name` and `age`.
+ * - Verify that the **getter methods** correctly return the expected values.
+ */
+
+public class CEncapsulationTest {
+    @Test
+    public void testEncapsulation() {
+        CEncapsulationExample person = new CEncapsulationExample();
+        person.setName("John");
+        person.setAge(25);
+        Assertions.assertEquals("John", person.getName());
+        Assertions.assertEquals(25, person.getAge());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\DAbstractionExampleTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate abstraction using an abstract class and concrete subclasses.
+ * Input:- Animal object: Dog and Cat
+ * Expected Output:
+ *  - Dog barks
+ *  - Cat meows
+ */
+public class DAbstractionExampleTest {
+
+    @Test
+    public void testSound() {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        // Testing polymorphism and abstraction
+        Assertions.assertEquals("Dog barks",dog.sound());  // Should output "Dog barks"
+        Assertions.assertEquals("Cat meows",cat.sound());  // Should output "Cat meows"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\ECouplingExampleTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate loose coupling between Car and Engine classes.
+ * Input:- Car object that uses Engine object to start.
+ * Expected Output:- "Engine started" when Car starts.
+ */
+public class ECouplingExampleTest {
+
+    @Test
+    public void testCarStart() {
+        Engine2 engine = new Engine2();
+        Car2 car = new Car2(engine);
+        Assertions.assertEquals("Engine started", car.startCar());  // Should output "Engine started"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\FReducingCouplingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate reduced coupling using interfaces and constructor injection.
+ * Input:
+ * - Engine object (Electric or Gas)
+ * - Car object using the Engine
+ * Expected Output:
+ * - "Electric Engine started" or "Gas Engine started" based on the engine type
+ */
+public class FReducingCouplingTest {
+
+    @Test
+    public void testCarWithElectricEngine() {
+        Engine3 electricEngine = new ElectricEngine3();
+        Car3 electricCar = new Car3(electricEngine);
+        // Capture the output to verify if the engine started
+        Assertions.assertEquals("Electric Engine3 started.", electricCar.startCar());
+    }
+
+    @Test
+    public void testCarWithGasEngine() {
+        Engine3 gasEngine = new GasEngine3();
+        Car3 gasCar = new Car3(gasEngine);
+        // Capture the output to verify if the engine started
+        Assertions.assertEquals("Gas Engine3 started.", gasCar.startCar());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\GConstructorsExampleTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate how constructors are used to initialize object attributes.
+ * Input: - Person object with name "Alice" and age 30
+ * Expected Output:- Name: Alice, Age: 30
+ */
+public class GConstructorsExampleTest {
+
+    @Test
+    public void testPersonConstructor() {
+        Person person = new Person("Alice", 30);
+
+        Assertions.assertEquals("Alice", person.name);
+        Assertions.assertEquals(30, person.age);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\HMethodOverloadingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate method overloading with different parameter types.
+ * Input: - Integers: 2 and 3, Doubles: 2.5 and 3.5, Integers: 1, 2, 3
+ * Expected Output:
+ * - Sum of integers = 5
+ * - Sum of doubles = 6.0
+ * - Sum of three integers = 6
+ */
+public class HMethodOverloadingTest {
+
+    @Test
+    public void testAddIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(2, 3);
+        Assertions.assertEquals(5, result);
+    }
+
+    @Test
+    public void testAddDoubles() {
+        Calculator calculator = new Calculator();
+        double result = calculator.add(2.5, 3.5);
+        Assertions.assertEquals(6.0, result, 0.01);
+    }
+
+    @Test
+    public void testAddThreeIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(1, 2, 3);
+        Assertions.assertEquals(6, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\IConstructorOverloadingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate constructor overloading with different constructor signatures.
+ * Input:
+ * - Person object with no parameters: Defaults to "Unknown" and age 0
+ * - Person object with parameters: "John" and 25
+ * Expected Output:
+ * - Name: Unknown, Age: 0
+ * - Name: John, Age: 25
+ */
+public class IConstructorOverloadingTest {
+
+    @Test
+    public void testDefaultConstructor() {
+        Person1 person = new Person1();
+        Assertions.assertEquals("Unknown", person.name);
+        Assertions.assertEquals(0, person.age);
+    }
+
+    @Test
+    public void testParameterizedConstructor() {
+        Person1 person = new Person1("John", 25);
+        Assertions.assertEquals("John", person.name);
+        Assertions.assertEquals(25, person.age);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\co\JStaticMembersTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Create a class as Counter with static variable as count and increment it in construct.
+ * Input: - Counter objects created using the constructor with counter increment
+ * Expected Output: - Number of Counter objects created = 3
+ */
+public class JStaticMembersTest {
+
+    @Test
+    public void testStaticCount() {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        // Static count should be 3 after three objects are created
+        Assertions.assertEquals(3, Counter.getCount());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\AIterableInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * Define an Iterable interface allows collections to be iterated using the enhanced for loop.
+ * This test checks if the collection of programming languages is correctly iterated.
+ * Input:
+ * - List of programming languages ["Java", "Python", "C++"]
+ * Expected Output:
+ * - "Java", "Python", "C++" printed in separate lines.
+ */
+public class AIterableInterfaceTest {
+
+    @Test
+    public void testIterable() {
+        List<String> languages = new ArrayList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        IterableInterface iterableInterface = new IterableInterface();
+        StringBuilder actualOutput  = iterableInterface.getProgrammingLanguages(languages);
+        String expectedOutput = "Java\nPython\nC++\n";
+        Assertions.assertEquals(expectedOutput, actualOutput.toString());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\BIteratorInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * The Iterator interface provides a standard way to iterate over collections. 
+ * This test checks if the Iterator correctly iterates over a list of fruits.
+ * 
+ * Input:
+ * - List of fruits ["Apple", "Banana", "Cherry"]
+ * 
+ * Expected Output:
+ * - "Apple", "Banana", "Cherry" printed in separate lines.
+ */
+public class BIteratorInterfaceTest {
+
+    @Test
+    public void testIterator() {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        IteratorInterface iteratorInterface = new IteratorInterface();
+        StringBuilder actualOutput = iteratorInterface.getFruits(fruits);
+        String expectedOutput = "Apple\nBanana\nCherry\n";
+        Assertions.assertEquals(expectedOutput, actualOutput.toString());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\CCollectionInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+
+/**
+ * Problem Statement:
+ * The Collection interface provides basic methods to manipulate collections. 
+ * Checks if elements can be added, removed, and queried in the collection.
+ * Input:
+ * - Collection of items ["Apple", "Banana", "Cherry"]
+ * Expected Output:
+ * - "Collection size: 3", "Contains 'Banana': true"
+ */
+public class CCollectionInterfaceTest {
+
+    @Test
+    public void testCollectionMethods() {
+        CollectionInterface collectionInterface = new CollectionInterface();
+        Collection<String> items = collectionInterface.getItems();
+        // Check the size of the collection
+        Assertions.assertEquals(3, items.size());
+        // Check if the collection contains a specific item
+        Assertions.assertTrue(items.contains("Banana"));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\DListInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * The List interface allows ordered collections with duplicate elements. 
+ * Checks if elements can be accessed using their index positions.
+ * Expected Output:
+ * - List of fruits ["Apple", "Banana", "Cherry"]
+ * - Check "Apple" for index 0, "Banana" for index 1
+ */
+public class DListInterfaceTest {
+
+    @Test
+    public void testListMethods() {
+        ListInterface listInterface = new ListInterface();
+        List<String> fruits = listInterface.getFruits();
+        // Check element at specific index
+        Assertions.assertEquals("Apple", fruits.get(0));
+        Assertions.assertEquals("Banana", fruits.get(1));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\EComparableInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * The Comparable interface allows objects to be compared and sorted. 
+ * This test verifies that people are correctly sorted by age.
+ * Input:
+ * - List of persons: Alice (30), Bob (25), Charlie (35)
+ * Expected Output:
+ * - Sorted by age: Bob (25), Alice (30), Charlie (35)
+ */
+public class EComparableInterfaceTest {
+
+    @Test
+    public void testComparable() {
+        List<Person> people = new ArrayList<>();
+        people.add(new Person("Alice", 30));
+        people.add(new Person("Bob", 25));
+        people.add(new Person("Charlie", 35));
+        ComparableInterface comparableInterface = new ComparableInterface();
+        List<Person> result = comparableInterface.getPeople(people);
+
+        // Check the sorted order by age
+        Assertions.assertEquals("Bob: 25", result.get(0).toString());
+        Assertions.assertEquals("Alice: 30", result.get(1).toString());
+        Assertions.assertEquals("Charlie: 35", result.get(2).toString());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\FComparatorInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+/**
+ * Problem Statement:
+ * The Comparator interface allows defining custom sorting logic. 
+ * This test verifies that people are correctly sorted by name using a comparator.
+ * Input: - List of persons: Bob (25), Alice (30), Charlie (35)
+ * Expected Output: - Sorted by name: Alice (30), Bob (25), Charlie (35)
+ */
+public class FComparatorInterfaceTest {
+
+    @org.junit.jupiter.api.Test
+    public void testComparator() {
+        List<Person1> people = new ArrayList<>();
+        people.add(new Person1("Bob", 25));
+        people.add(new Person1("Alice", 30));
+        people.add(new Person1("Charlie", 35));
+//        System.out.print(people);
+        ComparatorInterface comparatorInterface = new ComparatorInterface();
+        List<Person1> exceptedResult = comparatorInterface.getPeople(people);
+        // Check the sorted order by name
+        Assertions.assertEquals("Alice: 30", exceptedResult.get(0).toString());
+        Assertions.assertEquals("Bob: 25", exceptedResult.get(1).toString());
+        Assertions.assertEquals("Charlie: 35", exceptedResult.get(2).toString());
+    }
+}
+
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection1\GQueueInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Queue;
+
+/**
+ * Problem Statement:
+ * The Queue interface allows elements to be processed in FIFO order. 
+ * Checks if elements are correctly removed from the queue in the same order they were added.
+ * 
+ * Input:
+ * - Queue of tasks ["Task 1", "Task 2", "Task 3"]
+ * Expected Output:
+ * - Task 1, Task 2, Task 3 removed in that order.
+ */
+public class GQueueInterfaceTest {
+
+    @Test
+    public void testQueueMethods() {
+        QueueInterface queueInterface = new QueueInterface();
+        Queue<String> tasks = queueInterface.getQueue();
+//        System.out.println("tasks : "+tasks);
+        // Remove tasks from the queue (FIFO order)
+        Assertions.assertEquals("Task 1", tasks.poll());
+        Assertions.assertEquals("Task 2", tasks.poll());
+        Assertions.assertEquals("Task 3", tasks.poll());
+//        System.out.println("tasks : "+tasks);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection2\ASetInterfaceTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Problem Statement:
+ * The Set interface ensures that a collection does not contain duplicate elements. 
+ * Verifies that duplicate elements are not added to the set.
+ * Input: - Set of elements ["Apple", "Banana", "Apple", "Cherry"]
+ * Expected Output: - Set size: 3, Contains "Apple": true, Contains "Orange": false
+ */
+public class ASetInterfaceTest {
+
+    @Test
+    public void testSetMethods() {
+        Set<String> set = new HashSet<>();
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Apple"); // Duplicate element
+        set.add("Cherry");
+        SetInterface setInterface = new SetInterface();
+        int fruitSize = setInterface.getUniqueElements(set);
+
+        // Check the size of the set (should not have duplicates)
+        Assertions.assertEquals(3, fruitSize);
+
+        // Check if specific items are in the set
+        Assertions.assertTrue(set.contains("Apple"));
+        Assertions.assertFalse(set.contains("Orange"));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection2\BHashTableExampleTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Hashtable;
+
+/**
+ * Problem Statement:
+ * A HashTable allows storing key-value pairs, providing quick access to values by keys.
+ * Checks if the HashTable can store and retrieve values correctly.
+ * Input:
+ * - Country codes map: {"US" -> "1", "IN" -> "91", "DE" -> "49"}
+ * Expected Output:
+ * - Code for US: "1", Code for IN: "91", Contains "UK": false
+ */
+public class BHashTableExampleTest {
+
+    @Test
+    public void testHashTableMethods() {
+        HashTableExample hashTableExample = new HashTableExample();
+        Hashtable<String, String> countryCodes = hashTableExample.getCountryCodes();
+
+        // Check if the correct codes are retrieved
+        Assertions.assertEquals("1", countryCodes.get("US"));
+        Assertions.assertEquals("91", countryCodes.get("IN"));
+
+        // Check if "UK" is present in the HashTable
+        Assertions.assertFalse(countryCodes.containsKey("UK"));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection2\CMapInterfaceTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+
+/**
+ * Problem Statement:
+ * The Map interface allows storing key-value pairs where each key is unique.
+ * Verifies that the capitals are correctly mapped to their respective countries.
+ * Input:
+ * - Map of country codes to capital cities {"US" -> "Washington, D.C.", "IN" -> "New Delhi", "UK" -> "London"}
+ * Expected Output:
+ * - Capital of US: "Washington, D.C.", Contains "India": false
+ */
+public class CMapInterfaceTest {
+
+    @Test
+    public void testMapMethods() {
+        MapInterface mapInterface = new MapInterface();
+        Map<String, String> capitals = mapInterface.getCapitalCities();
+
+        // Check the capital for specific countries
+        Assertions.assertEquals("Washington, D.C.", capitals.get("US"));
+        Assertions.assertEquals("New Delhi", capitals.get("IN"));
+
+        // Check if "India" is in the map as a key
+        Assertions.assertFalse(capitals.containsKey("India"));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\collection2\DCollectionComparisonTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Problem Statement:
+ * This test compares the behaviors of List, Set, and Map in Java.
+ * A List allows duplicates, a Set disallows duplicates, and a Map allows key-value pairs with unique keys.
+ * Input:
+ * - List: ["Apple", "Banana", "Apple"]
+ * - Set: ["Apple", "Banana", "Apple"]
+ * - Map: {"Apple" -> "1", "Banana" -> "2", "Apple" -> "3"}
+ * Expected Output:
+ * - List size: 3, Set size: 2, Map size: 2
+ */
+public class DCollectionComparisonTest {
+
+    @Test
+    public void testCollectionComparison() {
+        CollectionComparison collectionComparison = new CollectionComparison();
+
+        // Test List
+        List<String> list = collectionComparison.getList();
+        Assertions.assertEquals(3, list.size()); // Duplicates are allowed
+
+        // Test Set
+        Set<String> set = collectionComparison.getSet();
+        Assertions.assertEquals(2, set.size()); // Duplicates are not allowed
+
+        // Test Map
+        Map<String, String> map = collectionComparison.getMap();
+        Assertions.assertEquals(2, map.size()); // Keys are unique, values can change
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\AComparisonOperatorsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Compare two integers using comparison operators.
+ * Input:
+ * - int a = 5
+ * - int b = 3
+ * Expected Output:
+ * - true since 5 > 3
+ */
+public class AComparisonOperatorsTest {
+
+    @Test
+    public void testCompareNumbers() {
+        AComparisonOperators co = new AComparisonOperators();
+        int a = 5, b = 3;
+        boolean expected = true;  // Expected: 5 > 3
+        Assertions.assertEquals(expected, co.compareNumbers(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\BLogicalOperatorsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Check logical operators (AND, OR).
+ * Input:
+ * - int a = 5
+ * - int b = 3
+ * Expected Output:
+ * - true since 5 > 3 and 3 > 0
+ */
+public class BLogicalOperatorsTest {
+
+    @Test
+    public void testCheckLogicalOperators() {
+        BLogicalOperators lo = new BLogicalOperators();
+        int a = 5, b = 3;
+        boolean expected = true;  // Expected: (5 > 3) && (3 > 0)
+        Assertions.assertEquals(expected, lo.checkLogicalOperators(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\CIfStatementsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Check if the number is positive, negative, or zero.
+ * Input: - int num = 5
+ * Expected Output: - "Positive"
+ */
+public class CIfStatementsTest {
+
+    @Test
+    public void testCheckPositiveNumber() {
+        CIfStatements ifStmt = new CIfStatements();
+        int num = 5;
+        String expected = "Positive";
+        Assertions.assertEquals(expected, ifStmt.checkNumber(num));
+    }
+    @Test
+    public void testCheckNegativeNumber() {
+        CIfStatements ifStmt = new CIfStatements();
+        int num = -5;
+        String expected = "Negative";
+        Assertions.assertEquals(expected, ifStmt.checkNumber(num));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\DSimplifyingIfStatementsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Simplify the if statement to check if a number is even or odd.
+ * Input: int num = 4
+ * Expected Output: "Even"
+ */
+public class DSimplifyingIfStatementsTest {
+
+    @Test
+    public void testCheckEvenOrOdd() {
+        DSimplifyingIfStatements sif = new DSimplifyingIfStatements();
+        int num = 4;
+        String expected = "Even";  // Expected result: "Even"
+        Assertions.assertEquals(expected, sif.checkEvenOrOdd(num));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\ETernaryOperatorTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Use ternary operator to check if a number is positive or negative.
+ * Input: - int num = -3
+ * Expected Output: - "Negative"
+ */
+public class ETernaryOperatorTest {
+
+    @Test
+    public void testCheckPositiveNegative() {
+        ETernaryOperator to = new ETernaryOperator();
+        int num = -3;
+        String expected = "Negative";  // Expected result: "Negative"
+        Assertions.assertEquals(expected, to.checkPositiveNegative(num));
+    }
+    @Test
+    public void testCheckPositiveNegative1() {
+        ETernaryOperator to = new ETernaryOperator();
+        int num = 4;
+        String expected = "Positive";  // Expected result: "Negative"
+        Assertions.assertEquals(expected, to.checkPositiveNegative(num));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\FSwitchStatementsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Use switch-case to determine the day of the week, start with Monday.
+ * Input:- int day = 3
+ * Expected Output:- "Wednesday"
+ */
+public class FSwitchStatementsTest {
+
+    @Test
+    public void testGetThirdDayOfWeek() {
+        FSwitchStatements ss = new FSwitchStatements();
+        int day = 3;
+        String expected = "Wednesday";  // Expected result: "Wednesday"
+        Assertions.assertEquals(expected, ss.getDayOfWeek(day));
+    }
+
+    @Test
+    public void testGetForthDayOfWeek() {
+        FSwitchStatements ss = new FSwitchStatements();
+        int day = 4;
+        String expected = "Thursday";  // Expected result: "Wednesday"
+        Assertions.assertEquals(expected, ss.getDayOfWeek(day));
+    }
+
+    @Test
+    public void testGetInvalidDayOfWeek() {
+        FSwitchStatements ss = new FSwitchStatements();
+        int day = 8;
+        String expected = "Invalid Day";  // Expected result: "Wednesday"
+        Assertions.assertEquals(expected, ss.getDayOfWeek(day));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\GFizzBuzzTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+
+/**
+ * Problem: Print "Fizz" if divisible by 3, "Buzz" if divisible by 5, 
+ * and "FizzBuzz" if divisible by both.
+ * Input:
+ * - int num = 15
+ * Expected Output:
+ * - "FizzBuzz"
+ */
+public class GFizzBuzzTest {
+
+    @org.junit.jupiter.api.Test
+    public void testFizzBuzz() {
+        GFizzBuzz fb = new GFizzBuzz();
+        int num = 15;
+        String expected = "FizzBuzz";  // Expected result: "FizzBuzz"
+        Assertions.assertEquals(expected, fb.fizzBuzz(num));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\HForLoopsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum numbers from 1 to n using a for loop.
+ * Input:
+ * - int n = 5
+ * Expected Output:
+ * - 15 (1 + 2 + 3 + 4 + 5 = 15)
+ */
+public class HForLoopsTest {
+
+    @Test
+    public void testSumUsingForLoop() {
+        HForLoops fl = new HForLoops();
+        int n = 5;
+        int expected = 15;  // Expected result: 15
+        Assertions.assertEquals(expected, fl.sumUsingForLoop(n));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\IWhileLoopsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum numbers from 1 to n using a while loop.
+ * Input:
+ * - int n = 4
+ * Expected Output:
+ * - 10 (1 + 2 + 3 + 4 = 10)
+ */
+public class IWhileLoopsTest {
+
+    @Test
+    public void testSumUsingWhileLoop() {
+        IWhileLoops wl = new IWhileLoops();
+        int n = 4;
+        int expected = 10;  // Expected result: 10
+        Assertions.assertEquals(expected, wl.sumUsingWhileLoop(n));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\JDoWhileLoopsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum numbers from 1 to n using a do-while loop.
+ * 
+ * Input:
+ * - int n = 3
+ * 
+ * Expected Output:
+ * - 6 (1 + 2 + 3 = 6)
+ */
+public class JDoWhileLoopsTest {
+
+    @Test
+    public void testSumUsingDoWhileLoop() {
+        JDoWhileLoops dwl = new JDoWhileLoops();
+        int n = 3;
+        int expected = 6;  // Expected result: 6
+        Assertions.assertEquals(expected, dwl.sumUsingDoWhileLoop(n));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\KBreakContinueTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: List all even numbers from 1 to n using continue statement.
+ * Input:
+ * - int n = 6
+ * Expected Output:
+ * - "2 4 6 "
+ */
+public class KBreakContinueTest {
+
+    @Test
+    public void testListEvenNumbers() {
+        KBreakContinue bc = new KBreakContinue();
+        int n = 6;
+        String expected = "2 4 6 ";  // Expected result: "2 4 6 "
+        Assertions.assertEquals(expected, bc.listEvenNumbers(n));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\controlflow\LForEachLoopTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum elements in an array using the for-each loop.
+ * Input:
+ * - int[] numbers = {1, 2, 3, 4}
+ * Expected Output:
+ * - 10 (1 + 2 + 3 + 4 = 10)
+ */
+public class LForEachLoopTest {
+
+    @Test
+    public void testSumUsingForEachLoop() {
+        LForEachLoop fel = new LForEachLoop();
+        int[] numbers = {1, 2, 3, 4};
+        int expected = 10;  // Expected result: 10
+        Assertions.assertEquals(expected, fel.sumUsingForEachLoop(numbers));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\dda\ATypesOfErrorsTest.java ###
+package com.jh.iht.java.basics.dda;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the different types of errors in Java.
+ *
+ * Input:
+ * - Method to demonstrate a runtime error (division by zero).
+ * - Method to demonstrate a logical error (wrong operation).
+ * - Syntax error in the method (missing semicolon).
+ *
+ * Expected Output:
+ * - Runtime error: ArithmeticException
+ * - Logical error: Incorrect result of addition
+ * - Syntax error: Compilation fails
+ */
+/*
+public class ATypesOfErrorsTest {
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivideByZero() {
+        TypesOfErrors errors = new TypesOfErrors();
+        errors.divideByZero();  // This should throw ArithmeticException
+    }
+
+    @Test
+    public void testLogicalError() {
+        TypesOfErrors errors = new TypesOfErrors();
+        int result = errors.addNumbers(5, 3);
+        int expected = 8; // We expect 5 + 3, but the method does subtraction
+        assertNotEquals(expected, result);  // This should fail because of a logical error
+    }
+
+    // Syntax errors are usually caught during compilation, so no test is needed.
+}*/
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\dda\BCommonSyntaxErrorsTest.java ###
+package com.jh.iht.java.basics.dda;
+
+/**
+ * Problem: Common syntax errors such as missing semicolons, mismatched parentheses, and undeclared variables.
+ * 
+ * Expected Output:
+ * - Missing semicolon should result in compilation error.
+ * - Mismatched parentheses should result in compilation error.
+ * - Undeclared variable should result in compilation error.
+ */
+public class BCommonSyntaxErrorsTest {
+
+    // These errors cannot be tested using JUnit because they cause compilation failures.
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\dda\CDebuggingExampleTest.java ###
+package com.jh.iht.java.basics.dda;
+
+/**
+ * Problem: Debugging issues in methods such as logical errors and incorrect computations.
+ * 
+ * Input:
+ * - Method to add numbers (bug in addition).
+ * - Method to find max value (bug in handling empty array).
+ * 
+ * Expected Output:
+ * - The addNumbers method should return incorrect results due to multiplication instead of addition.
+ * - The findMax method should throw an exception for an empty array.
+ */
+/*
+public class CDebuggingExampleTest {
+
+    @Test
+    public void testAddNumbers() {
+        DebuggingExample debug = new DebuggingExample();
+        int result = debug.addNumbers(5, 3);
+        int expected = 8;  // Bug: The method returns 15 (5 * 3) instead of 8 (5 + 3)
+        assertNotEquals(expected, result);  // This will fail due to the bug
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void testFindMaxWithEmptyArray() {
+        DebuggingExample debug = new DebuggingExample();
+        int[] numbers = {}; // Empty array
+        debug.findMax(numbers);  // This should throw an exception
+    }
+}*/
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\AExceptionTypesTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+/**
+ Problem Statement: Create a custom exception `InvalidAgeException` and throwing it when an invalid age is provided.
+
+Steps to Implement:
+1. **Create a custom exception** `InvalidAgeException` that extends the `Exception` class.
+2. **Person class**: The constructor of `Person` class throws the `InvalidAgeException` if the age is negative.
+3. **Test the exception handling** for valid and invalid input.
+
+Test Scenarios:
+1. Test valid age creation.
+2. Test invalid age creation, ensuring that `InvalidAgeException` is thrown.
+
+Expected Output:
+1. For valid age, the age should be returned.
+2. For invalid age (negative), the exception should be thrown with the message "Age cannot be negative."
+*/
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class AExceptionTypesTest {
+
+    @Test
+    public void testValidAge() throws InvalidAgeException {
+        Person person = new Person("John", 30);
+        Assertions.assertEquals(30, person.getAge());  // Expected: 30
+    }
+
+    @Test
+    public void testInvalidAge() {
+        try {
+            Person person = new Person("Alice", -5);
+            Assertions.fail("Expected InvalidAgeException to be thrown");
+        } catch (InvalidAgeException e) {
+            Assertions.assertEquals("Age cannot be negative.", e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\BExceptionHierarchyTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+/**
+Problem Statement: Create a base exception BaseException and a derived exception SpecificException.
+- The `Demo` class uses `SpecificException` to handle specific cases where a negative value is provided.
+
+Steps to Implement:
+1. Base Exception: Create a custom base exception `BaseException`.
+2. Derived Exception: Create a derived class `SpecificException` that extends `BaseException`.
+3. Test the exception hierarchy by throwing and catching `SpecificException`.
+
+Test Scenarios:
+1. Test valid action that does not throw any exception.
+2. Test invalid action that throws a `SpecificException` when the value is negative.
+
+Expected Output:
+1. For a valid action, it should print: "Action performed with value: 10"
+2. For invalid input (negative value), it should throw `SpecificException` and print: "Negative value is not allowed."
+*/
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class BExceptionHierarchyTest {
+
+    @Test
+    public void testValidAction() throws SpecificException {
+        Demo demo = new Demo();
+       // Expected output: Action performed with value: 10
+        Assertions.assertEquals("Action performed with value: 10",demo.performAction(10));
+    }
+
+    @Test
+    public void testInvalidAction() {
+        Demo demo = new Demo();
+        try {
+            demo.performAction(-5);  // Should throw SpecificException
+            Assertions.fail("Expected SpecificException to be thrown");
+        } catch (SpecificException e) {
+            Assertions.assertEquals("Negative value is not allowed.", e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\CatchingExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement: Specifically, we will handle an ArithmeticException when attempting to divide by zero.
+ * - The Division class has a divide method that throws an ArithmeticException if the denominator is zero.
+ * Steps to Implement:
+ * 1. Division Class: Implement the divide method that performs division and throws an ArithmeticException if the denominator is zero.
+ * 2. Test Exception Handling: Write tests to ensure that dividing by zero throws the expected exception, and valid divisions produce the correct result.
+ * Test Scenarios:
+ * 1. Test division with valid inputs.
+ * 2. Test division with zero as the denominator, ensuring that ArithmeticException is thrown.
+ * Expected Output:
+ * 1. For valid division (e.g., 10 / 2), it should return the result (5).
+ * 2. For division by zero, it should throw an ArithmeticException with the message: "Cannot divide by zero."
+ */
+
+public class CatchingExceptionsTest {
+
+    @Test
+    public void testValidDivision() throws ArithmeticException {
+        Division division = new Division();
+        int result = division.divide(10, 2);
+        Assertions.assertEquals(5, result);  // Expected: 5
+    }
+
+    @Test
+    public void testDivisionByZero() {
+        Division division = new Division();
+        try {
+            division.divide(10, 0);  // Should throw ArithmeticException
+            Assertions.fail("Expected ArithmeticException to be thrown");
+        } catch (ArithmeticException e) {
+            Assertions.assertEquals("Cannot divide by zero.", e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\DCatchMultipleExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Handle both ArithmeticException (when dividing by zero) and a general Exception.
+
+Steps to Implement:
+1. Divide Method: Implement a method that performs division and catches both ArithmeticException and a general Exception.
+2. Catching Multiple Exceptions: Write tests to verify that both types of exceptions are properly handled.
+
+Test Scenarios:
+1. Test division by zero, ensuring the ArithmeticException is caught and the appropriate message is displayed.
+2. Test valid division, ensuring no exception is thrown.
+   
+Expected Output:
+1. For division by zero, the message "Error: Division by zero." should be returned.
+2. For valid division, the result should be returned without errors.
+*/
+
+public class DCatchMultipleExceptionsTest {
+
+    @Test
+    public void testArithmeticException() {
+        MultipleExceptionHandling handler = new MultipleExceptionHandling();
+        String result = handler.divide(10, 0);
+        assertEquals("Error: Division by zero.", result);  // Expected result for division by zero
+    }
+
+    @Test
+    public void testValidDivision() {
+        MultipleExceptionHandling handler = new MultipleExceptionHandling();
+        String result = handler.divide(10, 2);
+        assertEquals("Result: 5", result);  // Expected result for valid division
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\EFinallyBlockTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/*
+Problem Statement: Finally block runs whether an exception is thrown or not.
+
+Steps to Implement:
+1. Finally Block: Implement a method where an exception is caught, and a finally block runs after the exception is handled.
+2. Test the behavior of the finally block to ensure it is executed even when an exception occurs.
+
+Test Scenarios:
+1. Test the scenario where an exception is thrown and caught, but the finally block should still execute.
+
+Expected Output:
+1. "Caught ArithmeticException: / by zero"
+2. "Finally block always runs"
+*/
+
+public class EFinallyBlockTest {
+
+    @Test
+    public void testFinallyBlock() {
+        FinallyBlockDemo demo = new FinallyBlockDemo();
+        String result = demo.demonstrateFinallyBlock(10,5);
+        assertEquals("Finally block always runs", result);  // Expected: Finally block always runs
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\FTryWithResourcesTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/*
+Problem Statement: Use try-with-resources to automatically close resources like BufferedReader after use.
+
+Steps to Implement:
+1. Try-with-Resources: Implement a method where a file is read using a BufferedReader within a try-with-resources block.
+2. Test exception handling when the file does not exist (IOException).
+
+Test Scenarios:
+1. Test reading a file that exists.
+2. Test reading a file that does not exist, ensuring an IOException is thrown.
+
+Expected Output:
+1. If the file exists, it should print the first line of the file.
+2. If the file does not exist, it should print "IOException: ..." error message.
+*/
+
+public class FTryWithResourcesTest {
+    @Test
+    public void testReadFileWithFile() {
+        String filePath = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\testfile.txt";
+        TryWithResourcesDemo demo = new TryWithResourcesDemo();
+        // Simulate file read error for the test
+        String result = demo.readFile(filePath);
+        assertTrue(result.startsWith("Read line: Test"));  // Expected to start with IOException message
+    }
+
+    @Test
+    public void testReadFileWithOutFile() {
+        String filePath = "";
+        TryWithResourcesDemo demo = new TryWithResourcesDemo();
+        // Simulate file read error for the test
+        String result = demo.readFile(filePath);
+        assertTrue(result.startsWith("IOException:"));  // Expected to start with IOException message
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\GThrowingExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement:
+Demonstrate **throwing exceptions** in Java. The task is to throw a custom exception `InvalidAgeException` when an invalid age is provided.
+
+Steps to Implement:
+1. **Custom Exception**: Implement a custom exception `InvalidAgeException` to be thrown when an invalid age is encountered.
+2. **SetAge Method**: Implement a method `setAge()` in the `User` class that throws `InvalidAgeException` if the age is negative.
+
+Test Scenarios:
+1. Test setting a valid age.
+2. Test setting an invalid age, ensuring that `InvalidAgeException` is thrown.
+
+Expected Output:
+1. For valid age, the age should be set.
+2. For invalid age, an exception should be thrown with the message: "Age cannot be negative."
+*/
+
+public class GThrowingExceptionsTest {
+
+    @Test
+    public void testSetValidAge() throws InvalidAgeException1 {
+        User user = new User();
+        user.setAge(25);  // Expected: No exception, age is set
+        assertEquals(25, user.getAge());  // Verify that age is set correctly
+    }
+
+    @Test
+    public void testSetInvalidAge() {
+        User user = new User();
+        try {
+            user.setAge(-1);  // Expected: InvalidAgeException is thrown
+            fail("Expected InvalidAgeException to be thrown");
+        } catch (InvalidAgeException1 e) {
+            assertEquals("Age cannot be negative", e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\exceptions\HReThrowingExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+/*
+Problem Statement:
+Demonstrate **re-throwing exceptions**. The task is to catch an exception, log it, and then re-throw it.
+
+Steps to Implement:
+1. **Re-throwing Exceptions**: Implement a method that catches an exception, prints it, and re-throws it.
+2. **Test the behavior** of exception re-throwing.
+
+Test Scenarios:
+1. Test the re-throwing of the exception, ensuring that the exception is caught and re-thrown correctly.
+
+Expected Output:
+1. The exception should be re-thrown and caught in the calling code.
+*/
+
+public class HReThrowingExceptionsTest {
+
+    @Test
+    public void testReThrowException() {
+        ReThrowingDemo demo = new ReThrowingDemo();
+        try {
+            demo.process();  // Expected: Initial exception re-thrown
+            fail("Expected Exception to be re-thrown");
+        } catch (Exception e) {
+            assertEquals("Initial exception", e.getMessage());  // Verify exception message
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\AInheritanceExampleTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate inheritance by creating Dog class inheriting from Animal class.
+ * Input:
+ * - Dog object with name "Buddy"
+ * Expected Output:
+ * - "Buddy barks"
+ */
+public class AInheritanceExampleTest {
+
+    @Test
+    public void testDogSpeak() {
+        Dog1 dog = new Dog1("Buddy");
+        Assertions.assertEquals("Buddy barks", dog.speak()); // Should output: "Buddy barks"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\BObjectClassExampleTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate Object class methods like equals() and toString().
+ * Input:- Two Person objects with names "Alice" and "Bob"
+ * Expected Output:
+ * - Person{name='Alice'} for toString
+ * - true for equals between two persons with same name
+ * - false for equals between two persons with different names
+ */
+public class BObjectClassExampleTest {
+
+    @Test
+    public void testToString() {
+        Person1 p1 = new Person1("Alice");
+        Assertions.assertEquals("Person{name='Alice'}", p1.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        Person1 p1 = new Person1("Alice");
+        Person1 p2 = new Person1("Alice");
+        Person1 p3 = new Person1("Bob");
+
+        Assertions.assertTrue(p1.equals(p2));  // Same name, should return true
+        Assertions.assertFalse(p1.equals(p3));  // Different name, should return false
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\CConstructorsAndInheritanceTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate constructor chaining between superclass
+ * Animal with a parameterised constructor and subclass Dog with a parameterised constructor.
+ * Input: - Dog object with name "Buddy"
+ * Expected Output: Constructor calls for Animal first, then Dog
+ */
+public class CConstructorsAndInheritanceTest {
+
+    @Test
+    public void testConstructorChaining() {
+        Dog2 dog = new Dog2("Buddy");
+        // Outputs: "Animal constructor called" followed by "Dog constructor called"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\DAccessModifiersTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate different access modifiers in Java.
+ * Input:- Person object with name "Alice" as public  and age 30 as private
+ * Expected Output:- Name and age accessible via public methods and fields
+ */
+public class DAccessModifiersTest {
+
+    @Test
+    public void testAccessModifiers() {
+        Person2 person = new Person2("Alice", 30);
+        Assertions.assertEquals("Alice", person.name);
+//         Assertions.assertEquals(30, person.age);  // Age is private, can't be accessed directly
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\EUpcastingDowncastingTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate upcasting and downcasting in Java.
+ * Input: - Animal reference holding a Dog object
+ * Expected Output: - Dog barks using both upcasting and downcasting
+ */
+public class EUpcastingDowncastingTest {
+
+    @Test
+    public void testUpcastingDowncasting() {
+        Animal3 animal = new Dog3();  // Upcasting
+        Assertions.assertEquals("Dog barks", animal.speak());  // Outputs: Dog barks
+
+        Dog3 dog = (Dog3) animal;  // Downcasting
+        Assertions.assertEquals("Dog barks", dog.speak());  // Outputs: Dog barks
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\FComparingObjectsTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate comparison of objects using equals() and '=='.
+ * Input: - Two Person objects with same name "Alice"
+ * Expected Output:
+ * - false for reference comparison
+ * - true for logical equality
+ */
+public class FComparingObjectsTest {
+
+    @Test
+    public void testEqualsAndReferenceComparison() {
+        Person3 p1 = new Person3("Alice");
+        Person3 p2 = new Person3("Alice");
+
+        Assertions.assertFalse(p1 == p2);  // Reference comparison, should be false
+        Assertions.assertTrue(p1.equals(p2));  // Logical equality, should be true
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\GAbstractClassesAndMethodsTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate abstract classes and abstract methods in Java.
+ * Input:- Dog object
+ * Expected Output:- "Barks" from Dog's implementation of abstract method sound()
+ */
+public class GAbstractClassesAndMethodsTest {
+
+    @Test
+    public void testSound() {
+        Animal4 dog = new Dog4();
+        Assertions.assertEquals("Barks", dog.sound());  // Should output "Barks"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\HFinalClassesAndMethodsTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of final classes and methods.
+ * Input:
+ * - FinalClass object
+ * Expected Output:
+ * - "Final class method" from speak() method
+ */
+public class HFinalClassesAndMethodsTest {
+
+    @Test
+    public void testFinalClass() {
+        FinalClass obj = new FinalClass();
+        Assertions.assertEquals("Final class method",obj.speak());  // Should output "Final class method"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\IDeepInheritanceHierarchyTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate deep inheritance hierarchy with Class and method as "Animal eats", "Mammal walks", "Dog barks".
+ * Animal eats
+ * |- Mammal walks
+ * ||- Dog barks
+ * Input: - Dog object
+ * Expected Output: - "Animal eats", "Mammal walks", "Dog barks"
+ */
+public class IDeepInheritanceHierarchyTest {
+
+    @Test
+    public void testDogBehavior() {
+        Dog5 dog = new Dog5();
+        Assertions.assertEquals("Animal eats", dog.eat());  // Inherited from Animal - should output "Animal eats"
+        Assertions.assertEquals("Mammal walks", dog.walk());  // Inherited from Mammal - should output "Mammal walks"
+        Assertions.assertEquals("Dog barks", dog.bark());  // Should output "Dog barks"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\inheritance\JMultipleInheritanceTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate multiple inheritance through interfaces.
+ * Input:- Dolphin object that implements Animal and Swimmer interfaces
+ * Expected Output: - "Dolphin eats", "Dolphin swims"
+ */
+public class JMultipleInheritanceTest {
+
+    @Test
+    public void testDolphinBehavior() {
+        Dolphin dolphin = new Dolphin();
+        Assertions.assertEquals("Dolphin eats", dolphin.eat());  // Should output "Dolphin eats"
+        Assertions.assertEquals("Dolphin swims", dolphin.swim());  // Should output "Dolphin swims"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\interfaces\ATightlyCoupledTest.java ###
+package com.jh.iht.java.basics.interfaces;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * In tightly-coupled code, the classes depend heavily on one another, making changes in one class likely
+ * to require changes in the others. The goal of this test is to demonstrate the tightly-coupled nature of the
+ * `Car` and `Engine` classes in the previous example.
+ * Defined Car with startCar () and Engine with start() method. Create instance of Engine inside constructor of Car.
+ * Input: - No specific input is required.
+ * Expected Output: - The engine of the car should start when the `startCar()` method is invoked.
+ */
+public class ATightlyCoupledTest {
+
+    @Test
+    public void testStartCar() {
+        // Create a Car object which internally creates an Engine object
+        Car car = new Car();
+        // Call startCar() which should invoke the start() method on the Engine instance
+        // We expect the output to be "Engine started!"
+        car.startCar();  // This should start the car engine
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\interfaces\BInterfaceTest.java ###
+package com.jh.iht.java.basics.interfaces;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The goal of this test is to demonstrate how using interfaces can decouple code, making it more flexible.
+ * The `Car` class no longer depends directly on specific `Engine` classes but depends on the `Engine` interface.
+ * Input:
+ * - Car with GasEngine
+ * - Car with ElectricEngine
+ * Expected Output:
+ * - "Gas Engine started!"
+ * - "Electric Engine started!"
+ */
+public class BInterfaceTest {
+
+    @Test
+    public void testStartCarWithGasEngine() {
+        Car1 gasCar = new Car1(new GasEngine());
+        Assertions.assertEquals("Gas Engine started!", gasCar.startCar());  // This should start the gas engine and print "Gas Engine started!"
+    }
+
+    @Test
+    public void testStartCarWithElectricEngine() {
+        Car1 electricCar = new Car1(new ElectricEngine());
+        Assertions.assertEquals("Electric Engine started!", electricCar.startCar());  // This should start the electric engine and print "Electric Engine started!"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\io\AInputStreamExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The InputStream class is used to read bytes from a source.
+ * This test checks if the InputStream can correctly read data from a file.
+ * Input: - File with content: "Hello, world!"
+ * Expected Output: - "Hello, world!"
+ */
+public class AInputStreamExampleTest {
+
+    @Test
+    public void testReadDataFromFile() throws Exception {
+        InputStreamExample inputStreamExample = new InputStreamExample();
+        String data = inputStreamExample.readDataFromFile("D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\test.txt");
+        Assertions.assertEquals("Hello, world!", data);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\io\BOutputStreamExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+/**
+ * Problem Statement:
+ * The OutputStream class is used to write bytes to a destination. 
+ * Check if the OutputStream can correctly write data to a file.
+ * Input:
+ * - File: test-output.txt
+ * - Data: "Test data"
+ * Expected Output:
+ * - File content: "Test data"
+ */
+public class BOutputStreamExampleTest {
+
+    @Test
+    public void testWriteDataToFile() throws Exception {
+        OutputStreamExample outputStreamExample = new OutputStreamExample();
+        String fileName = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\test-output.txt";
+        String data = "Test data";
+        
+        // Write data to file
+        outputStreamExample.writeDataToFile(fileName, data);
+
+        // Read back the file content and verify
+        String fileContent = new String(Files.readAllBytes(Paths.get(fileName)));
+        Assertions.assertEquals("Test data", fileContent);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\io\CFileIOExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * This test checks if FileReader and FileWriter can correctly read and write character data to a file.
+ * 
+ * Input:
+ * - File name: test-file.txt
+ * - Data: "Java File I/O"
+ * 
+ * Expected Output:
+ * - File content: "Java File I/O"
+ */
+public class CFileIOExampleTest {
+
+    @Test
+    public void testFileIO() throws Exception {
+        FileIOExample fileIOExample = new FileIOExample();
+        String fileName = "test-file.txt";
+        String data = "Java File I/O";
+
+        // Write data to file
+        fileIOExample.writeFile(fileName, data);
+
+        // Read back the file content and verify
+        String fileContent = fileIOExample.readFile(fileName);
+        Assertions.assertEquals("Java File I/O", fileContent.trim());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\io\DBufferedIOExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * This test checks if BufferedInputStream and BufferedOutputStream can efficiently read and write byte data to a file.
+ * 
+ * Input:
+ * - File name: buffered-file.txt
+ * - Data: "Buffered I/O"
+ * 
+ * Expected Output:
+ * - File content: "Buffered I/O"
+ */
+public class DBufferedIOExampleTest {
+
+    @Test
+    public void testBufferedIO() throws Exception {
+        BufferedIOExample bufferedIOExample = new BufferedIOExample();
+        String fileName = "buffered-file.txt";
+        String data = "Buffered I/O";
+
+        // Write data to file using buffered output
+        bufferedIOExample.writeDataWithBuffer(fileName, data);
+
+        // Read back the file content using buffered input
+        String fileContent = bufferedIOExample.readDataWithBuffer(fileName);
+        Assertions.assertEquals("Buffered I/O", fileContent);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\io\FFileWriterReaderExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * This test verifies the functionality of FileWriter and FileReader in Java.
+ * It checks if data can be written to and read from a file using these classes.
+ * <p>
+ * Input:
+ * - File name: filewriterreader.txt
+ * - Data: "FileWriter and FileReader"
+ * <p>
+ * Expected
+ * <p>
+ * Output:
+ * - File content: "FileWriter and FileReader"
+ */
+public class FFileWriterReaderExampleTest {
+
+    @Test
+    public void testFileWriterReader() throws Exception {
+        FileWriterReaderExample fileWriterReaderExample = new FileWriterReaderExample();
+        String fileName = "filewriterreader.txt";
+        String data = "FileWriter and FileReader";
+
+        // Write data to file
+        fileWriterReaderExample.writeFile(fileName, data);
+
+        // Read back the file content and verify
+        String fileContent = fileWriterReaderExample.readFile(fileName);
+        Assertions.assertEquals("FileWriter and FileReader", fileContent);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\molr\AMethodOverridingTest.java ###
+package com.jh.iht.java.basics.molr;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
+Problem Statement: Demonstrate method overriding by creating a superclass Animal and a subclass Dog.
+Input:
+    - Animal object.
+    - Dog object (subclass of Animal).
+Expected Output:
+    - Animal's makeSound() should print "Animal makes sound".
+    - Dog's makeSound() should print "Dog barks".
+*/
+public class AMethodOverridingTest {
+
+    @Test
+    public void testAnimalMakeSound() {
+        Animal animal = new Animal();
+        Assertions.assertEquals("Animal makes sound",animal.makeSound());  // Expected output: "Animal makes sound"
+    }
+
+    @Test
+    public void testDogMakeSound() {
+        Animal dog = new Dog(); // Dog is an instance of Animal
+        Assertions.assertEquals("Dog barks",dog.makeSound());  // Expected output: "Dog barks"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\molr\BMethodOverloadingTest.java ###
+package com.jh.iht.java.basics.molr;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
+Problem Statement: Demonstrate method overloading by creating a Calculator class with multiple add methods
+that accept different numbers or types of arguments.
+Input:
+    - add(2, 3)
+    - add(2.5, 3.5)
+    - add(1, 2, 3)
+Expected Output:
+    - add(2, 3) should return 5
+    - add(2.5, 3.5) should return 6.0
+    - add(1, 2, 3) should return 6
+*/
+public class BMethodOverloadingTest {
+
+    @Test
+    public void testAddTwoIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(2, 3);
+        Assertions.assertEquals(5, result);
+    }
+
+    @Test
+    public void testAddTwoDoubles() {
+        Calculator calculator = new Calculator();
+        double result = calculator.add(2.5, 3.5);
+        Assertions.assertEquals(6.0, result, 0.001);
+    }
+
+    @Test
+    public void testAddThreeIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(1, 2, 3);
+        Assertions.assertEquals(6, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\molr\CDynamicBindingTest.java ###
+package com.jh.iht.java.basics.molr;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
+Problem Statement: Demonstrate dynamic binding (late binding) in Java.
+Create a Interface Shape with a method draw(), and subclasses Circle and Rectangle that override draw().
+    - Shape reference pointing to a Circle.
+    - Shape reference pointing to a Rectangle.
+Expected Output:
+    - If the Shape object points to a Circle, the output should be "Drawing a circle".
+    - If the Shape object points to a Rectangle, the output should be "Drawing a rectangle".
+*/
+public class CDynamicBindingTest {
+
+    @Test
+    public void testDrawCircle() {
+        Shape shape = new Circle();  // Shape reference to Circle object
+        Assertions.assertEquals("Drawing a circle", shape.draw());  // Expected output: "Drawing a circle"
+    }
+
+    @Test
+    public void testDrawRectangle() {
+        Shape shape = new Rectangle();  // Shape reference to Rectangle object
+        Assertions.assertEquals("Drawing a rectangle", shape.draw());  // Expected output: "Drawing a rectangle"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\oops\BenefitsOfOOPTest.java ###
+package com.jh.iht.java.basics.oops;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+/**
+ * Problem: Demonstrate the benefits of OOP (Modularity, Reusability, Inheritance, Maintainability).
+ *
+ * Input:
+ * - Product object: Name = "Laptop", Price = 1000
+ * - Electronics object: Name = "Laptop", Price = 1000, Warranty = 2 years
+ * 
+ * Expected Output:
+ * - Product Name: Laptop, Price: 1000
+ * - Discounted Price (10%): 900
+ * - Electronics Warranty: 2 years
+ */
+public class BenefitsOfOOPTest {
+
+    @Test
+    public void testProduct() {
+        Product product = new Product("Laptop", 1000);
+        Assertions.assertEquals("Laptop", product.getName());
+        Assertions.assertEquals(1000, product.getPrice(), 0.01);
+    }
+
+    @Test
+    public void testCalculateDiscount() {
+        Product product = new Product("Laptop", 1000);
+        double discountedPrice = product.calculateDiscount(10);  // 10% discount
+        Assertions.assertEquals(900, discountedPrice, 0.01);
+   
+
+ }
+
+    @Test
+    public void testElectronics() {
+        Electronics laptop = new Electronics("Laptop", 1000, 2);
+        Assertions.assertEquals("Laptop", laptop.getName());
+        Assertions.assertEquals(1000, laptop.getPrice(), 0.01);
+        Assertions.assertEquals(2, laptop.getWarrantyYears());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\oops\OOPConceptsTest.java ###
+package com.jh.iht.java.basics.oops;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the four main principles of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+ *
+ * Input:
+ * - Car object: Model = "Tesla Model X", Year = 2023
+ * - ElectricCar object: Model = "Tesla Model S", Year = 2023, Battery Capacity = 100 kWh
+ * - Animal sound examples: Dog, Cat, and Animal
+ * - Shape drawing: Circle and Rectangle
+ * 
+ * Expected Output:
+ * - Car details printed: "Model: Tesla Model X, Year: 2023"
+ * - Electric car details printed with battery capacity
+ * - Animal sound examples: Animal, Dog barks, Cat meows
+ * - Shape drawing: Circle and Rectangle
+ */
+public class OOPConceptsTest {
+
+    @Test
+    public void testEncapsulation() {
+        Car car = new Car();
+        car.setModel("Tesla Model X");
+        car.setYear(2023);
+        
+        Assertions.assertEquals("Tesla Model X", car.getModel());
+        Assertions.assertEquals(2023, car.getYear());
+    }
+
+    @Test
+    public void testInheritance() {
+        ElectricCar electricCar = new ElectricCar();
+        electricCar.setModel("Tesla Model S");
+        electricCar.setYear(2023);
+        electricCar.setBatteryCapacity(100);
+        
+        Assertions.assertEquals("Tesla Model S", electricCar.getModel());
+        Assertions.assertEquals(2023, electricCar.getYear());
+    }
+
+    @Test
+    public void testPolymorphism() {
+        Animal animal = new Animal();
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+
+        /*Assertions.assertEquals("Animal makes a sound", animal.sound());  // Polymorphism demonstration
+        Assertions.assertEquals("Dog barks", dog.sound());
+        Assertions.assertEquals("Cat meows", cat.sound());*/
+    }
+
+    @Test
+    public void testAbstraction() {
+        Shape circle = new Circle();
+        Shape rectangle = new Rectangle();
+        
+       /* Assertions.assertEquals("Drawing a Circle", circle.draw());  // Abstract method implementation in Circle class
+        Assertions.assertEquals("Drawing a Rectangle", rectangle.draw()); */ // Abstract method implementation in Rectangle class
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\pckg\APackageExampleTest.java ###
+package com.jh.iht.java.basics.pckg;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of packages in Java for organizing classes.
+ * Input:- Person object created with name "Alice" and age 25
+ * Expected Output:- "Name: Alice, Age: 25"
+ */
+public class APackageExampleTest {
+
+    @Test
+    public void testPersonDetails() {
+        Person p = new Person("Alice", 25);
+        Assertions.assertEquals("Alice", p.getName());
+        Assertions.assertEquals(25, p.getAge());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\pckg\BAccessModifiersTest.java ###
+package com.jh.iht.java.basics.pckg;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
+
+/**
+ * Problem: Demonstrate access modifiers in Java (public, private, protected, and default).
+ * Input: - Person object created with name "John", age 30, address "123 Main St", and city "New York"
+ * Expected Output:
+ * - Accessible fields should be returned as expected
+ * - private fields should not be accessible
+ */
+public class BAccessModifiersTest {
+
+    @Test
+    public void testPublicAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        Assertions.assertEquals("John", p.name);  // Public field
+    }
+
+    @Test
+    void testPrivateAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+
+        // Test that accessing a private field directly via reflection throws IllegalAccessException
+        IllegalAccessException thrown = Assertions.assertThrows(IllegalAccessException.class, () -> {
+            // Try to access the private field 'age' directly using reflection
+            Field field = Person1.class.getDeclaredField("age");
+            //field.setAccessible(false); // Simulate the access control by not allowing access
+            field.get(p); // This should throw IllegalAccessException because field is private and we haven't set accessible
+        });
+        Assertions.assertEquals("class com.jh.iht.java.basics.pckg.BAccessModifiersTest cannot access a member of class com.jh.iht.java.basics.pckg.Person1 with modifiers \"private\"", thrown.getMessage());
+    }
+
+    @Test
+    public void testProtectedAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        Assertions.assertEquals("123 Main St", p.address);  // Protected field
+    }
+
+    @Test
+    public void testDefaultAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        Assertions.assertEquals("New York", p.city);  // Default access field
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\pckg\CEncapsulationTest.java ###
+package com.jh.iht.java.basics.pckg;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate encapsulation by restricting access to private fields 
+ * and providing getter and setter methods for controlled access.
+ * Input:
+ * - Person object with initial name "Alice" and age 30.
+ * - Setter method to change name and age.
+ * - Attempt to set an invalid age.
+ * Expected Output:
+ * - Name and age can be accessed and modified through getter and setter methods.
+ * - Invalid age setting should result in an error message.
+ */
+public class CEncapsulationTest {
+
+    @Test
+    public void testEncapsulation() {
+        // Create a new person object
+        Person2 person = new Person2("Alice", 30);
+
+        // Test getter methods
+        Assertions.assertEquals("Alice", person.getName());
+        Assertions.assertEquals(30, person.getAge());
+
+        // Test setter methods
+        person.setName("Bob");
+        person.setAge(35);
+
+        // Test updated values
+        Assertions.assertEquals("Bob", person.getName());
+        Assertions.assertEquals(35, person.getAge());
+
+        // Test invalid age (negative value)
+        person.setAge(-5);  // Age should not be negative
+        Assertions.assertEquals(35, person.getAge());  // Age should remain 35
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\regex\APatternClassExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The Pattern class is used to define regular expressions. 
+ * Checks if a given text matches a pattern using Pattern and Matcher classes.
+ * Input:
+ * - Text: "hello123"
+ * - Regex: "^[a-z]+\\d+$"
+ * Expected Output:
+ * - true (text matches the pattern)
+ */
+public class APatternClassExampleTest {
+
+    @Test
+    public void testPatternMatch() {
+        PatternClassExample patternClassExample = new PatternClassExample();
+        boolean result = patternClassExample.checkPatternMatch("hello123", "^[a-z]+\\d+$");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void testPatternMatch_Negative() {
+        PatternClassExample patternClassExample = new PatternClassExample();
+        boolean result = patternClassExample.checkPatternMatch("hello1231qw", "^[a-z]+\\d+$");
+        Assertions.assertFalse(result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\regex\BMatcherClassExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The Matcher class is used to perform regular expression matching on an input string.
+ * This test checks if a given pattern is found in the input text.
+ * Input:
+ * - Text: "Hello world"
+ * - Regex: "world"
+ * Expected Output:
+ * - true (the pattern is found in the text)
+ */
+public class BMatcherClassExampleTest {
+
+    @Test
+    public void testContainsPattern() {
+        MatcherClassExample matcherClassExample = new MatcherClassExample();
+        boolean result = matcherClassExample.containsPattern("Hello world", "world");
+        Assertions.assertTrue(result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\regex\CPatternSyntaxExceptionExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/**
+ * Problem Statement:
+ * Test that a PatternSyntaxException is thrown when an invalid regular expression is passed to Pattern.compile().
+ * The test will focus on the invalid regex [a-z, which is an incomplete character class.
+ * Expected Behavior:
+ * The invalid regex should throw a PatternSyntaxException and check the exception message to ensure it indicates an unclosed character class.
+ * Test Scenario:
+ * Test with the invalid regex [a-z to ensure that a PatternSyntaxException is thrown.
+ */
+
+public class CPatternSyntaxExceptionExampleTest {
+
+    @Test
+    public void testPatternSyntaxException() {
+        String invalidRegex = "[a-z";  // This is an invalid regex
+
+        // Check that a PatternSyntaxException is thrown
+        PatternSyntaxException exception = assertThrows(PatternSyntaxException.class, () -> {
+            Pattern.compile(invalidRegex);
+        });
+
+        // Verify the message indicates that the character class is unclosed
+        assertTrue(exception.getMessage().contains("Unclosed character class"));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\regex\DMatchResultExampleTest.java ###
+package com.jh.iht.java.basics.regex;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Problem Statement:
+ * The MatchResult interface provides methods to retrieve details about the matched pattern.
+ * Checks if the start and end indices of a matched pattern are correctly returned.
+ * Input:
+ * - Text: "Java regex example"
+ * - Regex: "regex"
+ * Expected Output:
+ * - Matched: "regex"
+ * - Start index: 5
+ * - End index: 9
+ */
+public class DMatchResultExampleTest {
+
+    @Test
+    public void testMatchResult() {
+        MatchResultExample matchResultExample = new MatchResultExample();
+        
+        // Expected output for the regex "regex" in the text "Java regex example"
+        matchResultExample.printMatchDetails("Java regex example", "regex");
+        
+        // Since we're testing the output, we can also assert the matched results
+        Pattern pattern = Pattern.compile("regex");
+        Matcher matcher = pattern.matcher("Java regex example");
+        if (matcher.find()) {
+            MatchResult result = matcher.toMatchResult();
+            Assertions.assertEquals("regex", result.group());
+            Assertions.assertEquals(5, result.start());
+            Assertions.assertEquals(10, result.end());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\AImmutableStringTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate that Strings in Java are immutable. When a string is modified, 
+a new string object is created, and the original string remains unchanged.
+
+Input:
+    - String str1 initialized with "Hello".
+    - Modify str1 by concatenating " World".
+
+Expected Output:
+    - str1 should contain "Hello World".
+    - str2 should still contain "Hello".
+*/
+
+public class AImmutableStringTest {
+
+    @Test
+    void testImmutableString() {
+        ImmutableStringExample example = new ImmutableStringExample();
+        
+        // Call the method to demonstrate immutability
+        String result = example.demonstrateImmutableString();
+        
+        // Validate the result
+        String[] values = result.split(";");
+        String str1 = values[0];  // Expected "Hello World"
+        String str2 = values[1];  // Expected "Hello"
+        
+        assertEquals("Hello World", str1);
+        assertEquals("Hello", str2); // str2 should remain "Hello"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\BStringComparisonConcatenationTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate string comparison and concatenation.
+Input:
+    - Strings str1, str2, and str3 initialized to "Java", "Java", and a new String("Java").
+    - Perform comparison using == and equals().
+    - Concatenate strings using + and concat().
+
+Expected Output:
+    - str1 == str2 should return true.
+    - str1.equals(str3) should return true.
+    - str1 == str3 should return false.
+    - Concatenation using + and concat() should produce "Java Programming".
+*/
+
+public class BStringComparisonConcatenationTest {
+
+    @Test
+    void testStringComparison() {
+        StringComparisonConcatenation example = new StringComparisonConcatenation();
+
+        // Input strings for comparison
+        String str1 = "Java";
+        String str2 = "Java";
+        String str3 = new String("Java");
+
+        // Compare the strings
+        String result = example.compareStrings(str1, str2, str3);
+        
+        // Validate the comparison results
+        String[] comparisons = result.split(";");
+        assertTrue(Boolean.parseBoolean(comparisons[0]));  // str1 == str2 should be true
+        assertTrue(Boolean.parseBoolean(comparisons[1]));  // str1.equals(str3) should be true
+        assertFalse(Boolean.parseBoolean(comparisons[2]));  // str1 == str3 should be false
+    }
+
+    @Test
+    void testStringConcatenation() {
+        StringComparisonConcatenation example = new StringComparisonConcatenation();
+
+        // Input for concatenation
+        String str1 = "Java";
+        String additionalText = " Programming";
+
+        // Concatenate the strings
+        String result = example.concatenateStrings(str1, additionalText);
+        
+        // Validate the concatenated results
+        String[] concatenated = result.split(";");
+        assertEquals("Java Programming", concatenated[0]);  // Concatenation using + 
+        assertEquals("Java Programming", concatenated[1]);  // Concatenation using concat()
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\CSubstringTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the use of substring() to extract substrings from a string.
+Input:
+    - String str initialized to "Hello, World!".
+    - Extract substrings using substring() with different indices.
+
+Expected Output:
+    - Substring starting from index 7 should be "World!".
+    - Substring from index 0 to 5 should be "Hello".
+*/
+
+public class CSubstringTest {
+
+    @Test
+    void testSubstring() {
+        SubstringExample example = new SubstringExample();
+        
+        // Input string
+        String str = "Hello, World!";
+
+        // Extract substrings
+        String result = example.extractSubstrings(str);
+        
+        // Validate the extracted substrings
+        String[] substrings = result.split(";");
+        assertEquals("World!", substrings[0]);  // Extracted substring from index 7
+        assertEquals("Hello", substrings[1]);  // Extracted substring from index 0 to 5
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\DStringMethodsTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the usage of String methods like trim(), toUpperCase(), replace(), and substring().
+Input:
+    - String "  hello world  ".
+Expected Output:
+    - The string should be modified by:
+        - Removing leading and trailing spaces.
+        - Converting to uppercase.
+        - Replacing "HELLO" with "Hi".
+        - Returning the first two characters of the resulting string.
+*/
+
+public class DStringMethodsTest {
+
+    @Test
+    void testStringMethods() {
+        StringMethodsExample example = new StringMethodsExample();
+        
+        // Input string
+        String input = "  hello world  ";
+        
+        // Call method to apply string transformations
+        String result = example.stringMethodsExample(input);
+        
+        // Validate the result after applying all transformations
+        assertEquals("Hi", result);  // The expected result is "HI" (trimmed, uppercase, replaced, first two characters)
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\EStringBufferBuilderTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the usage of StringBuffer and StringBuilder.
+Input:
+    - String "Hello".
+    - Append " World" and insert " Java" at index 5.
+Expected Output:
+    - The result should be "Hello Java World".
+*/
+
+public class EStringBufferBuilderTest {
+
+    @Test
+    void testStringBuffer() {
+        StringBufferBuilderExample example = new StringBufferBuilderExample();
+        
+        // Call method for StringBuffer
+        String result = example.useStringBuffer();
+        
+        // Validate the result
+        assertEquals("Hello Java World", result);  // StringBuffer should result in "Hello Java World"
+    }
+
+    @Test
+    void testStringBuilder() {
+        StringBufferBuilderExample example = new StringBufferBuilderExample();
+        
+        // Call method for StringBuilder
+        String result = example.useStringBuilder();
+        
+        // Validate the result
+        assertEquals("Hello Java World", result);  // StringBuilder should result in "Hello Java World"
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\FStringVsStringBufferTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the difference between String and StringBuffer.
+Input:
+    - String "Hello".
+    - Modify both the String and StringBuffer by appending " World".
+Expected Output:
+    - The String will result in a new string, "Hello World".
+    - The StringBuffer will result in "Hello World" directly (modified in place).
+*/
+
+public class FStringVsStringBufferTest {
+
+    @Test
+    void testStringVsStringBuffer() {
+        StringVsStringBuffer example = new StringVsStringBuffer();
+        
+        // Call method to compare String and StringBuffer
+        String result = example.demonstrateStringVsStringBuffer();
+        
+        // Validate the results
+        String[] values = result.split(";");
+        assertEquals("Hello World", values[0]);  // String (creates new object)
+        assertEquals("Hello World", values[1]);  // StringBuffer (modifies in place)
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\GStringTokenizerTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the usage of StringTokenizer to split a string with , into tokens.
+Input:
+    - String "Hello,World,from,Java".
+Expected Output:
+    - The tokens should be "Hello World from Java".
+*/
+
+public class GStringTokenizerTest {
+
+    @Test
+    void testStringTokenizer() {
+        StringTokenizerExample example = new StringTokenizerExample();
+        
+        // Input string
+        String input = "Hello,World,from,Java";
+        
+        // Call method to tokenize the string
+        String result = example.tokenizeString(input);
+        
+        // Validate the result
+        assertEquals("Hello World from Java", result);  // Tokens should be space-separated
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\string\HToStringTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the use of the toString() method to return a custom string representation of an object.
+Input:
+    - A Person object with name "John" and age 30.
+Expected Output:
+    - The string representation should be "Person [name=John, age=30]".
+*/
+
+public class HToStringTest {
+
+    @Test
+    void testToString() {
+        Person person = new Person("John", 30);
+        
+        // Validate the custom toString() representation
+        assertEquals("Person [name=John, age=30]", person.toString());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\AAVariablesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implement a method to sum two variables.
+ * Input: int a = 7, int b = 3
+ * Expected Output: The sum of the variables is 7 + 3 = 10.
+ */
+
+/**
+ * @author Veeresh N
+ * @version 1.0
+ */
+
+public class AAVariablesTest {
+
+    @Test
+    public void testSumVariables() {
+        AVariables var = new AVariables();
+        int a = 7;
+        int b = 3;
+        int expected = 10;  // Expected sum: 7 + 3 = 10
+        Assertions.assertEquals(expected, var.sumVariables(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\BBPrimitiveTypesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implement a method to add two integers and return the result.
+ * Input: int a = 5, int b =10
+ * Expected Output: The sum of the integers is 5 + 10 = 15.
+ */
+public class BBPrimitiveTypesTest {
+
+    @Test
+    public void testAddIntegers() {
+        BPrimitiveTypes pt = new BPrimitiveTypes();
+        int a = 5;
+        int b = 10;
+        int expected = 15;  // Expected result: 5 + 10 = 15
+        Assertions.assertEquals(expected, pt.addIntegers(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\CReferenceTypesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implement a method to concatenate two Strings and return the result.
+ * Input: String a = "Hello, ", String b = "World!"
+ * Expected Output: The sum of the variables is 7 + 3 = 10.
+ */
+public class CReferenceTypesTest {
+
+    @Test
+    public void testConcatenateStrings() {
+        CReferenceTypes rt = new CReferenceTypes();
+        String a = "Hello, ";
+        String b = "World!";
+        String expected = "Hello, World!";  // Expected result: "Hello, World!"
+        Assertions.assertEquals(expected, rt.concatenateStrings(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\DPrimitiveReferenceExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * 1. Write a program to demonstrate the difference between primitive types and reference types.
+ * 2. Test if:
+ * - Primitive types hold the value directly, and modifying one variable doesn't affect another variable.
+ * - Reference types store references to objects, and modifying one reference variable doesn't change the other.
+ */
+public class DPrimitiveReferenceExampleTest {
+
+    // Test for primitive type behavior
+    @Test
+    public void testPrimitiveTypes() {
+        // Create an instance of the class that contains the methods
+        DPrimitiveReferenceExample example = new DPrimitiveReferenceExample();
+
+        // Input values
+        int a = 10;
+        int b = 15;
+
+        // Call the method and capture the result
+        int result = example.demonstratePrimitiveTypes(a, b);
+
+        // Assert that the expected result is 20 (since b is modified to 20 inside the method)
+        Assertions.assertEquals(20, result);
+    }
+
+    // Test for reference type behavior
+    @Test
+    public void testReferenceTypes() {
+        // Create an instance of the class that contains the methods
+        DPrimitiveReferenceExample example = new DPrimitiveReferenceExample();
+
+        // Input values
+        String str1 = "Hello";
+        String str2 = "Hello";
+
+        // Call the method and capture the result
+        String result = example.demonstrateReferenceTypes(str1, str2);
+
+        // Assert that the modified str2 should be "World"
+        Assertions.assertEquals("World", result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\EStringsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Concatenate two strings and return uppercase of concatenated string.
+ * Input: String a = "Hello" , String b = "World"
+ * Expected Output: The concatenated string "HelloWorld"
+ */
+public class EStringsTest {
+
+    @Test
+    public void testConcatenate() {
+        EStrings str = new EStrings();
+        String a = "Hello";
+        String b = "World";
+        String expected = "HELLOWORLD";  // Expected result: "HelloWorld"
+        Assertions.assertEquals(expected, str.concatenate(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\FEscapeSequencesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of escape sequences in strings.
+ * Input:
+ * - String containing escape sequences: newline (\n), tab (\t), backslash (\\)
+ * Expected Output:
+ * - The string should display the escape sequences correctly.
+ *   Result: "Hello\nWorld!\tTab\\Backslash"
+ *   Should print below output on console.
+ *   Hello
+ *         World!	Tab\Backslash
+ */
+public class FEscapeSequencesTest {
+
+    @Test
+    public void testDemonstrateEscapeSequences() {
+        FEscapeSequences es = new FEscapeSequences();
+        String expected = "Hello\nWorld!\tTab\\Backslash";  // Expected result with escape sequences
+
+        System.out.println(expected); // Should print below output on console.
+        /*Hello
+        World!	Tab\Backslash*/
+        Assertions.assertEquals(expected, es.demonstrateEscapeSequences());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\GArraysTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Double the values of each element in an array and return the modified array.
+ * Input: - int[] array = {1, 2, 3}
+ * Expected Output:- The modified array should be {2, 4, 6}.
+ */
+public class GArraysTest {
+
+    @Test
+    public void testDoubleArrayValues() {
+        GArrays arr = new GArrays();
+        int[] inputArray = {1, 2, 3};
+        int[] expectedArray = {2, 4, 6};  // Expected result: {2, 4, 6}
+        Assertions.assertArrayEquals(expectedArray, arr.doubleArrayValues(inputArray));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\HMultiDimensionalArraysTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Calculate the sum of all elements in a 2D array.
+ * Input: - int[][] array = {{1, 2}, {3, 4}}
+ * Expected Output: - The sum of the elements (1 + 2 + 3 + 4) = 10
+ */
+public class HMultiDimensionalArraysTest {
+
+    @Test
+    public void testSum2DArray() {
+        HMultiDimensionalArrays mda = new HMultiDimensionalArrays();
+        int[][] inputArray = {{1, 2}, {3, 4}};
+        int expected = 10;  // Expected sum: 1 + 2 + 3 + 4 = 10
+        Assertions.assertEquals(expected, mda.sum2DArray(inputArray));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\IConstantsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Return the constant value defined in the class.
+ * Input: - CONSTANT_VALUE = 100
+ * Expected Output: - Return 100
+ */
+public class IConstantsTest {
+
+    @Test
+    public void testConstantValue() {
+        IConstants constant = new IConstants();
+        int expected = 100;  // Expected constant value
+        Assertions.assertEquals(expected, constant.getConstantValue());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\JArithmeticExpressionsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Calculate the arithmetic expression (a + b) * (c - d).
+ * Input:
+ * - int a = 5
+ * - int b = 3
+ * - int c = 8
+ * - int d = 2
+ * Expected Output:
+ * - The result of (5 + 3) * (8 - 2) = 8 * 6 = 48
+ */
+public class JArithmeticExpressionsTest {
+
+    @Test
+    public void testCalculateExpression() {
+        JArithmeticExpressions ae = new JArithmeticExpressions();
+        int a = 5, b = 3, c = 8, d = 2;
+        int expected = 48;  // Expected result: (5 + 3) * (8 - 2) = 8 * 6 = 48
+        Assertions.assertEquals(expected, ae.calculateExpression(a, b, c, d));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\KOrderOfOperationsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the order of operations in arithmetic expressions.
+ * Input: - integers a, b, c
+ * Expected Output: - (5 + 3 * 2) = 5 + (3 * 2) = 5 + 6 = 11
+ */
+public class KOrderOfOperationsTest {
+
+    @Test
+    public void testCalculateOrderOfOperations() {
+        KOrderOfOperations oo = new KOrderOfOperations();
+        int a = 5;
+        int b = 3;
+        int c = 2;
+        int expected = 11;  // Expected result: 5 + (3 * 2) = 5 + 6 = 11
+        Assertions.assertEquals(expected, oo.calculateOrderOfOperations(a,b,c));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\LCastingTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Cast two double values to integers and return their sum.
+ * Input:
+ * - double a = 5.7
+ * - double b = 3.4
+ * Expected Output:
+ * - The sum of the casted integers (5 + 3) = 8
+ */
+public class LCastingTest {
+
+    @Test
+    public void testCastAndAdd() {
+        LCasting casting = new LCasting();
+        double a = 5.7, b = 3.4;
+        int expected = 8;  // Expected result: (5 + 3) = 8 after casting
+        Assertions.assertEquals(expected, casting.castAndAdd(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\MMathClassTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Use methods from the Math class to compute mathematical operations.
+ * Input:
+ * - double a = 4
+ * - double b = 2
+ * Expected Output:
+ * - Math.pow(4, 2) = 16
+ * - Math.sqrt(4) = 2
+ * - The result is round(16 + 2) = round(18) = 18
+ */
+public class MMathClassTest {
+
+    @Test
+    public void testComputeMathOperations() {
+        MMathClass math = new MMathClass();
+        double a = 4, b = 2;
+        double expected = 18;  // Expected result: Math.pow(4, 2) + Math.sqrt(4) = 18
+        Assertions.assertEquals(expected, math.computeMathOperations(a, b));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\NFormattingNumbersTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Format a double number to two decimal places.
+ * Input:
+ * - double number = 3.14159
+ * Expected Output:
+ * - The formatted number is "3.14"
+ */
+public class NFormattingNumbersTest {
+
+    @Test
+    public void testFormatToTwoDecimalPlaces() {
+        NFormattingNumbers fn = new NFormattingNumbers();
+        double number = 3.14159;
+        String expected = "3.14";  // Expected formatted result: "3.14"
+        Assertions.assertEquals(expected, fn.formatToTwoDecimalPlaces(number));
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\OReadingInputTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * Create a method called `calculateSquare(int number)` which calculates the square of the
+ * given integer number. The method should return the square of the input number.
+ * The test cases will check the following scenarios:
+ * 1. A positive integer (e.g., 5).
+ * 2. A negative integer (e.g., -4).
+ * 3. Zero (e.g., 0).
+ *
+ * The expected behavior is that the method returns the square of the input integer in each case.
+ */
+public class OReadingInputTest {
+    
+    // Test case for calculateSquare() method
+    @Test
+    public void testCalculateSquare() {
+        // Creating an object of SquareCalculator
+        OReadingInput calculator = new OReadingInput();
+
+        // Test Case 1: Input 5, Expected Output: 25
+        int input = 5;
+        int expectedOutput = 25;
+        int actualOutput = calculator.calculateSquare(input);
+        Assertions.assertEquals( expectedOutput, actualOutput);
+
+        // Test Case 2: Input -4, Expected Output: 16
+        input = -4;
+        expectedOutput = 16;
+        actualOutput = calculator.calculateSquare(input);
+        Assertions.assertEquals( expectedOutput, actualOutput);
+
+        // Test Case 3: Input 0, Expected Output: 0
+        input = 0;
+        expectedOutput = 0;
+        actualOutput = calculator.calculateSquare(input);
+        Assertions.assertEquals( expectedOutput, actualOutput);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\PStaticExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/**
+ * Problem statement: Create class with a static variable as count =0 and static method which will return
+ * increment value of count.
+ * Expected Output:- After calling incrementCount, the static count should be 1.
+ */
+public class PStaticExampleTest {
+
+    @Test
+    public void testStaticMethod() {
+        PStaticExample.incrementCount();
+        int expected = 1;  // Expected count after incrementing once
+        assertEquals(expected, PStaticExample.getCount());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\QFinalExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of the final keyword for constants. Create a class with a constant as final int CONSTANT_VALUE = 50
+ * and a method which will return that constant value.
+ * Expected Output: - The constant value should be 50
+ */
+public class QFinalExampleTest {
+
+    @Test
+    public void testFinalValue() {
+        QFinalExample finalExample = new QFinalExample();
+        int expected = 50;  // Expected constant value: 50
+        Assertions.assertEquals(expected, finalExample.getFinalValue());
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\types\RKeywordsExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of Java keywords such as 'public', 'private', 'static', and 'final'.
+ * Create a class with public static final (MAX_VALUE = 100 (final static variable)) and private variables, setter and getter methods for private variable.
+ * Input: value = 30 (instance variable)
+ * Expected Output:
+ * - After setting the value, it should be 25.
+ * - MAX_VALUE is static and final, so it should always return 100.
+ */
+public class RKeywordsExampleTest {
+
+    @Test
+    public void testKeywords() {
+        RKeywordsExample example = new RKeywordsExample(25);
+        example.setValue(30);
+        int expectedValue = 30;
+        Assertions.assertEquals(expectedValue, example.getValue());
+
+        int expectedMaxValue = 100;
+        Assertions.assertEquals(expectedMaxValue, RKeywordsExample.getMaxValue());
+    }
+}
+

@@ -5,12 +5,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Return the constant value defined in the class.
- * 
- * Input:
- * - CONSTANT_VALUE = 100
- * 
- * Expected Output:
- * - Return 100
+ * Input: - CONSTANT_VALUE = 100
+ * Expected Output: - Return 100
  */
 public class IConstantsTest {
 

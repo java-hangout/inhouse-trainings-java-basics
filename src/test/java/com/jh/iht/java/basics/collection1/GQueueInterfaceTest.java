@@ -8,13 +8,10 @@ import java.util.Queue;
 /**
  * Problem Statement:
  * The Queue interface allows elements to be processed in FIFO order. 
- * This test checks if elements are correctly removed from the queue in the same order they were added.
+ * Checks if elements are correctly removed from the queue in the same order they were added.
  * 
  * Input:
- * - Queue of tasks ["Task 1
-
-", "Task 2", "Task 3"]
- * 
+ * - Queue of tasks ["Task 1", "Task 2", "Task 3"]
  * Expected Output:
  * - Task 1, Task 2, Task 3 removed in that order.
  */
@@ -24,10 +21,11 @@ public class GQueueInterfaceTest {
     public void testQueueMethods() {
         QueueInterface queueInterface = new QueueInterface();
         Queue<String> tasks = queueInterface.getQueue();
-
+//        System.out.println("tasks : "+tasks);
         // Remove tasks from the queue (FIFO order)
         Assertions.assertEquals("Task 1", tasks.poll());
         Assertions.assertEquals("Task 2", tasks.poll());
         Assertions.assertEquals("Task 3", tasks.poll());
+//        System.out.println("tasks : "+tasks);
     }
 }

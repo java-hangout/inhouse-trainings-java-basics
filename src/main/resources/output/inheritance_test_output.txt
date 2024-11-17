@@ -1,0 +1,232 @@
+### Contents of AInheritanceExampleTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate inheritance by creating Dog class inheriting from Animal class.
+ * Input:
+ * - Dog object with name "Buddy"
+ * Expected Output:
+ * - "Buddy barks"
+ */
+public class AInheritanceExampleTest {
+
+    @Test
+    public void testDogSpeak() {
+        Dog1 dog = new Dog1("Buddy");
+        Assertions.assertEquals("Buddy barks", dog.speak()); // Should output: "Buddy barks"
+    }
+}
+
+### Contents of BObjectClassExampleTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate Object class methods like equals() and toString().
+ * Input:- Two Person objects with names "Alice" and "Bob"
+ * Expected Output:
+ * - Person{name='Alice'} for toString
+ * - true for equals between two persons with same name
+ * - false for equals between two persons with different names
+ */
+public class BObjectClassExampleTest {
+
+    @Test
+    public void testToString() {
+        Person1 p1 = new Person1("Alice");
+        Assertions.assertEquals("Person{name='Alice'}", p1.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        Person1 p1 = new Person1("Alice");
+        Person1 p2 = new Person1("Alice");
+        Person1 p3 = new Person1("Bob");
+
+        Assertions.assertTrue(p1.equals(p2));  // Same name, should return true
+        Assertions.assertFalse(p1.equals(p3));  // Different name, should return false
+    }
+}
+
+### Contents of CConstructorsAndInheritanceTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate constructor chaining between superclass
+ * Animal with a parameterised constructor and subclass Dog with a parameterised constructor.
+ * Input: - Dog object with name "Buddy"
+ * Expected Output: Constructor calls for Animal first, then Dog
+ */
+public class CConstructorsAndInheritanceTest {
+
+    @Test
+    public void testConstructorChaining() {
+        Dog2 dog = new Dog2("Buddy");
+        // Outputs: "Animal constructor called" followed by "Dog constructor called"
+    }
+}
+
+### Contents of DAccessModifiersTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate different access modifiers in Java.
+ * Input:- Person object with name "Alice" as public  and age 30 as private
+ * Expected Output:- Name and age accessible via public methods and fields
+ */
+public class DAccessModifiersTest {
+
+    @Test
+    public void testAccessModifiers() {
+        Person2 person = new Person2("Alice", 30);
+        Assertions.assertEquals("Alice", person.name);
+//         Assertions.assertEquals(30, person.age);  // Age is private, can't be accessed directly
+    }
+}
+
+### Contents of EUpcastingDowncastingTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate upcasting and downcasting in Java.
+ * Input: - Animal reference holding a Dog object
+ * Expected Output: - Dog barks using both upcasting and downcasting
+ */
+public class EUpcastingDowncastingTest {
+
+    @Test
+    public void testUpcastingDowncasting() {
+        Animal3 animal = new Dog3();  // Upcasting
+        Assertions.assertEquals("Dog barks", animal.speak());  // Outputs: Dog barks
+
+        Dog3 dog = (Dog3) animal;  // Downcasting
+        Assertions.assertEquals("Dog barks", dog.speak());  // Outputs: Dog barks
+    }
+}
+
+### Contents of FComparingObjectsTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate comparison of objects using equals() and '=='.
+ * Input: - Two Person objects with same name "Alice"
+ * Expected Output:
+ * - false for reference comparison
+ * - true for logical equality
+ */
+public class FComparingObjectsTest {
+
+    @Test
+    public void testEqualsAndReferenceComparison() {
+        Person3 p1 = new Person3("Alice");
+        Person3 p2 = new Person3("Alice");
+
+        Assertions.assertFalse(p1 == p2);  // Reference comparison, should be false
+        Assertions.assertTrue(p1.equals(p2));  // Logical equality, should be true
+    }
+}
+
+### Contents of GAbstractClassesAndMethodsTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate abstract classes and abstract methods in Java.
+ * Input:- Dog object
+ * Expected Output:- "Barks" from Dog's implementation of abstract method sound()
+ */
+public class GAbstractClassesAndMethodsTest {
+
+    @Test
+    public void testSound() {
+        Animal4 dog = new Dog4();
+        Assertions.assertEquals("Barks", dog.sound());  // Should output "Barks"
+    }
+}
+
+### Contents of HFinalClassesAndMethodsTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of final classes and methods.
+ * Input:
+ * - FinalClass object
+ * Expected Output:
+ * - "Final class method" from speak() method
+ */
+public class HFinalClassesAndMethodsTest {
+
+    @Test
+    public void testFinalClass() {
+        FinalClass obj = new FinalClass();
+        Assertions.assertEquals("Final class method",obj.speak());  // Should output "Final class method"
+    }
+}
+
+### Contents of IDeepInheritanceHierarchyTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate deep inheritance hierarchy with Class and method as "Animal eats", "Mammal walks", "Dog barks".
+ * Animal eats
+ * |- Mammal walks
+ * ||- Dog barks
+ * Input: - Dog object
+ * Expected Output: - "Animal eats", "Mammal walks", "Dog barks"
+ */
+public class IDeepInheritanceHierarchyTest {
+
+    @Test
+    public void testDogBehavior() {
+        Dog5 dog = new Dog5();
+        Assertions.assertEquals("Animal eats", dog.eat());  // Inherited from Animal - should output "Animal eats"
+        Assertions.assertEquals("Mammal walks", dog.walk());  // Inherited from Mammal - should output "Mammal walks"
+        Assertions.assertEquals("Dog barks", dog.bark());  // Should output "Dog barks"
+    }
+}
+
+### Contents of JMultipleInheritanceTest.java ###
+package com.jh.iht.java.basics.inheritance;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate multiple inheritance through interfaces.
+ * Input:- Dolphin object that implements Animal and Swimmer interfaces
+ * Expected Output: - "Dolphin eats", "Dolphin swims"
+ */
+public class JMultipleInheritanceTest {
+
+    @Test
+    public void testDolphinBehavior() {
+        Dolphin dolphin = new Dolphin();
+        Assertions.assertEquals("Dolphin eats", dolphin.eat());  // Should output "Dolphin eats"
+        Assertions.assertEquals("Dolphin swims", dolphin.swim());  // Should output "Dolphin swims"
+    }
+}
+

@@ -1,0 +1,113 @@
+### Contents of APackageExampleTest.java ###
+package com.jh.iht.java.basics.pckg;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of packages in Java for organizing classes.
+ * Input:- Person object created with name "Alice" and age 25
+ * Expected Output:- "Name: Alice, Age: 25"
+ */
+public class APackageExampleTest {
+
+    @Test
+    public void testPersonDetails() {
+        Person p = new Person("Alice", 25);
+        Assertions.assertEquals("Alice", p.getName());
+        Assertions.assertEquals(25, p.getAge());
+    }
+}
+
+### Contents of BAccessModifiersTest.java ###
+package com.jh.iht.java.basics.pckg;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
+
+/**
+ * Problem: Demonstrate access modifiers in Java (public, private, protected, and default).
+ * Input: - Person object created with name "John", age 30, address "123 Main St", and city "New York"
+ * Expected Output:
+ * - Accessible fields should be returned as expected
+ * - private fields should not be accessible
+ */
+public class BAccessModifiersTest {
+
+    @Test
+    public void testPublicAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        Assertions.assertEquals("John", p.name);  // Public field
+    }
+
+    @Test
+    void testPrivateAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+
+        // Test that accessing a private field directly via reflection throws IllegalAccessException
+        IllegalAccessException thrown = Assertions.assertThrows(IllegalAccessException.class, () -> {
+            // Try to access the private field 'age' directly using reflection
+            Field field = Person1.class.getDeclaredField("age");
+            //field.setAccessible(false); // Simulate the access control by not allowing access
+            field.get(p); // This should throw IllegalAccessException because field is private and we haven't set accessible
+        });
+        Assertions.assertEquals("class com.jh.iht.java.basics.pckg.BAccessModifiersTest cannot access a member of class com.jh.iht.java.basics.pckg.Person1 with modifiers \"private\"", thrown.getMessage());
+    }
+
+    @Test
+    public void testProtectedAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        Assertions.assertEquals("123 Main St", p.address);  // Protected field
+    }
+
+    @Test
+    public void testDefaultAccess() {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        Assertions.assertEquals("New York", p.city);  // Default access field
+    }
+}
+
+### Contents of CEncapsulationTest.java ###
+package com.jh.iht.java.basics.pckg;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate encapsulation by restricting access to private fields 
+ * and providing getter and setter methods for controlled access.
+ * Input:
+ * - Person object with initial name "Alice" and age 30.
+ * - Setter method to change name and age.
+ * - Attempt to set an invalid age.
+ * Expected Output:
+ * - Name and age can be accessed and modified through getter and setter methods.
+ * - Invalid age setting should result in an error message.
+ */
+public class CEncapsulationTest {
+
+    @Test
+    public void testEncapsulation() {
+        // Create a new person object
+        Person2 person = new Person2("Alice", 30);
+
+        // Test getter methods
+        Assertions.assertEquals("Alice", person.getName());
+        Assertions.assertEquals(30, person.getAge());
+
+        // Test setter methods
+        person.setName("Bob");
+        person.setAge(35);
+
+        // Test updated values
+        Assertions.assertEquals("Bob", person.getName());
+        Assertions.assertEquals(35, person.getAge());
+
+        // Test invalid age (negative value)
+        person.setAge(-5);  // Age should not be negative
+        Assertions.assertEquals(35, person.getAge());  // Age should remain 35
+    }
+}
+

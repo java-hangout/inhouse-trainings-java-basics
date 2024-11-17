@@ -10,12 +10,10 @@ import java.util.regex.Pattern;
 /**
  * Problem Statement:
  * The MatchResult interface provides methods to retrieve details about the matched pattern.
- * This test checks if the start and end indices of a matched pattern are correctly returned.
- * 
+ * Checks if the start and end indices of a matched pattern are correctly returned.
  * Input:
  * - Text: "Java regex example"
  * - Regex: "regex"
- * 
  * Expected Output:
  * - Matched: "regex"
  * - Start index: 5

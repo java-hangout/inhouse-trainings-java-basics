@@ -1,0 +1,291 @@
+### Contents of AInheritanceExample.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal1 {
+    String name;
+
+    public Animal1(String name) {
+        this.name = name;
+    }
+
+    public String speak() {
+        System.out.println(name + " makes a sound");
+        return name + " makes a sound";
+    }
+}
+
+class Dog1 extends Animal1 {
+    public Dog1(String name) {
+        super(name);
+    }
+
+    @Override
+    public String speak() {
+        System.out.println(name + " barks");
+        return name + " barks";
+    }
+}
+
+public class AInheritanceExample {
+    public static void main(String[] args) {
+        Dog1 dog1 = new Dog1("Buddy");
+        dog1.speak(); // Outputs: Buddy barks
+    }
+}
+
+### Contents of BObjectClassExample.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Person1 {
+    String name;
+    
+    public Person1(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person1 person = (Person1) obj;
+        return name.equals(person.name);
+    }
+}
+
+public class BObjectClassExample {
+    public static void main(String[] args) {
+        Person1 p1 = new Person1("Alice");
+        Person1 p2 = new Person1("Alice");
+        Person1 p3 = new Person1("Bob");
+
+        System.out.println(p1.toString());  // Outputs: Person{name='Alice'}
+        System.out.println(p1.equals(p2));  // Outputs: true
+        System.out.println(p1.equals(p3));  // Outputs: false
+    }
+}
+
+### Contents of CConstructorsAndInheritance.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal2 {
+    String name;
+
+    public Animal2(String name) {
+        this.name = name;
+        System.out.println("Animal constructor called");
+    }
+}
+
+class Dog2 extends Animal2 {
+    public Dog2(String name) {
+        super(name);  // Calling superclass constructor
+        System.out.println("Dog constructor called");
+    }
+}
+
+public class CConstructorsAndInheritance {
+    public static void main(String[] args) {
+        Dog1 dog = new Dog1("Buddy");
+        // Outputs:
+        // Animal constructor called
+        // Dog constructor called
+    }
+}
+
+### Contents of DAccessModifiersExample.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Person2 {
+    public String name;  // Accessible from anywhere
+    private int age;  // Only accessible within this class
+
+    public Person2(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class DAccessModifiersExample {
+    public static void main(String[] args) {
+        Person2 p = new Person2("Alice", 30);
+        System.out.println(p.name);  // Accessible
+        // System.out.println(p.age);  // Error: age is private
+        p.displayInfo();  // Outputs: Name: Alice, Age: 30
+    }
+}
+
+### Contents of EUpcastingDowncasting.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal3 {
+    public String speak() {
+        System.out.println("Animal speaks");
+        return "Animal speaks";
+    }
+}
+
+class Dog3 extends Animal3 {
+    public String speak() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+public class EUpcastingDowncasting {
+    public static void main(String[] args) {
+        Animal3 animal = new Dog3();  // Upcasting
+        animal.speak();  // Outputs: Dog barks
+
+        Dog3 dog = (Dog3) animal;  // Downcasting
+        dog.speak();  // Outputs: Dog barks
+    }
+}
+
+### Contents of FComparingObjects.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Person3 {
+    String name;
+
+    public Person3(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person3 person = (Person3) obj;
+        return name.equals(person.name);
+    }
+}
+
+public class FComparingObjects {
+    public static void main(String[] args) {
+        Person3 p1 = new Person3("Alice");
+        Person3 p2 = new Person3("Alice");
+
+        System.out.println(p1 == p2);  // false, reference comparison
+        System.out.println(p1.equals(p2));  // true, logical equality
+    }
+}
+
+### Contents of GAbstractClassesAndMethods.java ###
+package com.jh.iht.java.basics.inheritance;
+
+abstract class Animal4 {
+    abstract String sound();  // Abstract method
+}
+
+class Dog4 extends Animal4 {
+    @Override
+    String sound() {
+        System.out.println("Barks");
+        return "Barks";
+    }
+}
+
+public class GAbstractClassesAndMethods {
+    public static void main(String[] args) {
+        Animal4 dog = new Dog4();
+        dog.sound();  // Outputs: Barks
+    }
+}
+
+### Contents of HFinalClassesAndMethods.java ###
+package com.jh.iht.java.basics.inheritance;
+
+final class FinalClass {
+    public String speak() {
+        System.out.println("Final class method");
+        return "Final class method";
+    }
+}
+
+/*
+class AnotherClass extends FinalClass{
+    // This will cause an error:
+    // class SubClass extends FinalClass {}
+}
+*/
+
+public class HFinalClassesAndMethods {
+    public static void main(String[] args) {
+        FinalClass obj = new FinalClass();
+        obj.speak();  // Outputs: Final class method
+    }
+}
+
+### Contents of IDeepInheritanceHierarchy.java ###
+package com.jh.iht.java.basics.inheritance;
+
+class Animal5 {
+    public String eat() {
+        System.out.println("Animal eats");
+        return "Animal eats";
+    }
+}
+
+class Mammal5 extends Animal5 {
+    public String walk() {
+        System.out.println("Mammal walks");
+        return "Mammal walks";
+    }
+}
+
+class Dog5 extends Mammal5 {
+    public String bark() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+public class IDeepInheritanceHierarchy {
+    public static void main(String[] args) {
+        Dog5 dog = new Dog5();
+        dog.eat();  // Inherited from Animal
+        dog.walk();  // Inherited from Mammal
+        dog.bark();  // From Dog
+    }
+}
+
+### Contents of JMultipleInheritance.java ###
+package com.jh.iht.java.basics.inheritance;
+
+interface Animal6 {
+    String eat();
+}
+
+interface Swimmer {
+    String swim();
+}
+
+class Dolphin implements Animal6, Swimmer {
+    public String eat() {
+        System.out.println("Dolphin eats");
+        return "Dolphin eats";
+    }
+
+    public String swim() {
+        System.out.println("Dolphin swims");
+        return "Dolphin swims";
+    }
+}
+
+public class JMultipleInheritance {
+    public static void main(String[] args) {
+        Dolphin dolphin = new Dolphin();
+        dolphin.eat();  // Outputs: Dolphin eats
+        dolphin.swim();  // Outputs: Dolphin swims
+    }
+}
+

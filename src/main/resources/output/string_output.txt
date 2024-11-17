@@ -1,0 +1,148 @@
+### Contents of ImmutableStringExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class ImmutableStringExample {
+
+    // Method to demonstrate the immutability of String in Java
+    public String demonstrateImmutableString() {
+        String str1 = "Hello";
+        String str2 = str1;  // str2 points to the same reference as str1
+
+        // Modify str1
+        str1 = str1.concat(" World");
+
+        // Return both strings for validation in test
+        return str1 + ";" + str2;  // Will return "Hello World;Hello"
+    }
+}
+
+### Contents of Person.java ###
+package com.jh.iht.java.basics.string;
+
+public class Person {
+
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Override toString() to return a custom string representation
+    @Override
+    public String toString() {
+        return "Person [name=" + name + ", age=" + age + "]";
+    }
+}
+
+### Contents of StringBufferBuilderExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringBufferBuilderExample {
+
+    // Method to demonstrate StringBuffer usage
+    public String useStringBuffer() {
+        StringBuffer sb = new StringBuffer("Hello");
+        sb.append(" World");
+        sb.insert(5, " Java");
+        return sb.toString();
+    }
+
+    // Method to demonstrate StringBuilder usage
+    public String useStringBuilder() {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+        sb.insert(5, " Java");
+        return sb.toString();
+    }
+}
+
+### Contents of StringComparisonConcatenation.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringComparisonConcatenation {
+
+    // Method to compare strings using == and equals()
+    public String compareStrings(String str1, String str2, String str3) {
+        boolean comparison1 = (str1 == str2);  // Reference comparison
+        boolean comparison2 = str1.equals(str3);  // Value comparison
+        boolean comparison3 = (str1 == str3);  // Reference comparison
+
+        return comparison1 + ";" + comparison2 + ";" + comparison3;  // return the comparison results
+    }
+
+    // Method to concatenate strings using + and concat()
+    public String concatenateStrings(String str1, String additionalText) {
+        String concatenatedWithPlus = str1 + additionalText;
+        String concatenatedWithConcat = str1.concat(additionalText);
+        return concatenatedWithPlus + ";" + concatenatedWithConcat;  // return concatenated results
+    }
+}
+
+### Contents of StringMethodsExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringMethodsExample {
+
+    // Method to demonstrate basic String methods
+    public String stringMethodsExample(String input) {
+        String str = input.trim();                // Removes leading and trailing whitespace
+        str = str.toUpperCase();                   // Converts to uppercase
+        str = str.replace("HELLO", "Hi");          // Replaces "HELLO" with "Hi"
+        System.out.print(str);
+        return str.substring(0, 2);                // Extract first two characters
+    }
+}
+
+### Contents of StringTokenizerExample.java ###
+package com.jh.iht.java.basics.string;
+
+import java.util.StringTokenizer;
+
+public class StringTokenizerExample {
+
+    // Method to demonstrate StringTokenizer usage
+    public String tokenizeString(String str) {
+        StringTokenizer tokenizer = new StringTokenizer(str,",");
+        StringBuilder tokens = new StringBuilder();
+        while (tokenizer.hasMoreTokens()) {
+            tokens.append(tokenizer.nextToken()).append(" ");
+        }
+        return tokens.toString().trim();  // Return space-separated tokens
+    }
+}
+
+### Contents of StringVsStringBuffer.java ###
+package com.jh.iht.java.basics.string;
+
+public class StringVsStringBuffer {
+
+    // Method to demonstrate String vs StringBuffer performance
+    public String demonstrateStringVsStringBuffer() {
+        String str = "Hello";
+        StringBuffer sb = new StringBuffer("Hello");
+
+        // Modify String (creates new object)
+        str = str.concat(" World");
+
+        // Modify StringBuffer (modifies in-place)
+        sb.append(" World");
+
+        return str + ";" + sb.toString();  // return both results
+    }
+}
+
+### Contents of SubstringExample.java ###
+package com.jh.iht.java.basics.string;
+
+public class SubstringExample {
+
+    // Method to demonstrate substring extraction
+    public String extractSubstrings(String str) {
+        String subStr1 = str.substring(7);  // Extract from index 7 to end
+        String subStr2 = str.substring(0, 5);  // Extract from index 0 to 5
+        return subStr1 + ";" + subStr2;  // return both substrings
+    }
+}
+

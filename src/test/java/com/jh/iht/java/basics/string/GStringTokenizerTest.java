@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
-Problem Statement: Demonstrate the usage of StringTokenizer to split a string into tokens.
+Problem Statement: Demonstrate the usage of StringTokenizer to split a string with , into tokens.
 Input:
-    - String "Hello World from Java".
+    - String "Hello,World,from,Java".
 Expected Output:
     - The tokens should be "Hello World from Java".
 */
@@ -18,7 +18,7 @@ public class GStringTokenizerTest {
         StringTokenizerExample example = new StringTokenizerExample();
         
         // Input string
-        String input = "Hello World from Java";
+        String input = "Hello,World,from,Java";
         
         // Call method to tokenize the string
         String result = example.tokenizeString(input);

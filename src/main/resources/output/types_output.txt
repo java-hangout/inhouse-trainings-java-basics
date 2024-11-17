@@ -1,0 +1,266 @@
+### Contents of AVariables.java ###
+package com.jh.iht.java.basics.types;
+
+public class AVariables {
+    // Method to assign values to variables and return their sum
+    public int sumVariables(int a, int b) {
+        int sum = a + b;
+        return sum;
+    }
+}
+
+### Contents of BPrimitiveTypes.java ###
+package com.jh.iht.java.basics.types;
+
+public class BPrimitiveTypes {
+    // Method to add two integers
+    public int addIntegers(int a, int b) {
+        return a + b;
+    }
+}
+
+### Contents of CReferenceTypes.java ###
+package com.jh.iht.java.basics.types;
+
+public class CReferenceTypes {
+    // Method to concatenate two strings and return the result
+    public String concatenateStrings(String a, String b) {
+        return a + b;
+    }
+}
+
+### Contents of DPrimitiveReferenceExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class DPrimitiveReferenceExample {
+
+    // Method to demonstrate primitive types
+    public int demonstratePrimitiveTypes(int a, int b) {
+        int originalA = a;  // Save original value of a
+
+        // Modify b
+        b = 20;
+
+        // Return the final state as a string that can be tested
+        return b;  // Returning the modified value of b to validate
+    }
+
+    // Method to demonstrate reference types
+    public String demonstrateReferenceTypes(String str1, String str2) {
+        // Modify str2 to demonstrate reference type behavior
+        str2 = "World";
+
+        // Return the final state to validate
+        return str2;  // Return modified str2 for validation
+    }
+}
+
+### Contents of EStrings.java ###
+package com.jh.iht.java.basics.types;
+
+public class EStrings {
+    // Method to concatenate two strings
+    public String concatenate(String a, String b) {
+        return (a + b).toUpperCase();
+    }
+}
+
+### Contents of FEscapeSequences.java ###
+package com.jh.iht.java.basics.types;
+
+public class FEscapeSequences {
+    // Method to demonstrate escape sequences like newline, tab, and backslash
+    public String demonstrateEscapeSequences() {
+        return "Hello\nWorld!\tTab\\Backslash";
+    }
+}
+
+### Contents of GArrays.java ###
+package com.jh.iht.java.basics.types;
+
+public class GArrays {
+    // Method to double the values in an array
+    public int[] doubleArrayValues(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] *= 2;
+        }
+        return array;
+    }
+}
+
+### Contents of HMultiDimensionalArrays.java ###
+package com.jh.iht.java.basics.types;
+
+public class HMultiDimensionalArrays {
+    // Method to sum all elements in a 2D array
+    public int sum2DArray(int[][] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];
+            }
+        }
+        return sum;
+    }
+}
+
+### Contents of IConstants.java ###
+package com.jh.iht.java.basics.types;
+
+public class IConstants {
+    public static final int CONSTANT_VALUE = 100;  // A constant integer
+
+    // Method to return the constant value
+    public int getConstantValue() {
+        return CONSTANT_VALUE;
+    }
+}
+
+### Contents of JArithmeticExpressions.java ###
+package com.jh.iht.java.basics.types;
+
+public class JArithmeticExpressions {
+    // Method to perform an arithmetic expression (a + b) * (c - d)
+    public int calculateExpression(int a, int b, int c, int d) {
+        return (a + b) * (c - d);
+    }
+}
+
+### Contents of KOrderOfOperations.java ###
+package com.jh.iht.java.basics.types;
+
+public class KOrderOfOperations {
+    // Method to demonstrate the order of operations
+    public int calculateOrderOfOperations(int a, int b, int c) {
+        return a + b * c;  // Multiplication has higher precedence than addition
+    }
+}
+
+### Contents of LCasting.java ###
+package com.jh.iht.java.basics.types;
+
+public class LCasting {
+    // Method to demonstrate casting between primitive types
+    public int castAndAdd(double a, double b) {
+        int sum = (int) a + (int) b;  // Casting double to int
+        return sum;
+    }
+}
+
+### Contents of MMathClass.java ###
+package com.jh.iht.java.basics.types;
+
+public class MMathClass {
+    // Method to demonstrate some Math class methods (round, sqrt, and pow)
+    public double computeMathOperations(double a, double b) {
+        double result = Math.pow(a, b); // a raised to the power of b
+        result += Math.sqrt(a); // Add square root of a
+        result = Math.round(result); // Round the result
+        return result;
+    }
+}
+
+### Contents of NFormattingNumbers.java ###
+package com.jh.iht.java.basics.types;
+
+import java.text.DecimalFormat;
+
+public class NFormattingNumbers {
+    // Method to format a number to two decimal places
+    public String formatToTwoDecimalPlaces(double number) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(number);
+    }
+}
+
+### Contents of OReadingInput.java ###
+package com.jh.iht.java.basics.types;
+
+import java.util.Scanner;
+
+public class OReadingInput {
+
+    // Method to calculate the square of a number
+    public int calculateSquare(int number) {
+        return number * number;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompting user to input a number
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();  // Reading input
+        
+        // Creating an object of SquareCalculator
+        OReadingInput calculator = new OReadingInput();
+        
+        // Calculating the square of the number
+        int result = calculator.calculateSquare(number);
+        
+        // Printing the result
+        System.out.println("The square of " + number + " is " + result);
+        
+        // Closing the scanner to avoid resource leak
+        scanner.close();
+    }
+}
+
+### Contents of PStaticExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class PStaticExample {
+    // Static variable
+    public static int count = 0;
+
+    // Static method to increment the count
+    public static void incrementCount() {
+        count++;
+    }
+
+    // Static method to get the count
+    public static int getCount() {
+        return count;
+    }
+}
+
+### Contents of QFinalExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class QFinalExample {
+    // Final variable
+    public final int CONSTANT_VALUE = 50;
+
+    // Method to demonstrate the use of final variable
+    public int getFinalValue() {
+        return CONSTANT_VALUE;
+    }
+}
+
+### Contents of RKeywordsExample.java ###
+package com.jh.iht.java.basics.types;
+
+public class RKeywordsExample {
+    // Demonstrating the use of 'public', 'private', 'static', and 'final' keywords
+
+    public static final int MAX_VALUE = 100;
+
+    private int value;
+
+    public RKeywordsExample(int value) {
+        this.value = value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public static int getMaxValue() {
+        return MAX_VALUE;
+    }
+}
+

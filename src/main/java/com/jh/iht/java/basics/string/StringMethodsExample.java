@@ -7,6 +7,7 @@ public class StringMethodsExample {
         String str = input.trim();                // Removes leading and trailing whitespace
         str = str.toUpperCase();                   // Converts to uppercase
         str = str.replace("HELLO", "Hi");          // Replaces "HELLO" with "Hi"
+        System.out.print(str);
         return str.substring(0, 2);                // Extract first two characters
     }
 }

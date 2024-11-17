@@ -1,0 +1,315 @@
+### Contents of AComparisonOperatorsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Compare two integers using comparison operators.
+ * Input:
+ * - int a = 5
+ * - int b = 3
+ * Expected Output:
+ * - true since 5 > 3
+ */
+public class AComparisonOperatorsTest {
+
+    @Test
+    public void testCompareNumbers() {
+        AComparisonOperators co = new AComparisonOperators();
+        int a = 5, b = 3;
+        boolean expected = true;  // Expected: 5 > 3
+        Assertions.assertEquals(expected, co.compareNumbers(a, b));
+    }
+}
+
+### Contents of BLogicalOperatorsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Check logical operators (AND, OR).
+ * Input:
+ * - int a = 5
+ * - int b = 3
+ * Expected Output:
+ * - true since 5 > 3 and 3 > 0
+ */
+public class BLogicalOperatorsTest {
+
+    @Test
+    public void testCheckLogicalOperators() {
+        BLogicalOperators lo = new BLogicalOperators();
+        int a = 5, b = 3;
+        boolean expected = true;  // Expected: (5 > 3) && (3 > 0)
+        Assertions.assertEquals(expected, lo.checkLogicalOperators(a, b));
+    }
+}
+
+### Contents of CIfStatementsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Check if the number is positive, negative, or zero.
+ * Input: - int num = 5
+ * Expected Output: - "Positive"
+ */
+public class CIfStatementsTest {
+
+    @Test
+    public void testCheckPositiveNumber() {
+        CIfStatements ifStmt = new CIfStatements();
+        int num = 5;
+        String expected = "Positive";
+        Assertions.assertEquals(expected, ifStmt.checkNumber(num));
+    }
+    @Test
+    public void testCheckNegativeNumber() {
+        CIfStatements ifStmt = new CIfStatements();
+        int num = -5;
+        String expected = "Negative";
+        Assertions.assertEquals(expected, ifStmt.checkNumber(num));
+    }
+}
+
+### Contents of DSimplifyingIfStatementsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Simplify the if statement to check if a number is even or odd.
+ * Input: int num = 4
+ * Expected Output: "Even"
+ */
+public class DSimplifyingIfStatementsTest {
+
+    @Test
+    public void testCheckEvenOrOdd() {
+        DSimplifyingIfStatements sif = new DSimplifyingIfStatements();
+        int num = 4;
+        String expected = "Even";  // Expected result: "Even"
+        Assertions.assertEquals(expected, sif.checkEvenOrOdd(num));
+    }
+}
+
+### Contents of ETernaryOperatorTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Use ternary operator to check if a number is positive or negative.
+ * Input: - int num = -3
+ * Expected Output: - "Negative"
+ */
+public class ETernaryOperatorTest {
+
+    @Test
+    public void testCheckPositiveNegative() {
+        ETernaryOperator to = new ETernaryOperator();
+        int num = -3;
+        String expected = "Negative";  // Expected result: "Negative"
+        Assertions.assertEquals(expected, to.checkPositiveNegative(num));
+    }
+    @Test
+    public void testCheckPositiveNegative1() {
+        ETernaryOperator to = new ETernaryOperator();
+        int num = 4;
+        String expected = "Positive";  // Expected result: "Negative"
+        Assertions.assertEquals(expected, to.checkPositiveNegative(num));
+    }
+}
+
+### Contents of FSwitchStatementsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Use switch-case to determine the day of the week, start with Monday.
+ * Input:- int day = 3
+ * Expected Output:- "Wednesday"
+ */
+public class FSwitchStatementsTest {
+
+    @Test
+    public void testGetThirdDayOfWeek() {
+        FSwitchStatements ss = new FSwitchStatements();
+        int day = 3;
+        String expected = "Wednesday";  // Expected result: "Wednesday"
+        Assertions.assertEquals(expected, ss.getDayOfWeek(day));
+    }
+
+    @Test
+    public void testGetForthDayOfWeek() {
+        FSwitchStatements ss = new FSwitchStatements();
+        int day = 4;
+        String expected = "Thursday";  // Expected result: "Wednesday"
+        Assertions.assertEquals(expected, ss.getDayOfWeek(day));
+    }
+
+    @Test
+    public void testGetInvalidDayOfWeek() {
+        FSwitchStatements ss = new FSwitchStatements();
+        int day = 8;
+        String expected = "Invalid Day";  // Expected result: "Wednesday"
+        Assertions.assertEquals(expected, ss.getDayOfWeek(day));
+    }
+}
+
+### Contents of GFizzBuzzTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+
+/**
+ * Problem: Print "Fizz" if divisible by 3, "Buzz" if divisible by 5, 
+ * and "FizzBuzz" if divisible by both.
+ * Input:
+ * - int num = 15
+ * Expected Output:
+ * - "FizzBuzz"
+ */
+public class GFizzBuzzTest {
+
+    @org.junit.jupiter.api.Test
+    public void testFizzBuzz() {
+        GFizzBuzz fb = new GFizzBuzz();
+        int num = 15;
+        String expected = "FizzBuzz";  // Expected result: "FizzBuzz"
+        Assertions.assertEquals(expected, fb.fizzBuzz(num));
+    }
+}
+
+### Contents of HForLoopsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum numbers from 1 to n using a for loop.
+ * Input:
+ * - int n = 5
+ * Expected Output:
+ * - 15 (1 + 2 + 3 + 4 + 5 = 15)
+ */
+public class HForLoopsTest {
+
+    @Test
+    public void testSumUsingForLoop() {
+        HForLoops fl = new HForLoops();
+        int n = 5;
+        int expected = 15;  // Expected result: 15
+        Assertions.assertEquals(expected, fl.sumUsingForLoop(n));
+    }
+}
+
+### Contents of IWhileLoopsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum numbers from 1 to n using a while loop.
+ * Input:
+ * - int n = 4
+ * Expected Output:
+ * - 10 (1 + 2 + 3 + 4 = 10)
+ */
+public class IWhileLoopsTest {
+
+    @Test
+    public void testSumUsingWhileLoop() {
+        IWhileLoops wl = new IWhileLoops();
+        int n = 4;
+        int expected = 10;  // Expected result: 10
+        Assertions.assertEquals(expected, wl.sumUsingWhileLoop(n));
+    }
+}
+
+### Contents of JDoWhileLoopsTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum numbers from 1 to n using a do-while loop.
+ * 
+ * Input:
+ * - int n = 3
+ * 
+ * Expected Output:
+ * - 6 (1 + 2 + 3 = 6)
+ */
+public class JDoWhileLoopsTest {
+
+    @Test
+    public void testSumUsingDoWhileLoop() {
+        JDoWhileLoops dwl = new JDoWhileLoops();
+        int n = 3;
+        int expected = 6;  // Expected result: 6
+        Assertions.assertEquals(expected, dwl.sumUsingDoWhileLoop(n));
+    }
+}
+
+### Contents of KBreakContinueTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: List all even numbers from 1 to n using continue statement.
+ * Input:
+ * - int n = 6
+ * Expected Output:
+ * - "2 4 6 "
+ */
+public class KBreakContinueTest {
+
+    @Test
+    public void testListEvenNumbers() {
+        KBreakContinue bc = new KBreakContinue();
+        int n = 6;
+        String expected = "2 4 6 ";  // Expected result: "2 4 6 "
+        Assertions.assertEquals(expected, bc.listEvenNumbers(n));
+    }
+}
+
+### Contents of LForEachLoopTest.java ###
+package com.jh.iht.java.basics.controlflow;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Sum elements in an array using the for-each loop.
+ * Input:
+ * - int[] numbers = {1, 2, 3, 4}
+ * Expected Output:
+ * - 10 (1 + 2 + 3 + 4 = 10)
+ */
+public class LForEachLoopTest {
+
+    @Test
+    public void testSumUsingForEachLoop() {
+        LForEachLoop fel = new LForEachLoop();
+        int[] numbers = {1, 2, 3, 4};
+        int expected = 10;  // Expected result: 10
+        Assertions.assertEquals(expected, fel.sumUsingForEachLoop(numbers));
+    }
+}
+

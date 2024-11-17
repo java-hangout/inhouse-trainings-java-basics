@@ -4,19 +4,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Problem Statement:
- * Demonstrate **catching exceptions** in Java. Specifically, we will handle an `ArithmeticException` when attempting to divide by zero.
- * - The `Division` class has a `divide` method that throws an `ArithmeticException` if the denominator is zero.
+ * Problem Statement: Specifically, we will handle an ArithmeticException when attempting to divide by zero.
+ * - The Division class has a divide method that throws an ArithmeticException if the denominator is zero.
  * Steps to Implement:
- * 1. **Division Class**: Implement the `divide` method that performs division and throws an `ArithmeticException` if the denominator is zero.
- * 2. **Test Exception Handling**: Write tests to ensure that dividing by zero throws the expected exception, and valid divisions produce the correct result.
+ * 1. Division Class: Implement the divide method that performs division and throws an ArithmeticException if the denominator is zero.
+ * 2. Test Exception Handling: Write tests to ensure that dividing by zero throws the expected exception, and valid divisions produce the correct result.
  * Test Scenarios:
  * 1. Test division with valid inputs.
- * 2. Test division with zero as the denominator, ensuring that `ArithmeticException` is thrown.
- * <p>
+ * 2. Test division with zero as the denominator, ensuring that ArithmeticException is thrown.
  * Expected Output:
  * 1. For valid division (e.g., 10 / 2), it should return the result (5).
- * 2. For division by zero, it should throw an `ArithmeticException` with the message: "Cannot divide by zero."
+ * 2. For division by zero, it should throw an ArithmeticException with the message: "Cannot divide by zero."
  */
 
 public class CatchingExceptionsTest {

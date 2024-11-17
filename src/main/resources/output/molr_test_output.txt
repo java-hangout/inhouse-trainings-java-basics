@@ -1,0 +1,102 @@
+### Contents of AMethodOverridingTest.java ###
+package com.jh.iht.java.basics.molr;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
+Problem Statement: Demonstrate method overriding by creating a superclass Animal and a subclass Dog.
+Input:
+    - Animal object.
+    - Dog object (subclass of Animal).
+Expected Output:
+    - Animal's makeSound() should print "Animal makes sound".
+    - Dog's makeSound() should print "Dog barks".
+*/
+public class AMethodOverridingTest {
+
+    @Test
+    public void testAnimalMakeSound() {
+        Animal animal = new Animal();
+        Assertions.assertEquals("Animal makes sound",animal.makeSound());  // Expected output: "Animal makes sound"
+    }
+
+    @Test
+    public void testDogMakeSound() {
+        Animal dog = new Dog(); // Dog is an instance of Animal
+        Assertions.assertEquals("Dog barks",dog.makeSound());  // Expected output: "Dog barks"
+    }
+}
+
+### Contents of BMethodOverloadingTest.java ###
+package com.jh.iht.java.basics.molr;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
+Problem Statement: Demonstrate method overloading by creating a Calculator class with multiple add methods
+that accept different numbers or types of arguments.
+Input:
+    - add(2, 3)
+    - add(2.5, 3.5)
+    - add(1, 2, 3)
+Expected Output:
+    - add(2, 3) should return 5
+    - add(2.5, 3.5) should return 6.0
+    - add(1, 2, 3) should return 6
+*/
+public class BMethodOverloadingTest {
+
+    @Test
+    public void testAddTwoIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(2, 3);
+        Assertions.assertEquals(5, result);
+    }
+
+    @Test
+    public void testAddTwoDoubles() {
+        Calculator calculator = new Calculator();
+        double result = calculator.add(2.5, 3.5);
+        Assertions.assertEquals(6.0, result, 0.001);
+    }
+
+    @Test
+    public void testAddThreeIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(1, 2, 3);
+        Assertions.assertEquals(6, result);
+    }
+}
+
+### Contents of CDynamicBindingTest.java ###
+package com.jh.iht.java.basics.molr;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
+Problem Statement: Demonstrate dynamic binding (late binding) in Java.
+Create a Interface Shape with a method draw(), and subclasses Circle and Rectangle that override draw().
+    - Shape reference pointing to a Circle.
+    - Shape reference pointing to a Rectangle.
+Expected Output:
+    - If the Shape object points to a Circle, the output should be "Drawing a circle".
+    - If the Shape object points to a Rectangle, the output should be "Drawing a rectangle".
+*/
+public class CDynamicBindingTest {
+
+    @Test
+    public void testDrawCircle() {
+        Shape shape = new Circle();  // Shape reference to Circle object
+        Assertions.assertEquals("Drawing a circle", shape.draw());  // Expected output: "Drawing a circle"
+    }
+
+    @Test
+    public void testDrawRectangle() {
+        Shape shape = new Rectangle();  // Shape reference to Rectangle object
+        Assertions.assertEquals("Drawing a rectangle", shape.draw());  // Expected output: "Drawing a rectangle"
+    }
+}
+

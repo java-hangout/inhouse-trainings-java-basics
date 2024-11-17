@@ -1,0 +1,482 @@
+### Contents of AAVariablesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implement a method to sum two variables.
+ * Input: int a = 7, int b = 3
+ * Expected Output: The sum of the variables is 7 + 3 = 10.
+ */
+
+public class AAVariablesTest {
+
+    @Test
+    public void testSumVariables() {
+        AVariables var = new AVariables();
+        int a = 7;
+        int b = 3;
+        int expected = 10;  // Expected sum: 7 + 3 = 10
+        Assertions.assertEquals(expected, var.sumVariables(a, b));
+    }
+}
+
+### Contents of BBPrimitiveTypesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implement a method to add two integers and return the result.
+ * Input: int a = 5, int b =10
+ * Expected Output: The sum of the integers is 5 + 10 = 15.
+ */
+public class BBPrimitiveTypesTest {
+
+    @Test
+    public void testAddIntegers() {
+        BPrimitiveTypes pt = new BPrimitiveTypes();
+        int a = 5;
+        int b = 10;
+        int expected = 15;  // Expected result: 5 + 10 = 15
+        Assertions.assertEquals(expected, pt.addIntegers(a, b));
+    }
+}
+
+### Contents of CReferenceTypesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implement a method to concatenate two Strings and return the result.
+ * Input: String a = "Hello, ", String b = "World!"
+ * Expected Output: The sum of the variables is 7 + 3 = 10.
+ */
+public class CReferenceTypesTest {
+
+    @Test
+    public void testConcatenateStrings() {
+        CReferenceTypes rt = new CReferenceTypes();
+        String a = "Hello, ";
+        String b = "World!";
+        String expected = "Hello, World!";  // Expected result: "Hello, World!"
+        Assertions.assertEquals(expected, rt.concatenateStrings(a, b));
+    }
+}
+
+### Contents of DPrimitiveReferenceExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * 1. Write a program to demonstrate the difference between primitive types and reference types.
+ * 2. Test if:
+ * - Primitive types hold the value directly, and modifying one variable doesn't affect another variable.
+ * - Reference types store references to objects, and modifying one reference variable doesn't change the other.
+ */
+public class DPrimitiveReferenceExampleTest {
+
+    // Test for primitive type behavior
+    @Test
+    public void testPrimitiveTypes() {
+        // Create an instance of the class that contains the methods
+        DPrimitiveReferenceExample example = new DPrimitiveReferenceExample();
+
+        // Input values
+        int a = 10;
+        int b = 15;
+
+        // Call the method and capture the result
+        int result = example.demonstratePrimitiveTypes(a, b);
+
+        // Assert that the expected result is 20 (since b is modified to 20 inside the method)
+        Assertions.assertEquals(20, result);
+    }
+
+    // Test for reference type behavior
+    @Test
+    public void testReferenceTypes() {
+        // Create an instance of the class that contains the methods
+        DPrimitiveReferenceExample example = new DPrimitiveReferenceExample();
+
+        // Input values
+        String str1 = "Hello";
+        String str2 = "Hello";
+
+        // Call the method and capture the result
+        String result = example.demonstrateReferenceTypes(str1, str2);
+
+        // Assert that the modified str2 should be "World"
+        Assertions.assertEquals("World", result);
+    }
+}
+
+### Contents of EStringsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Concatenate two strings and return uppercase of concatenated string.
+ * Input: String a = "Hello" , String b = "World"
+ * Expected Output: The concatenated string "HelloWorld"
+ */
+public class EStringsTest {
+
+    @Test
+    public void testConcatenate() {
+        EStrings str = new EStrings();
+        String a = "Hello";
+        String b = "World";
+        String expected = "HELLOWORLD";  // Expected result: "HelloWorld"
+        Assertions.assertEquals(expected, str.concatenate(a, b));
+    }
+}
+
+### Contents of FEscapeSequencesTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of escape sequences in strings.
+ * Input:
+ * - String containing escape sequences: newline (\n), tab (\t), backslash (\\)
+ * Expected Output:
+ * - The string should display the escape sequences correctly.
+ *   Result: "Hello\nWorld!\tTab\\Backslash"
+ *   Should print below output on console.
+ *   Hello
+ *         World!	Tab\Backslash
+ */
+public class FEscapeSequencesTest {
+
+    @Test
+    public void testDemonstrateEscapeSequences() {
+        FEscapeSequences es = new FEscapeSequences();
+        String expected = "Hello\nWorld!\tTab\\Backslash";  // Expected result with escape sequences
+
+        System.out.println(expected); // Should print below output on console.
+        /*Hello
+        World!	Tab\Backslash*/
+        Assertions.assertEquals(expected, es.demonstrateEscapeSequences());
+    }
+}
+
+### Contents of GArraysTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Double the values of each element in an array and return the modified array.
+ * Input: - int[] array = {1, 2, 3}
+ * Expected Output:- The modified array should be {2, 4, 6}.
+ */
+public class GArraysTest {
+
+    @Test
+    public void testDoubleArrayValues() {
+        GArrays arr = new GArrays();
+        int[] inputArray = {1, 2, 3};
+        int[] expectedArray = {2, 4, 6};  // Expected result: {2, 4, 6}
+        Assertions.assertArrayEquals(expectedArray, arr.doubleArrayValues(inputArray));
+    }
+}
+
+### Contents of HMultiDimensionalArraysTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Calculate the sum of all elements in a 2D array.
+ * Input: - int[][] array = {{1, 2}, {3, 4}}
+ * Expected Output: - The sum of the elements (1 + 2 + 3 + 4) = 10
+ */
+public class HMultiDimensionalArraysTest {
+
+    @Test
+    public void testSum2DArray() {
+        HMultiDimensionalArrays mda = new HMultiDimensionalArrays();
+        int[][] inputArray = {{1, 2}, {3, 4}};
+        int expected = 10;  // Expected sum: 1 + 2 + 3 + 4 = 10
+        Assertions.assertEquals(expected, mda.sum2DArray(inputArray));
+    }
+}
+
+### Contents of IConstantsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Return the constant value defined in the class.
+ * Input: - CONSTANT_VALUE = 100
+ * Expected Output: - Return 100
+ */
+public class IConstantsTest {
+
+    @Test
+    public void testConstantValue() {
+        IConstants constant = new IConstants();
+        int expected = 100;  // Expected constant value
+        Assertions.assertEquals(expected, constant.getConstantValue());
+    }
+}
+
+### Contents of JArithmeticExpressionsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Calculate the arithmetic expression (a + b) * (c - d).
+ * Input:
+ * - int a = 5
+ * - int b = 3
+ * - int c = 8
+ * - int d = 2
+ * Expected Output:
+ * - The result of (5 + 3) * (8 - 2) = 8 * 6 = 48
+ */
+public class JArithmeticExpressionsTest {
+
+    @Test
+    public void testCalculateExpression() {
+        JArithmeticExpressions ae = new JArithmeticExpressions();
+        int a = 5, b = 3, c = 8, d = 2;
+        int expected = 48;  // Expected result: (5 + 3) * (8 - 2) = 8 * 6 = 48
+        Assertions.assertEquals(expected, ae.calculateExpression(a, b, c, d));
+    }
+}
+
+### Contents of KOrderOfOperationsTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the order of operations in arithmetic expressions.
+ * Input: - integers a, b, c
+ * Expected Output: - (5 + 3 * 2) = 5 + (3 * 2) = 5 + 6 = 11
+ */
+public class KOrderOfOperationsTest {
+
+    @Test
+    public void testCalculateOrderOfOperations() {
+        KOrderOfOperations oo = new KOrderOfOperations();
+        int a = 5;
+        int b = 3;
+        int c = 2;
+        int expected = 11;  // Expected result: 5 + (3 * 2) = 5 + 6 = 11
+        Assertions.assertEquals(expected, oo.calculateOrderOfOperations(a,b,c));
+    }
+}
+
+### Contents of LCastingTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Cast two double values to integers and return their sum.
+ * Input:
+ * - double a = 5.7
+ * - double b = 3.4
+ * Expected Output:
+ * - The sum of the casted integers (5 + 3) = 8
+ */
+public class LCastingTest {
+
+    @Test
+    public void testCastAndAdd() {
+        LCasting casting = new LCasting();
+        double a = 5.7, b = 3.4;
+        int expected = 8;  // Expected result: (5 + 3) = 8 after casting
+        Assertions.assertEquals(expected, casting.castAndAdd(a, b));
+    }
+}
+
+### Contents of MMathClassTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Use methods from the Math class to compute mathematical operations.
+ * Input:
+ * - double a = 4
+ * - double b = 2
+ * Expected Output:
+ * - Math.pow(4, 2) = 16
+ * - Math.sqrt(4) = 2
+ * - The result is round(16 + 2) = round(18) = 18
+ */
+public class MMathClassTest {
+
+    @Test
+    public void testComputeMathOperations() {
+        MMathClass math = new MMathClass();
+        double a = 4, b = 2;
+        double expected = 18;  // Expected result: Math.pow(4, 2) + Math.sqrt(4) = 18
+        Assertions.assertEquals(expected, math.computeMathOperations(a, b));
+    }
+}
+
+### Contents of NFormattingNumbersTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Format a double number to two decimal places.
+ * Input:
+ * - double number = 3.14159
+ * Expected Output:
+ * - The formatted number is "3.14"
+ */
+public class NFormattingNumbersTest {
+
+    @Test
+    public void testFormatToTwoDecimalPlaces() {
+        NFormattingNumbers fn = new NFormattingNumbers();
+        double number = 3.14159;
+        String expected = "3.14";  // Expected formatted result: "3.14"
+        Assertions.assertEquals(expected, fn.formatToTwoDecimalPlaces(number));
+    }
+}
+
+### Contents of OReadingInputTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * Create a method called `calculateSquare(int number)` which calculates the square of the
+ * given integer number. The method should return the square of the input number.
+ * The test cases will check the following scenarios:
+ * 1. A positive integer (e.g., 5).
+ * 2. A negative integer (e.g., -4).
+ * 3. Zero (e.g., 0).
+ *
+ * The expected behavior is that the method returns the square of the input integer in each case.
+ */
+public class OReadingInputTest {
+    
+    // Test case for calculateSquare() method
+    @Test
+    public void testCalculateSquare() {
+        // Creating an object of SquareCalculator
+        OReadingInput calculator = new OReadingInput();
+
+        // Test Case 1: Input 5, Expected Output: 25
+        int input = 5;
+        int expectedOutput = 25;
+        int actualOutput = calculator.calculateSquare(input);
+        Assertions.assertEquals( expectedOutput, actualOutput);
+
+        // Test Case 2: Input -4, Expected Output: 16
+        input = -4;
+        expectedOutput = 16;
+        actualOutput = calculator.calculateSquare(input);
+        Assertions.assertEquals( expectedOutput, actualOutput);
+
+        // Test Case 3: Input 0, Expected Output: 0
+        input = 0;
+        expectedOutput = 0;
+        actualOutput = calculator.calculateSquare(input);
+        Assertions.assertEquals( expectedOutput, actualOutput);
+    }
+}
+
+### Contents of PStaticExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/**
+ * Problem statement: Create class with a static variable as count =0 and static method which will return
+ * increment value of count.
+ * Expected Output:- After calling incrementCount, the static count should be 1.
+ */
+public class PStaticExampleTest {
+
+    @Test
+    public void testStaticMethod() {
+        PStaticExample.incrementCount();
+        int expected = 1;  // Expected count after incrementing once
+        assertEquals(expected, PStaticExample.getCount());
+    }
+}
+
+### Contents of QFinalExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of the final keyword for constants. Create a class with a constant as final int CONSTANT_VALUE = 50
+ * and a method which will return that constant value.
+ * Expected Output: - The constant value should be 50
+ */
+public class QFinalExampleTest {
+
+    @Test
+    public void testFinalValue() {
+        QFinalExample finalExample = new QFinalExample();
+        int expected = 50;  // Expected constant value: 50
+        Assertions.assertEquals(expected, finalExample.getFinalValue());
+    }
+}
+
+### Contents of RKeywordsExampleTest.java ###
+package com.jh.iht.java.basics.types;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the use of Java keywords such as 'public', 'private', 'static', and 'final'.
+ * Create a class with public static final (MAX_VALUE = 100 (final static variable)) and private variables, setter and getter methods for private variable.
+ * Input: value = 30 (instance variable)
+ * Expected Output:
+ * - After setting the value, it should be 25.
+ * - MAX_VALUE is static and final, so it should always return 100.
+ */
+public class RKeywordsExampleTest {
+
+    @Test
+    public void testKeywords() {
+        RKeywordsExample example = new RKeywordsExample(25);
+        example.setValue(30);
+        int expectedValue = 30;
+        Assertions.assertEquals(expectedValue, example.getValue());
+
+        int expectedMaxValue = 100;
+        Assertions.assertEquals(expectedMaxValue, RKeywordsExample.getMaxValue());
+    }
+}
+

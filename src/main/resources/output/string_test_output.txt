@@ -1,0 +1,296 @@
+### Contents of AImmutableStringTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate that Strings in Java are immutable. When a string is modified, 
+a new string object is created, and the original string remains unchanged.
+
+Input:
+    - String str1 initialized with "Hello".
+    - Modify str1 by concatenating " World".
+
+Expected Output:
+    - str1 should contain "Hello World".
+    - str2 should still contain "Hello".
+*/
+
+public class AImmutableStringTest {
+
+    @Test
+    void testImmutableString() {
+        ImmutableStringExample example = new ImmutableStringExample();
+        
+        // Call the method to demonstrate immutability
+        String result = example.demonstrateImmutableString();
+        
+        // Validate the result
+        String[] values = result.split(";");
+        String str1 = values[0];  // Expected "Hello World"
+        String str2 = values[1];  // Expected "Hello"
+        
+        assertEquals("Hello World", str1);
+        assertEquals("Hello", str2); // str2 should remain "Hello"
+    }
+}
+
+### Contents of BStringComparisonConcatenationTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate string comparison and concatenation.
+Input:
+    - Strings str1, str2, and str3 initialized to "Java", "Java", and a new String("Java").
+    - Perform comparison using == and equals().
+    - Concatenate strings using + and concat().
+
+Expected Output:
+    - str1 == str2 should return true.
+    - str1.equals(str3) should return true.
+    - str1 == str3 should return false.
+    - Concatenation using + and concat() should produce "Java Programming".
+*/
+
+public class BStringComparisonConcatenationTest {
+
+    @Test
+    void testStringComparison() {
+        StringComparisonConcatenation example = new StringComparisonConcatenation();
+
+        // Input strings for comparison
+        String str1 = "Java";
+        String str2 = "Java";
+        String str3 = new String("Java");
+
+        // Compare the strings
+        String result = example.compareStrings(str1, str2, str3);
+        
+        // Validate the comparison results
+        String[] comparisons = result.split(";");
+        assertTrue(Boolean.parseBoolean(comparisons[0]));  // str1 == str2 should be true
+        assertTrue(Boolean.parseBoolean(comparisons[1]));  // str1.equals(str3) should be true
+        assertFalse(Boolean.parseBoolean(comparisons[2]));  // str1 == str3 should be false
+    }
+
+    @Test
+    void testStringConcatenation() {
+        StringComparisonConcatenation example = new StringComparisonConcatenation();
+
+        // Input for concatenation
+        String str1 = "Java";
+        String additionalText = " Programming";
+
+        // Concatenate the strings
+        String result = example.concatenateStrings(str1, additionalText);
+        
+        // Validate the concatenated results
+        String[] concatenated = result.split(";");
+        assertEquals("Java Programming", concatenated[0]);  // Concatenation using + 
+        assertEquals("Java Programming", concatenated[1]);  // Concatenation using concat()
+    }
+}
+
+### Contents of CSubstringTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the use of substring() to extract substrings from a string.
+Input:
+    - String str initialized to "Hello, World!".
+    - Extract substrings using substring() with different indices.
+
+Expected Output:
+    - Substring starting from index 7 should be "World!".
+    - Substring from index 0 to 5 should be "Hello".
+*/
+
+public class CSubstringTest {
+
+    @Test
+    void testSubstring() {
+        SubstringExample example = new SubstringExample();
+        
+        // Input string
+        String str = "Hello, World!";
+
+        // Extract substrings
+        String result = example.extractSubstrings(str);
+        
+        // Validate the extracted substrings
+        String[] substrings = result.split(";");
+        assertEquals("World!", substrings[0]);  // Extracted substring from index 7
+        assertEquals("Hello", substrings[1]);  // Extracted substring from index 0 to 5
+    }
+}
+
+### Contents of DStringMethodsTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the usage of String methods like trim(), toUpperCase(), replace(), and substring().
+Input:
+    - String "  hello world  ".
+Expected Output:
+    - The string should be modified by:
+        - Removing leading and trailing spaces.
+        - Converting to uppercase.
+        - Replacing "HELLO" with "Hi".
+        - Returning the first two characters of the resulting string.
+*/
+
+public class DStringMethodsTest {
+
+    @Test
+    void testStringMethods() {
+        StringMethodsExample example = new StringMethodsExample();
+        
+        // Input string
+        String input = "  hello world  ";
+        
+        // Call method to apply string transformations
+        String result = example.stringMethodsExample(input);
+        
+        // Validate the result after applying all transformations
+        assertEquals("Hi", result);  // The expected result is "HI" (trimmed, uppercase, replaced, first two characters)
+    }
+}
+
+### Contents of EStringBufferBuilderTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the usage of StringBuffer and StringBuilder.
+Input:
+    - String "Hello".
+    - Append " World" and insert " Java" at index 5.
+Expected Output:
+    - The result should be "Hello Java World".
+*/
+
+public class EStringBufferBuilderTest {
+
+    @Test
+    void testStringBuffer() {
+        StringBufferBuilderExample example = new StringBufferBuilderExample();
+        
+        // Call method for StringBuffer
+        String result = example.useStringBuffer();
+        
+        // Validate the result
+        assertEquals("Hello Java World", result);  // StringBuffer should result in "Hello Java World"
+    }
+
+    @Test
+    void testStringBuilder() {
+        StringBufferBuilderExample example = new StringBufferBuilderExample();
+        
+        // Call method for StringBuilder
+        String result = example.useStringBuilder();
+        
+        // Validate the result
+        assertEquals("Hello Java World", result);  // StringBuilder should result in "Hello Java World"
+    }
+}
+
+### Contents of FStringVsStringBufferTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the difference between String and StringBuffer.
+Input:
+    - String "Hello".
+    - Modify both the String and StringBuffer by appending " World".
+Expected Output:
+    - The String will result in a new string, "Hello World".
+    - The StringBuffer will result in "Hello World" directly (modified in place).
+*/
+
+public class FStringVsStringBufferTest {
+
+    @Test
+    void testStringVsStringBuffer() {
+        StringVsStringBuffer example = new StringVsStringBuffer();
+        
+        // Call method to compare String and StringBuffer
+        String result = example.demonstrateStringVsStringBuffer();
+        
+        // Validate the results
+        String[] values = result.split(";");
+        assertEquals("Hello World", values[0]);  // String (creates new object)
+        assertEquals("Hello World", values[1]);  // StringBuffer (modifies in place)
+    }
+}
+
+### Contents of GStringTokenizerTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the usage of StringTokenizer to split a string with , into tokens.
+Input:
+    - String "Hello,World,from,Java".
+Expected Output:
+    - The tokens should be "Hello World from Java".
+*/
+
+public class GStringTokenizerTest {
+
+    @Test
+    void testStringTokenizer() {
+        StringTokenizerExample example = new StringTokenizerExample();
+        
+        // Input string
+        String input = "Hello,World,from,Java";
+        
+        // Call method to tokenize the string
+        String result = example.tokenizeString(input);
+        
+        // Validate the result
+        assertEquals("Hello World from Java", result);  // Tokens should be space-separated
+    }
+}
+
+### Contents of HToStringTest.java ###
+package com.jh.iht.java.basics.string;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Demonstrate the use of the toString() method to return a custom string representation of an object.
+Input:
+    - A Person object with name "John" and age 30.
+Expected Output:
+    - The string representation should be "Person [name=John, age=30]".
+*/
+
+public class HToStringTest {
+
+    @Test
+    void testToString() {
+        Person person = new Person("John", 30);
+        
+        // Validate the custom toString() representation
+        assertEquals("Person [name=John, age=30]", person.toString());
+    }
+}
+

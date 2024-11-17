@@ -1,0 +1,87 @@
+### Contents of ATypesOfErrorsTest.java ###
+package com.jh.iht.java.basics.dda;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the different types of errors in Java.
+ *
+ * Input:
+ * - Method to demonstrate a runtime error (division by zero).
+ * - Method to demonstrate a logical error (wrong operation).
+ * - Syntax error in the method (missing semicolon).
+ *
+ * Expected Output:
+ * - Runtime error: ArithmeticException
+ * - Logical error: Incorrect result of addition
+ * - Syntax error: Compilation fails
+ */
+/*
+public class ATypesOfErrorsTest {
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivideByZero() {
+        TypesOfErrors errors = new TypesOfErrors();
+        errors.divideByZero();  // This should throw ArithmeticException
+    }
+
+    @Test
+    public void testLogicalError() {
+        TypesOfErrors errors = new TypesOfErrors();
+        int result = errors.addNumbers(5, 3);
+        int expected = 8; // We expect 5 + 3, but the method does subtraction
+        assertNotEquals(expected, result);  // This should fail because of a logical error
+    }
+
+    // Syntax errors are usually caught during compilation, so no test is needed.
+}*/
+
+### Contents of BCommonSyntaxErrorsTest.java ###
+package com.jh.iht.java.basics.dda;
+
+/**
+ * Problem: Common syntax errors such as missing semicolons, mismatched parentheses, and undeclared variables.
+ * 
+ * Expected Output:
+ * - Missing semicolon should result in compilation error.
+ * - Mismatched parentheses should result in compilation error.
+ * - Undeclared variable should result in compilation error.
+ */
+public class BCommonSyntaxErrorsTest {
+
+    // These errors cannot be tested using JUnit because they cause compilation failures.
+}
+
+### Contents of CDebuggingExampleTest.java ###
+package com.jh.iht.java.basics.dda;
+
+/**
+ * Problem: Debugging issues in methods such as logical errors and incorrect computations.
+ * 
+ * Input:
+ * - Method to add numbers (bug in addition).
+ * - Method to find max value (bug in handling empty array).
+ * 
+ * Expected Output:
+ * - The addNumbers method should return incorrect results due to multiplication instead of addition.
+ * - The findMax method should throw an exception for an empty array.
+ */
+/*
+public class CDebuggingExampleTest {
+
+    @Test
+    public void testAddNumbers() {
+        DebuggingExample debug = new DebuggingExample();
+        int result = debug.addNumbers(5, 3);
+        int expected = 8;  // Bug: The method returns 15 (5 * 3) instead of 8 (5 + 3)
+        assertNotEquals(expected, result);  // This will fail due to the bug
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void testFindMaxWithEmptyArray() {
+        DebuggingExample debug = new DebuggingExample();
+        int[] numbers = {}; // Empty array
+        debug.findMax(numbers);  // This should throw an exception
+    }
+}*/
+

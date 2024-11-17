@@ -1,0 +1,269 @@
+### Contents of AClassesAndObjectsTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate creation and usage of classes and objects.
+ * Input:- Car objects with model "Tesla Model 3", year 2022 and "BMW M3", year 2023.
+ * Expected Output:- Display the car model and year details for both car objects.
+ */
+public class AClassesAndObjectsTest {
+
+    @Test
+    public void testCarDetails() {
+        Car1 car1 = new Car1("Tesla Model 3", 2022);
+        Car1 car2 = new Car1("BMW M3", 2023);
+
+        // Checking car details
+        Assertions.assertEquals("Tesla Model 3", car1.model);
+        Assertions.assertEquals(2022, car1.year);
+        Assertions.assertEquals("BMW M3", car2.model);
+        Assertions.assertEquals(2023, car2.year);
+    }
+}
+
+### Contents of BProceduralProgrammingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Implementing procedural programming by summing an array of numbers.
+ * Input:- Array of numbers {1, 2, 3, 4, 5}
+ * Expected Output: - Sum = 15
+ */
+public class BProceduralProgrammingTest {
+
+    @Test
+    public void testSumArray() {
+        BProceduralProgramming pp = new BProceduralProgramming();
+        int[] numbers = {1, 2, 3, 4, 5};
+        int expectedSum = 15;
+        Assertions.assertEquals(expectedSum, pp.sumArray(numbers));
+    }
+}
+
+### Contents of CEncapsulationTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * 1. Creating a class `EncapsulationExample` with private fields `name` and `age`.
+ * 2. Implementing **getter** and **setter** methods for these fields.
+ * 3. Writing test cases to:
+ * - Verify that the **setter methods** correctly set the values of `name` and `age`.
+ * - Verify that the **getter methods** correctly return the expected values.
+ */
+
+public class CEncapsulationTest {
+    @Test
+    public void testEncapsulation() {
+        CEncapsulationExample person = new CEncapsulationExample();
+        person.setName("John");
+        person.setAge(25);
+        Assertions.assertEquals("John", person.getName());
+        Assertions.assertEquals(25, person.getAge());
+    }
+}
+
+### Contents of DAbstractionExampleTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate abstraction using an abstract class and concrete subclasses.
+ * Input:- Animal object: Dog and Cat
+ * Expected Output:
+ *  - Dog barks
+ *  - Cat meows
+ */
+public class DAbstractionExampleTest {
+
+    @Test
+    public void testSound() {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        // Testing polymorphism and abstraction
+        Assertions.assertEquals("Dog barks",dog.sound());  // Should output "Dog barks"
+        Assertions.assertEquals("Cat meows",cat.sound());  // Should output "Cat meows"
+    }
+}
+
+### Contents of ECouplingExampleTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate loose coupling between Car and Engine classes.
+ * Input:- Car object that uses Engine object to start.
+ * Expected Output:- "Engine started" when Car starts.
+ */
+public class ECouplingExampleTest {
+
+    @Test
+    public void testCarStart() {
+        Engine2 engine = new Engine2();
+        Car2 car = new Car2(engine);
+        Assertions.assertEquals("Engine started", car.startCar());  // Should output "Engine started"
+    }
+}
+
+### Contents of FReducingCouplingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate reduced coupling using interfaces and constructor injection.
+ * Input:
+ * - Engine object (Electric or Gas)
+ * - Car object using the Engine
+ * Expected Output:
+ * - "Electric Engine started" or "Gas Engine started" based on the engine type
+ */
+public class FReducingCouplingTest {
+
+    @Test
+    public void testCarWithElectricEngine() {
+        Engine3 electricEngine = new ElectricEngine3();
+        Car3 electricCar = new Car3(electricEngine);
+        // Capture the output to verify if the engine started
+        Assertions.assertEquals("Electric Engine3 started.", electricCar.startCar());
+    }
+
+    @Test
+    public void testCarWithGasEngine() {
+        Engine3 gasEngine = new GasEngine3();
+        Car3 gasCar = new Car3(gasEngine);
+        // Capture the output to verify if the engine started
+        Assertions.assertEquals("Gas Engine3 started.", gasCar.startCar());
+    }
+}
+
+### Contents of GConstructorsExampleTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate how constructors are used to initialize object attributes.
+ * Input: - Person object with name "Alice" and age 30
+ * Expected Output:- Name: Alice, Age: 30
+ */
+public class GConstructorsExampleTest {
+
+    @Test
+    public void testPersonConstructor() {
+        Person person = new Person("Alice", 30);
+
+        Assertions.assertEquals("Alice", person.name);
+        Assertions.assertEquals(30, person.age);
+    }
+}
+
+### Contents of HMethodOverloadingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate method overloading with different parameter types.
+ * Input: - Integers: 2 and 3, Doubles: 2.5 and 3.5, Integers: 1, 2, 3
+ * Expected Output:
+ * - Sum of integers = 5
+ * - Sum of doubles = 6.0
+ * - Sum of three integers = 6
+ */
+public class HMethodOverloadingTest {
+
+    @Test
+    public void testAddIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(2, 3);
+        Assertions.assertEquals(5, result);
+    }
+
+    @Test
+    public void testAddDoubles() {
+        Calculator calculator = new Calculator();
+        double result = calculator.add(2.5, 3.5);
+        Assertions.assertEquals(6.0, result, 0.01);
+    }
+
+    @Test
+    public void testAddThreeIntegers() {
+        Calculator calculator = new Calculator();
+        int result = calculator.add(1, 2, 3);
+        Assertions.assertEquals(6, result);
+    }
+}
+
+### Contents of IConstructorOverloadingTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate constructor overloading with different constructor signatures.
+ * Input:
+ * - Person object with no parameters: Defaults to "Unknown" and age 0
+ * - Person object with parameters: "John" and 25
+ * Expected Output:
+ * - Name: Unknown, Age: 0
+ * - Name: John, Age: 25
+ */
+public class IConstructorOverloadingTest {
+
+    @Test
+    public void testDefaultConstructor() {
+        Person1 person = new Person1();
+        Assertions.assertEquals("Unknown", person.name);
+        Assertions.assertEquals(0, person.age);
+    }
+
+    @Test
+    public void testParameterizedConstructor() {
+        Person1 person = new Person1("John", 25);
+        Assertions.assertEquals("John", person.name);
+        Assertions.assertEquals(25, person.age);
+    }
+}
+
+### Contents of JStaticMembersTest.java ###
+package com.jh.iht.java.basics.co;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Create a class as Counter with static variable as count and increment it in construct.
+ * Input: - Counter objects created using the constructor with counter increment
+ * Expected Output: - Number of Counter objects created = 3
+ */
+public class JStaticMembersTest {
+
+    @Test
+    public void testStaticCount() {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        // Static count should be 3 after three objects are created
+        Assertions.assertEquals(3, Counter.getCount());
+    }
+}
+

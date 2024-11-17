@@ -5,12 +5,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Double the values of each element in an array and return the modified array.
- * 
- * Input:
- * - int[] array = {1, 2, 3}
- * 
- * Expected Output:
- * - The modified array should be {2, 4, 6}.
+ * Input: - int[] array = {1, 2, 3}
+ * Expected Output:- The modified array should be {2, 4, 6}.
  */
 public class GArraysTest {
 

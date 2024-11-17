@@ -6,7 +6,7 @@ public class StringTokenizerExample {
 
     // Method to demonstrate StringTokenizer usage
     public String tokenizeString(String str) {
-        StringTokenizer tokenizer = new StringTokenizer(str);
+        StringTokenizer tokenizer = new StringTokenizer(str,",");
         StringBuilder tokens = new StringBuilder();
         while (tokenizer.hasMoreTokens()) {
             tokens.append(tokenizer.nextToken()).append(" ");

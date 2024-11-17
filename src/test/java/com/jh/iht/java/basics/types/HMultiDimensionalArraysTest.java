@@ -5,12 +5,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Calculate the sum of all elements in a 2D array.
- * 
- * Input:
- * - int[][] array = {{1, 2}, {3, 4}}
- * 
- * Expected Output:
- * - The sum of the elements (1 + 2 + 3 + 4) = 10
+ * Input: - int[][] array = {{1, 2}, {3, 4}}
+ * Expected Output: - The sum of the elements (1 + 2 + 3 + 4) = 10
  */
 public class HMultiDimensionalArraysTest {
 

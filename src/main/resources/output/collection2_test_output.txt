@@ -1,0 +1,144 @@
+### Contents of ASetInterfaceTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Problem Statement:
+ * The Set interface ensures that a collection does not contain duplicate elements. 
+ * Verifies that duplicate elements are not added to the set.
+ * Input: - Set of elements ["Apple", "Banana", "Apple", "Cherry"]
+ * Expected Output: - Set size: 3, Contains "Apple": true, Contains "Orange": false
+ */
+public class ASetInterfaceTest {
+
+    @Test
+    public void testSetMethods() {
+        Set<String> set = new HashSet<>();
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Apple"); // Duplicate element
+        set.add("Cherry");
+        SetInterface setInterface = new SetInterface();
+        int fruitSize = setInterface.getUniqueElements(set);
+
+        // Check the size of the set (should not have duplicates)
+        Assertions.assertEquals(3, fruitSize);
+
+        // Check if specific items are in the set
+        Assertions.assertTrue(set.contains("Apple"));
+        Assertions.assertFalse(set.contains("Orange"));
+    }
+}
+
+### Contents of BHashTableExampleTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Hashtable;
+
+/**
+ * Problem Statement:
+ * A HashTable allows storing key-value pairs, providing quick access to values by keys.
+ * Checks if the HashTable can store and retrieve values correctly.
+ * Input:
+ * - Country codes map: {"US" -> "1", "IN" -> "91", "DE" -> "49"}
+ * Expected Output:
+ * - Code for US: "1", Code for IN: "91", Contains "UK": false
+ */
+public class BHashTableExampleTest {
+
+    @Test
+    public void testHashTableMethods() {
+        HashTableExample hashTableExample = new HashTableExample();
+        Hashtable<String, String> countryCodes = hashTableExample.getCountryCodes();
+
+        // Check if the correct codes are retrieved
+        Assertions.assertEquals("1", countryCodes.get("US"));
+        Assertions.assertEquals("91", countryCodes.get("IN"));
+
+        // Check if "UK" is present in the HashTable
+        Assertions.assertFalse(countryCodes.containsKey("UK"));
+    }
+}
+
+### Contents of CMapInterfaceTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+
+/**
+ * Problem Statement:
+ * The Map interface allows storing key-value pairs where each key is unique.
+ * Verifies that the capitals are correctly mapped to their respective countries.
+ * Input:
+ * - Map of country codes to capital cities {"US" -> "Washington, D.C.", "IN" -> "New Delhi", "UK" -> "London"}
+ * Expected Output:
+ * - Capital of US: "Washington, D.C.", Contains "India": false
+ */
+public class CMapInterfaceTest {
+
+    @Test
+    public void testMapMethods() {
+        MapInterface mapInterface = new MapInterface();
+        Map<String, String> capitals = mapInterface.getCapitalCities();
+
+        // Check the capital for specific countries
+        Assertions.assertEquals("Washington, D.C.", capitals.get("US"));
+        Assertions.assertEquals("New Delhi", capitals.get("IN"));
+
+        // Check if "India" is in the map as a key
+        Assertions.assertFalse(capitals.containsKey("India"));
+    }
+}
+
+### Contents of DCollectionComparisonTest.java ###
+package com.jh.iht.java.basics.collection2;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Problem Statement:
+ * This test compares the behaviors of List, Set, and Map in Java.
+ * A List allows duplicates, a Set disallows duplicates, and a Map allows key-value pairs with unique keys.
+ * Input:
+ * - List: ["Apple", "Banana", "Apple"]
+ * - Set: ["Apple", "Banana", "Apple"]
+ * - Map: {"Apple" -> "1", "Banana" -> "2", "Apple" -> "3"}
+ * Expected Output:
+ * - List size: 3, Set size: 2, Map size: 2
+ */
+public class DCollectionComparisonTest {
+
+    @Test
+    public void testCollectionComparison() {
+        CollectionComparison collectionComparison = new CollectionComparison();
+
+        // Test List
+        List<String> list = collectionComparison.getList();
+        Assertions.assertEquals(3, list.size()); // Duplicates are allowed
+
+        // Test Set
+        Set<String> set = collectionComparison.getSet();
+        Assertions.assertEquals(2, set.size()); // Duplicates are not allowed
+
+        // Test Map
+        Map<String, String> map = collectionComparison.getMap();
+        Assertions.assertEquals(2, map.size()); // Keys are unique, values can change
+    }
+}
+

@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Demonstrate inheritance by creating Dog class inheriting from Animal class.
- * <p>
  * Input:
  * - Dog object with name "Buddy"
- * <p>
  * Expected Output:
  * - "Buddy barks"
  */

@@ -1,0 +1,233 @@
+### Contents of AIterableInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * Define an Iterable interface allows collections to be iterated using the enhanced for loop.
+ * This test checks if the collection of programming languages is correctly iterated.
+ * Input:
+ * - List of programming languages ["Java", "Python", "C++"]
+ * Expected Output:
+ * - "Java", "Python", "C++" printed in separate lines.
+ */
+public class AIterableInterfaceTest {
+
+    @Test
+    public void testIterable() {
+        List<String> languages = new ArrayList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        IterableInterface iterableInterface = new IterableInterface();
+        StringBuilder actualOutput  = iterableInterface.getProgrammingLanguages(languages);
+        String expectedOutput = "Java\nPython\nC++\n";
+        Assertions.assertEquals(expectedOutput, actualOutput.toString());
+    }
+}
+
+### Contents of BIteratorInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * The Iterator interface provides a standard way to iterate over collections. 
+ * This test checks if the Iterator correctly iterates over a list of fruits.
+ * 
+ * Input:
+ * - List of fruits ["Apple", "Banana", "Cherry"]
+ * 
+ * Expected Output:
+ * - "Apple", "Banana", "Cherry" printed in separate lines.
+ */
+public class BIteratorInterfaceTest {
+
+    @Test
+    public void testIterator() {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        IteratorInterface iteratorInterface = new IteratorInterface();
+        StringBuilder actualOutput = iteratorInterface.getFruits(fruits);
+        String expectedOutput = "Apple\nBanana\nCherry\n";
+        Assertions.assertEquals(expectedOutput, actualOutput.toString());
+    }
+}
+
+### Contents of CCollectionInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+
+/**
+ * Problem Statement:
+ * The Collection interface provides basic methods to manipulate collections. 
+ * Checks if elements can be added, removed, and queried in the collection.
+ * Input:
+ * - Collection of items ["Apple", "Banana", "Cherry"]
+ * Expected Output:
+ * - "Collection size: 3", "Contains 'Banana': true"
+ */
+public class CCollectionInterfaceTest {
+
+    @Test
+    public void testCollectionMethods() {
+        CollectionInterface collectionInterface = new CollectionInterface();
+        Collection<String> items = collectionInterface.getItems();
+        // Check the size of the collection
+        Assertions.assertEquals(3, items.size());
+        // Check if the collection contains a specific item
+        Assertions.assertTrue(items.contains("Banana"));
+    }
+}
+
+### Contents of DListInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * The List interface allows ordered collections with duplicate elements. 
+ * Checks if elements can be accessed using their index positions.
+ * Expected Output:
+ * - List of fruits ["Apple", "Banana", "Cherry"]
+ * - Check "Apple" for index 0, "Banana" for index 1
+ */
+public class DListInterfaceTest {
+
+    @Test
+    public void testListMethods() {
+        ListInterface listInterface = new ListInterface();
+        List<String> fruits = listInterface.getFruits();
+        // Check element at specific index
+        Assertions.assertEquals("Apple", fruits.get(0));
+        Assertions.assertEquals("Banana", fruits.get(1));
+    }
+}
+
+### Contents of EComparableInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * The Comparable interface allows objects to be compared and sorted. 
+ * This test verifies that people are correctly sorted by age.
+ * Input:
+ * - List of persons: Alice (30), Bob (25), Charlie (35)
+ * Expected Output:
+ * - Sorted by age: Bob (25), Alice (30), Charlie (35)
+ */
+public class EComparableInterfaceTest {
+
+    @Test
+    public void testComparable() {
+        List<Person> people = new ArrayList<>();
+        people.add(new Person("Alice", 30));
+        people.add(new Person("Bob", 25));
+        people.add(new Person("Charlie", 35));
+        ComparableInterface comparableInterface = new ComparableInterface();
+        List<Person> result = comparableInterface.getPeople(people);
+
+        // Check the sorted order by age
+        Assertions.assertEquals("Bob: 25", result.get(0).toString());
+        Assertions.assertEquals("Alice: 30", result.get(1).toString());
+        Assertions.assertEquals("Charlie: 35", result.get(2).toString());
+    }
+}
+
+### Contents of FComparatorInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+/**
+ * Problem Statement:
+ * The Comparator interface allows defining custom sorting logic. 
+ * This test verifies that people are correctly sorted by name using a comparator.
+ * Input: - List of persons: Bob (25), Alice (30), Charlie (35)
+ * Expected Output: - Sorted by name: Alice (30), Bob (25), Charlie (35)
+ */
+public class FComparatorInterfaceTest {
+
+    @org.junit.jupiter.api.Test
+    public void testComparator() {
+        List<Person1> people = new ArrayList<>();
+        people.add(new Person1("Bob", 25));
+        people.add(new Person1("Alice", 30));
+        people.add(new Person1("Charlie", 35));
+//        System.out.print(people);
+        ComparatorInterface comparatorInterface = new ComparatorInterface();
+        List<Person1> exceptedResult = comparatorInterface.getPeople(people);
+        // Check the sorted order by name
+        Assertions.assertEquals("Alice: 30", exceptedResult.get(0).toString());
+        Assertions.assertEquals("Bob: 25", exceptedResult.get(1).toString());
+        Assertions.assertEquals("Charlie: 35", exceptedResult.get(2).toString());
+    }
+}
+
+
+### Contents of GQueueInterfaceTest.java ###
+package com.jh.iht.java.basics.collection1;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.Queue;
+
+/**
+ * Problem Statement:
+ * The Queue interface allows elements to be processed in FIFO order. 
+ * Checks if elements are correctly removed from the queue in the same order they were added.
+ * 
+ * Input:
+ * - Queue of tasks ["Task 1", "Task 2", "Task 3"]
+ * Expected Output:
+ * - Task 1, Task 2, Task 3 removed in that order.
+ */
+public class GQueueInterfaceTest {
+
+    @Test
+    public void testQueueMethods() {
+        QueueInterface queueInterface = new QueueInterface();
+        Queue<String> tasks = queueInterface.getQueue();
+//        System.out.println("tasks : "+tasks);
+        // Remove tasks from the queue (FIFO order)
+        Assertions.assertEquals("Task 1", tasks.poll());
+        Assertions.assertEquals("Task 2", tasks.poll());
+        Assertions.assertEquals("Task 3", tasks.poll());
+//        System.out.println("tasks : "+tasks);
+    }
+}
+

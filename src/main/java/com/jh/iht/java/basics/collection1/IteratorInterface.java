@@ -5,11 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class IteratorInterface {
-    public List<String> getFruits() {
-        List<String> fruits = new ArrayList<>();
-        fruits.add("Apple");
-        fruits.add("Banana");
-        fruits.add("Cherry");
-        return fruits;
+    public StringBuilder getFruits(List<String> fruits) {
+        StringBuilder actualOutput = new StringBuilder();
+        // Using Iterator to iterate through the list
+        Iterator<String> iterator = fruits.iterator();
+        while (iterator.hasNext()) {
+            actualOutput.append(iterator.next()).append("\n");
+        }
+        return actualOutput;
     }
 }

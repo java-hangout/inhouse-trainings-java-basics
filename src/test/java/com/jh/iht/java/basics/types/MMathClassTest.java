@@ -5,11 +5,9 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Use methods from the Math class to compute mathematical operations.
- * 
  * Input:
  * - double a = 4
  * - double b = 2
- * 
  * Expected Output:
  * - Math.pow(4, 2) = 16
  * - Math.sqrt(4) = 2
@@ -22,6 +20,6 @@ public class MMathClassTest {
         MMathClass math = new MMathClass();
         double a = 4, b = 2;
         double expected = 18;  // Expected result: Math.pow(4, 2) + Math.sqrt(4) = 18
-        Assertions.assertEquals(expected, math.computeMathOperations(a, b), 0.001);
+        Assertions.assertEquals(expected, math.computeMathOperations(a, b));
     }
 }

@@ -5,11 +5,9 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Cast two double values to integers and return their sum.
- * 
  * Input:
  * - double a = 5.7
  * - double b = 3.4
- * 
  * Expected Output:
  * - The sum of the casted integers (5 + 3) = 8
  */

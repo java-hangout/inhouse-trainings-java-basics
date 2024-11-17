@@ -1,0 +1,331 @@
+### Contents of AClassesAndObjects.java ###
+package com.jh.iht.java.basics.co;
+
+// Class definition
+class Car1 {
+    // Attributes (Fields)
+    String model;
+    int year;
+
+    // Constructor
+    public Car1(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // Method to display car details
+    public void displayDetails() {
+        System.out.println("Car Model: " + model + ", Year: " + year);
+    }
+}
+
+/**
+ * @author Veeresh N
+ * @version 1.0
+ */
+
+public class AClassesAndObjects {
+    public static void main(String[] args) {
+        // Creating objects (instances of the Car class)
+        Car1 car1 = new Car1("Tesla Model 3", 2022);
+        Car1 car2 = new Car1("BMW M3", 2023);
+
+        // Accessing methods using objects
+        car1.displayDetails();
+        car2.displayDetails();
+    }
+}
+
+### Contents of BProceduralProgramming.java ###
+package com.jh.iht.java.basics.co;
+
+/**
+ * @author Veeresh N
+ * @version 1.0
+ */
+
+public class BProceduralProgramming {
+
+    // Method to sum the elements of an array
+    public int sumArray(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        BProceduralProgramming pp = new BProceduralProgramming();
+        int[] numbers = {1, 2, 3, 4, 5};
+        int result = pp.sumArray(numbers);
+        System.out.println("Sum of array: " + result);
+    }
+}
+
+### Contents of CEncapsulationExample.java ###
+package com.jh.iht.java.basics.co;
+
+public class CEncapsulationExample {
+
+    // Private attributes
+    private String name;
+    private int age;
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter method for age
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        }
+    }
+}
+
+### Contents of DAbstractionExample.java ###
+package com.jh.iht.java.basics.co;
+
+abstract class Animal {
+    public abstract String sound(); // Abstract method
+}
+
+class Dog extends Animal {
+    @Override
+    public String sound() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public String sound() {
+        System.out.println("Cat meows");
+        return "Cat meows";
+    }
+}
+
+public class DAbstractionExample {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sound(); // Outputs: Dog barks
+
+        Animal cat = new Cat();
+        cat.sound(); // Outputs: Cat meows
+    }
+}
+
+### Contents of ECouplingExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Engine2 {
+    public String start() {
+        System.out.println("Engine started");
+        return "Engine started";
+    }
+}
+
+class Car2 {
+    private Engine2 engine;
+
+    // Constructor Injection (Loose coupling)
+    public Car2(Engine2 engine) {
+        this.engine = engine;
+    }
+
+    public String startCar() {
+        return engine.start(); // Car depends on Engine to start
+    }
+}
+
+public class ECouplingExample {
+    public static void main(String[] args) {
+        Engine2 engine = new Engine2();
+        Car2 car = new Car2(engine);
+        car.startCar(); // Outputs: Engine started
+    }
+}
+
+### Contents of FReducingCoupling.java ###
+package com.jh.iht.java.basics.co;
+
+// Interface for Engine
+interface Engine3 {
+    String start();
+}
+
+// Concrete class for Electric Engine
+class ElectricEngine3 implements Engine3 {
+    @Override
+    public String start() {
+        System.out.println("Electric Engine3 started.");
+        return "Electric Engine3 started.";
+    }
+}
+
+// Concrete class for Gas Engine
+class GasEngine3 implements Engine3 {
+    @Override
+    public String start() {
+        System.out.println("Gas Engine3 started.");
+        return "Gas Engine3 started.";
+    }
+}
+
+// Car class that uses Engine interface to reduce coupling
+class Car3 {
+    private final Engine3 engine1;  // Loose coupling: Car doesn't depend on a specific Engine type
+
+    // Constructor injection to set the engine
+    public Car3(Engine3 engine1) {
+        this.engine1 = engine1;
+    }
+
+    public String startCar() {
+        return engine1.start();
+    }
+}
+
+public class FReducingCoupling {
+    public static void main(String[] args) {
+        // We can easily switch engine types
+        Engine3 electricEngine1 = new ElectricEngine3();
+        Car3 electricCar1 = new Car3(electricEngine1);
+        electricCar1.startCar();  // Outputs: Electric Engine started.
+
+        Engine3 gasEngine1 = new GasEngine3();
+        Car3 gasCar1 = new Car3(gasEngine1);
+        gasCar1.startCar();  // Outputs: Gas Engine started.
+    }
+}
+
+### Contents of GConstructorsExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Person {
+    String name;
+    int age;
+
+    // Constructor to initialize the name and age
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display person details
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class GConstructorsExample {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 30);  // Using the constructor to create a Person object
+        person.displayInfo();  // Outputs: Name: Alice, Age: 30
+    }
+}
+
+### Contents of HMethodOverloadingExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Calculator {
+    // Overloaded method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method to add two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+public class HMethodOverloadingExample {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        
+        System.out.println("Sum of integers: " + calculator.add(2, 3));   // Uses int version
+        System.out.println("Sum of doubles: " + calculator.add(2.5, 3.5)); // Uses double version
+        System.out.println("Sum of three integers: " + calculator.add(1, 2, 3)); // Uses three int version
+    }
+}
+
+### Contents of IConstructorOverloadingExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Person1 {
+    String name;
+    int age;
+
+    // Constructor with no parameters
+    public Person1() {
+        this.name = "Unknown";
+        this.age = 0;
+    }
+
+    // Constructor with parameters
+    public Person1(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class IConstructorOverloadingExample {
+    public static void main(String[] args) {
+        Person1 person1 = new Person1();  // Using the default constructor
+        person1.displayInfo();  // Outputs: Name: Unknown, Age: 0
+
+        Person1 person2 = new Person1("John", 25);  // Using the parameterized constructor
+        person2.displayInfo();  // Outputs: Name: John, Age: 25
+    }
+}
+
+### Contents of JStaticMembersExample.java ###
+package com.jh.iht.java.basics.co;
+
+class Counter {
+    static int count = 0;  // Static variable
+
+    public Counter() {
+        count++;  // Increment the count whenever an object is created
+    }
+
+    public static int getCount() {
+        return count;  // Static method to access the static variable
+    }
+}
+
+public class JStaticMembersExample {
+    public
+
+ static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        System.out.println("Number of Counter objects created: " + Counter.getCount());  // Outputs: 3
+    }
+}
+

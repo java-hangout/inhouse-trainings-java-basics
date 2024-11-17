@@ -1,0 +1,170 @@
+### Contents of AComparisonOperators.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class AComparisonOperators {
+    // Method to compare two numbers using comparison operators
+    public boolean compareNumbers(int a, int b) {
+        return a > b; // Returns true if a is greater than b
+    }
+}
+
+### Contents of BLogicalOperators.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class BLogicalOperators {
+    // Method to check if both conditions are true using logical AND
+    public boolean checkLogicalOperators(int a, int b) {
+        return (a > b) && (b > 0);  // Returns true if both conditions are true
+    }
+}
+
+### Contents of CIfStatements.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class CIfStatements {
+    // Method to check if a number is positive, negative, or zero
+    public String checkNumber(int num) {
+        if (num > 0) {
+            return "Positive";
+        } else if (num < 0) {
+            return "Negative";
+        } else {
+            return "Zero";
+        }
+    }
+}
+
+### Contents of DSimplifyingIfStatements.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class DSimplifyingIfStatements {
+    // Method to check if a number is even or odd using simplified if-else
+    public String checkEvenOrOdd(int num) {
+        return (num % 2 == 0) ? "Even" : "Odd";  // Simplified using ternary operator
+    }
+}
+
+### Contents of ETernaryOperator.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class ETernaryOperator {
+    // Method to check if a number is positive or negative using ternary operator
+    public String checkPositiveNegative(int num) {
+        return (num >= 0) ? "Positive" : "Negative";  // Ternary operator
+    }
+}
+
+### Contents of FSwitchStatements.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class FSwitchStatements {
+    // Method to return day of the week based on the number
+    public String getDayOfWeek(int day) {
+        switch (day) {
+            case 1: return "Monday";
+            case 2: return "Tuesday";
+            case 3: return "Wednesday";
+            case 4: return "Thursday";
+            case 5: return "Friday";
+            case 6: return "Saturday";
+            case 7: return "Sunday";
+            default: return "Invalid Day";
+        }
+    }
+}
+
+### Contents of GFizzBuzz.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class GFizzBuzz {
+    // Method to print "Fizz", "Buzz" or "FizzBuzz" based on divisibility
+    public String fizzBuzz(int num) {
+        if (num % 3 == 0 && num % 5 == 0) {
+            return "FizzBuzz";
+        } else if (num % 3 == 0) {
+            return "Fizz";
+        } else if (num % 5 == 0) {
+            return "Buzz";
+        } else {
+            return String.valueOf(num);
+        }
+    }
+}
+
+### Contents of HForLoops.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class HForLoops {
+    // Method to sum numbers from 1 to n using a for loop
+    public int sumUsingForLoop(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+}
+
+### Contents of IWhileLoops.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class IWhileLoops {
+    // Method to sum numbers from 1 to n using a while loop
+    public int sumUsingWhileLoop(int n) {
+        int sum = 0;
+        int i = 1;
+        while (i <= n) {
+            sum += i;
+            i++;
+        }
+        return sum;
+    }
+}
+
+### Contents of JDoWhileLoops.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class JDoWhileLoops {
+    // Method to sum numbers from 1 to n using a do-while loop
+    public int sumUsingDoWhileLoop(int n) {
+        int sum = 0;
+        int i = 1;
+        do {
+            sum += i;
+            i++;
+        } while (i <= n);
+        return sum;
+    }
+}
+
+### Contents of KBreakContinue.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class KBreakContinue {
+    // Method to return a list of even numbers from 1 to n, using continue
+    public String listEvenNumbers(int n) {
+        StringBuilder evenNumbers = new StringBuilder();
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 != 0) {
+                continue;  // Skip odd numbers
+            }
+            evenNumbers.append(i).append(" ");
+        }
+        return evenNumbers.toString();
+    }
+}
+
+### Contents of LForEachLoop.java ###
+package com.jh.iht.java.basics.controlflow;
+
+public class LForEachLoop {
+    // Method to sum elements in an array using for-each loop
+    public int sumUsingForEachLoop(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+}
+

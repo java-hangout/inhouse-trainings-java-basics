@@ -16,11 +16,13 @@ class SpecificException extends BaseException {
 
 // Class demonstrating exception hierarchy
 class Demo {
-    public void performAction(int value) throws SpecificException {
+    public String performAction(int value) throws SpecificException {
         if (value < 0) {
             throw new SpecificException("Negative value is not allowed.");
         } else {
-            System.out.println("Action performed with value: " + value);
+            String result = "Action performed with value: " + value;
+            System.out.println(result);
+            return result;
         }
     }
 }

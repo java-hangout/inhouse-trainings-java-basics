@@ -5,12 +5,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem Statement:
- * Custom exceptions allow the developer to define specific error conditions tailored to the application.
- * Here we are testing a custom exception to validate age restrictions.
- * 
+ * Define a custom exceptions allow to define specific error conditions tailored to the application.
+ * Testing a custom exception to validate age restrictions.
  * Input:
  * - Age value (e.g., 15)
- * 
  * Expected Output:
  * - "Age must be 18 or older."
  */

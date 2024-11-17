@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Format a double number to two decimal places.
- * 
  * Input:
  * - double number = 3.14159
- * 
  * Expected Output:
  * - The formatted number is "3.14"
  */

@@ -1,11 +1,6 @@
 package com.jh.iht.java.basics.cee;
 
 import java.sql.SQLException;
-
-/**
- * @author Veeresh N
- * @version 1.0
- */
 class DatabaseConnectionException extends Exception {
     public DatabaseConnectionException(String message) {
         super(message);
@@ -16,11 +11,6 @@ class DatabaseConnectionException extends Exception {
         super(message, cause);
     }
 }
-
-/**
- * @author Veeresh N
- * @version 1.0
- */
 
 public class ChainingExceptions {
     public static void connectToDatabase() throws DatabaseConnectionException {

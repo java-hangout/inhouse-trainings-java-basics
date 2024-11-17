@@ -1,0 +1,164 @@
+### Contents of AInputStreamExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * The InputStream class is used to read bytes from a source.
+ * This test checks if the InputStream can correctly read data from a file.
+ * Input: - File with content: "Hello, world!"
+ * Expected Output: - "Hello, world!"
+ */
+public class AInputStreamExampleTest {
+
+    @Test
+    public void testReadDataFromFile() throws Exception {
+        InputStreamExample inputStreamExample = new InputStreamExample();
+        String data = inputStreamExample.readDataFromFile("D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\test.txt");
+        Assertions.assertEquals("Hello, world!", data);
+    }
+}
+
+### Contents of BOutputStreamExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+/**
+ * Problem Statement:
+ * The OutputStream class is used to write bytes to a destination. 
+ * Check if the OutputStream can correctly write data to a file.
+ * Input:
+ * - File: test-output.txt
+ * - Data: "Test data"
+ * Expected Output:
+ * - File content: "Test data"
+ */
+public class BOutputStreamExampleTest {
+
+    @Test
+    public void testWriteDataToFile() throws Exception {
+        OutputStreamExample outputStreamExample = new OutputStreamExample();
+        String fileName = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\test-output.txt";
+        String data = "Test data";
+        
+        // Write data to file
+        outputStreamExample.writeDataToFile(fileName, data);
+
+        // Read back the file content and verify
+        String fileContent = new String(Files.readAllBytes(Paths.get(fileName)));
+        Assertions.assertEquals("Test data", fileContent);
+    }
+}
+
+### Contents of CFileIOExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * This test checks if FileReader and FileWriter can correctly read and write character data to a file.
+ * 
+ * Input:
+ * - File name: test-file.txt
+ * - Data: "Java File I/O"
+ * 
+ * Expected Output:
+ * - File content: "Java File I/O"
+ */
+public class CFileIOExampleTest {
+
+    @Test
+    public void testFileIO() throws Exception {
+        FileIOExample fileIOExample = new FileIOExample();
+        String fileName = "test-file.txt";
+        String data = "Java File I/O";
+
+        // Write data to file
+        fileIOExample.writeFile(fileName, data);
+
+        // Read back the file content and verify
+        String fileContent = fileIOExample.readFile(fileName);
+        Assertions.assertEquals("Java File I/O", fileContent.trim());
+    }
+}
+
+### Contents of DBufferedIOExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * This test checks if BufferedInputStream and BufferedOutputStream can efficiently read and write byte data to a file.
+ * 
+ * Input:
+ * - File name: buffered-file.txt
+ * - Data: "Buffered I/O"
+ * 
+ * Expected Output:
+ * - File content: "Buffered I/O"
+ */
+public class DBufferedIOExampleTest {
+
+    @Test
+    public void testBufferedIO() throws Exception {
+        BufferedIOExample bufferedIOExample = new BufferedIOExample();
+        String fileName = "buffered-file.txt";
+        String data = "Buffered I/O";
+
+        // Write data to file using buffered output
+        bufferedIOExample.writeDataWithBuffer(fileName, data);
+
+        // Read back the file content using buffered input
+        String fileContent = bufferedIOExample.readDataWithBuffer(fileName);
+        Assertions.assertEquals("Buffered I/O", fileContent);
+    }
+}
+
+### Contents of FFileWriterReaderExampleTest.java ###
+package com.jh.iht.java.basics.io;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement:
+ * This test verifies the functionality of FileWriter and FileReader in Java.
+ * It checks if data can be written to and read from a file using these classes.
+ * <p>
+ * Input:
+ * - File name: filewriterreader.txt
+ * - Data: "FileWriter and FileReader"
+ * <p>
+ * Expected
+ * <p>
+ * Output:
+ * - File content: "FileWriter and FileReader"
+ */
+public class FFileWriterReaderExampleTest {
+
+    @Test
+    public void testFileWriterReader() throws Exception {
+        FileWriterReaderExample fileWriterReaderExample = new FileWriterReaderExample();
+        String fileName = "filewriterreader.txt";
+        String data = "FileWriter and FileReader";
+
+        // Write data to file
+        fileWriterReaderExample.writeFile(fileName, data);
+
+        // Read back the file content and verify
+        String fileContent = fileWriterReaderExample.readFile(fileName);
+        Assertions.assertEquals("FileWriter and FileReader", fileContent);
+    }
+}
+

@@ -1,0 +1,248 @@
+### Contents of CatchingExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+// Class to demonstrate catching exceptions
+class Division {
+    public int divide(int numerator, int denominator) throws ArithmeticException {
+        if (denominator == 0) {
+            throw new ArithmeticException("Cannot divide by zero.");
+        }
+        return numerator / denominator;
+    }
+}
+
+public class CatchingExceptionsExample {
+    public static void main(String[] args) {
+        Division division = new Division();
+        
+        try {
+            int result = division.divide(10, 2);  // Expected: 5
+            System.out.println("Result: " + result);
+            result = division.divide(10, 0);  // Should throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());  // Expected output: Cannot divide by zero.
+        }
+    }
+}
+
+### Contents of CatchMultipleExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class MultipleExceptionHandling {
+    public String divide(int numerator, int denominator) {
+        try {
+            int result = numerator / denominator;  // Division by zero could occur
+            return "Result: " + result;
+        } catch (ArithmeticException e) {
+            return "Error: Division by zero.";
+        } catch (Exception e) {
+            return "General error: " + e.getMessage();
+        }
+    }
+}
+
+public class CatchMultipleExceptionsExample {
+    public static void main(String[] args) {
+        MultipleExceptionHandling handler = new MultipleExceptionHandling();
+        System.out.println(handler.divide(10, 0));  // Should catch ArithmeticException
+        System.out.println(handler.divide(10, 2));  // Should not throw any exception
+    }
+}
+
+### Contents of ExceptionHierarchyExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+// Base class Exception
+class BaseException extends Exception {
+    public BaseException(String message) {
+        super(message);
+    }
+}
+
+// Derived class for specific type of exception
+class SpecificException extends BaseException {
+    public SpecificException(String message) {
+        super(message);
+    }
+}
+
+// Class demonstrating exception hierarchy
+class Demo {
+    public String performAction(int value) throws SpecificException {
+        if (value < 0) {
+            throw new SpecificException("Negative value is not allowed.");
+        } else {
+            String result = "Action performed with value: " + value;
+            System.out.println(result);
+            return result;
+        }
+    }
+}
+
+public class ExceptionHierarchyExample {
+    public static void main(String[] args) {
+        Demo demo = new Demo();
+
+        try {
+            demo.performAction(10);  // Expected output: Action performed with value: 10
+            demo.performAction(-5);  // Should throw SpecificException
+        } catch (SpecificException e) {
+            System.out.println(e.getMessage());  // Expected output: Negative value is not allowed.
+        }
+    }
+}
+
+### Contents of ExceptionTypesExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+// Custom exception class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+// Person class to demonstrate exception handling
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) throws InvalidAgeException {
+        this.name = name;
+        if (age < 0) {
+            throw new InvalidAgeException("Age cannot be negative.");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class ExceptionTypesExample {
+    public static void main(String[] args) {
+        try {
+            Person person = new Person("John", 30);  // Valid person
+            System.out.println("Age: " + person.getAge());  // Expected output: 30
+
+            // Invalid person creation (throws InvalidAgeException)
+            Person invalidPerson = new Person("Alice", -5);  // Should throw InvalidAgeException
+
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());  // Expected output: "Age cannot be negative."
+        }
+    }
+}
+
+### Contents of FinallyBlockExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class FinallyBlockDemo {
+    public String demonstrateFinallyBlock(int a, int b) {
+        try {
+            int result = a / b;  // This will throw ArithmeticException
+            return "Result: " + result;
+        } catch (ArithmeticException e) {
+            return "Caught ArithmeticException: " + e.getMessage();
+        } finally {
+            return "Finally block always runs";  // Finally block always runs
+        }
+    }
+}
+
+public class FinallyBlockExample {
+    public static void main(String[] args) {
+        FinallyBlockDemo demo = new FinallyBlockDemo();
+        System.out.println(demo.demonstrateFinallyBlock(10,10));
+    }
+}
+
+### Contents of ReThrowingExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class ReThrowingDemo {
+    public String process() throws Exception {
+        try {
+            throw new Exception("Initial exception");
+        } catch (Exception e) {
+            System.out.println("Caught exception: " + e.getMessage());
+            throw
+
+                    e;  // Re-throwing the caught exception
+        }
+    }
+}
+
+public class ReThrowingExceptionsExample {
+    public static void main(String[] args) {
+        ReThrowingDemo demo = new ReThrowingDemo();
+
+        try {
+            demo.process();  // Will re-throw the exception after catching it
+        } catch (Exception e) {
+            System.out.println("Final caught exception: " + e.getMessage());
+        }
+    }
+}
+
+### Contents of ThrowingExceptionsExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+class InvalidAgeException1 extends Exception {
+    public InvalidAgeException1(String message) {
+        super(message);
+    }
+}
+
+class User {
+    private int age;
+
+    public void setAge(int age) throws InvalidAgeException1 {
+        if (age < 0) {
+            throw new InvalidAgeException1("Age cannot be negative");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+}
+
+public class ThrowingExceptionsExample {
+    public static void main(String[] args) {
+        User user = new User();
+        
+        try {
+            user.setAge(-1);  // This should throw InvalidAgeException
+        } catch (InvalidAgeException1 e) {
+            System.out.println(e.getMessage());  // Expected output: "Age cannot be negative"
+        }
+    }
+}
+
+### Contents of TryWithResourcesExample.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import java.io.*;
+
+class TryWithResourcesDemo {
+    public String readFile(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line = reader.readLine();
+            return "Read line: " + line;
+        } catch (IOException e) {
+            return "IOException: " + e.getMessage();
+        }
+    }
+}
+
+public class TryWithResourcesExample {
+    public static void main(String[] args) {
+        String filePath = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\testfile.txt";
+        TryWithResourcesDemo demo = new TryWithResourcesDemo();
+        System.out.println(demo.readFile(filePath));  // Will throw IOException if the file is not found
+    }
+}
+

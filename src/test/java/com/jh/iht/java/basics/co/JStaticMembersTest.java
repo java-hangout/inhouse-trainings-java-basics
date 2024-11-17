@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Problem: Demonstrate the use of static members in a class.
- * Input: - Counter objects created using the constructor
+ * Problem: Create a class as Counter with static variable as count and increment it in construct.
+ * Input: - Counter objects created using the constructor with counter increment
  * Expected Output: - Number of Counter objects created = 3
  */
 public class JStaticMembersTest {

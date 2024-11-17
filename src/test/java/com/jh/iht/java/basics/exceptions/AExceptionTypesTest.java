@@ -1,8 +1,7 @@
 package com.jh.iht.java.basics.exceptions;
 
 /**
-Problem Statement:
-Demonstrate **Types of Exception** in Java by creating a custom exception `InvalidAgeException` and throwing it when an invalid age is provided.
+ Problem Statement: Create a custom exception `InvalidAgeException` and throwing it when an invalid age is provided.
 
 Steps to Implement:
 1. **Create a custom exception** `InvalidAgeException` that extends the `Exception` class.

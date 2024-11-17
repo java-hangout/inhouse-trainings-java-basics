@@ -8,11 +8,6 @@ class InvalidAgeException extends Exception {
     }
 }
 
-/**
- * @author Veeresh N
- * @version 1.0
- */
-
 public class CustomException {
     public static void validateAge(int age) throws InvalidAgeException {
         if (age < 18) {

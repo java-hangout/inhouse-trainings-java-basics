@@ -1,0 +1,323 @@
+### Contents of AExceptionTypesTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+/**
+ Problem Statement: Create a custom exception `InvalidAgeException` and throwing it when an invalid age is provided.
+
+Steps to Implement:
+1. **Create a custom exception** `InvalidAgeException` that extends the `Exception` class.
+2. **Person class**: The constructor of `Person` class throws the `InvalidAgeException` if the age is negative.
+3. **Test the exception handling** for valid and invalid input.
+
+Test Scenarios:
+1. Test valid age creation.
+2. Test invalid age creation, ensuring that `InvalidAgeException` is thrown.
+
+Expected Output:
+1. For valid age, the age should be returned.
+2. For invalid age (negative), the exception should be thrown with the message "Age cannot be negative."
+*/
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class AExceptionTypesTest {
+
+    @Test
+    public void testValidAge() throws InvalidAgeException {
+        Person person = new Person("John", 30);
+        Assertions.assertEquals(30, person.getAge());  // Expected: 30
+    }
+
+    @Test
+    public void testInvalidAge() {
+        try {
+            Person person = new Person("Alice", -5);
+            Assertions.fail("Expected InvalidAgeException to be thrown");
+        } catch (InvalidAgeException e) {
+            Assertions.assertEquals("Age cannot be negative.", e.getMessage());
+        }
+    }
+}
+
+### Contents of BExceptionHierarchyTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+/**
+Problem Statement: Create a base exception BaseException and a derived exception SpecificException.
+- The `Demo` class uses `SpecificException` to handle specific cases where a negative value is provided.
+
+Steps to Implement:
+1. Base Exception: Create a custom base exception `BaseException`.
+2. Derived Exception: Create a derived class `SpecificException` that extends `BaseException`.
+3. Test the exception hierarchy by throwing and catching `SpecificException`.
+
+Test Scenarios:
+1. Test valid action that does not throw any exception.
+2. Test invalid action that throws a `SpecificException` when the value is negative.
+
+Expected Output:
+1. For a valid action, it should print: "Action performed with value: 10"
+2. For invalid input (negative value), it should throw `SpecificException` and print: "Negative value is not allowed."
+*/
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class BExceptionHierarchyTest {
+
+    @Test
+    public void testValidAction() throws SpecificException {
+        Demo demo = new Demo();
+       // Expected output: Action performed with value: 10
+        Assertions.assertEquals("Action performed with value: 10",demo.performAction(10));
+    }
+
+    @Test
+    public void testInvalidAction() {
+        Demo demo = new Demo();
+        try {
+            demo.performAction(-5);  // Should throw SpecificException
+            Assertions.fail("Expected SpecificException to be thrown");
+        } catch (SpecificException e) {
+            Assertions.assertEquals("Negative value is not allowed.", e.getMessage());
+        }
+    }
+}
+
+### Contents of CatchingExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem Statement: Specifically, we will handle an ArithmeticException when attempting to divide by zero.
+ * - The Division class has a divide method that throws an ArithmeticException if the denominator is zero.
+ * Steps to Implement:
+ * 1. Division Class: Implement the divide method that performs division and throws an ArithmeticException if the denominator is zero.
+ * 2. Test Exception Handling: Write tests to ensure that dividing by zero throws the expected exception, and valid divisions produce the correct result.
+ * Test Scenarios:
+ * 1. Test division with valid inputs.
+ * 2. Test division with zero as the denominator, ensuring that ArithmeticException is thrown.
+ * Expected Output:
+ * 1. For valid division (e.g., 10 / 2), it should return the result (5).
+ * 2. For division by zero, it should throw an ArithmeticException with the message: "Cannot divide by zero."
+ */
+
+public class CatchingExceptionsTest {
+
+    @Test
+    public void testValidDivision() throws ArithmeticException {
+        Division division = new Division();
+        int result = division.divide(10, 2);
+        Assertions.assertEquals(5, result);  // Expected: 5
+    }
+
+    @Test
+    public void testDivisionByZero() {
+        Division division = new Division();
+        try {
+            division.divide(10, 0);  // Should throw ArithmeticException
+            Assertions.fail("Expected ArithmeticException to be thrown");
+        } catch (ArithmeticException e) {
+            Assertions.assertEquals("Cannot divide by zero.", e.getMessage());
+        }
+    }
+}
+
+### Contents of DCatchMultipleExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement: Handle both ArithmeticException (when dividing by zero) and a general Exception.
+
+Steps to Implement:
+1. Divide Method: Implement a method that performs division and catches both ArithmeticException and a general Exception.
+2. Catching Multiple Exceptions: Write tests to verify that both types of exceptions are properly handled.
+
+Test Scenarios:
+1. Test division by zero, ensuring the ArithmeticException is caught and the appropriate message is displayed.
+2. Test valid division, ensuring no exception is thrown.
+   
+Expected Output:
+1. For division by zero, the message "Error: Division by zero." should be returned.
+2. For valid division, the result should be returned without errors.
+*/
+
+public class DCatchMultipleExceptionsTest {
+
+    @Test
+    public void testArithmeticException() {
+        MultipleExceptionHandling handler = new MultipleExceptionHandling();
+        String result = handler.divide(10, 0);
+        assertEquals("Error: Division by zero.", result);  // Expected result for division by zero
+    }
+
+    @Test
+    public void testValidDivision() {
+        MultipleExceptionHandling handler = new MultipleExceptionHandling();
+        String result = handler.divide(10, 2);
+        assertEquals("Result: 5", result);  // Expected result for valid division
+    }
+}
+
+### Contents of EFinallyBlockTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/*
+Problem Statement: Finally block runs whether an exception is thrown or not.
+
+Steps to Implement:
+1. Finally Block: Implement a method where an exception is caught, and a finally block runs after the exception is handled.
+2. Test the behavior of the finally block to ensure it is executed even when an exception occurs.
+
+Test Scenarios:
+1. Test the scenario where an exception is thrown and caught, but the finally block should still execute.
+
+Expected Output:
+1. "Caught ArithmeticException: / by zero"
+2. "Finally block always runs"
+*/
+
+public class EFinallyBlockTest {
+
+    @Test
+    public void testFinallyBlock() {
+        FinallyBlockDemo demo = new FinallyBlockDemo();
+        String result = demo.demonstrateFinallyBlock(10,5);
+        assertEquals("Finally block always runs", result);  // Expected: Finally block always runs
+    }
+}
+
+### Contents of FTryWithResourcesTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/*
+Problem Statement: Use try-with-resources to automatically close resources like BufferedReader after use.
+
+Steps to Implement:
+1. Try-with-Resources: Implement a method where a file is read using a BufferedReader within a try-with-resources block.
+2. Test exception handling when the file does not exist (IOException).
+
+Test Scenarios:
+1. Test reading a file that exists.
+2. Test reading a file that does not exist, ensuring an IOException is thrown.
+
+Expected Output:
+1. If the file exists, it should print the first line of the file.
+2. If the file does not exist, it should print "IOException: ..." error message.
+*/
+
+public class FTryWithResourcesTest {
+    @Test
+    public void testReadFileWithFile() {
+        String filePath = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\testfile.txt";
+        TryWithResourcesDemo demo = new TryWithResourcesDemo();
+        // Simulate file read error for the test
+        String result = demo.readFile(filePath);
+        assertTrue(result.startsWith("Read line: Test"));  // Expected to start with IOException message
+    }
+
+    @Test
+    public void testReadFileWithOutFile() {
+        String filePath = "";
+        TryWithResourcesDemo demo = new TryWithResourcesDemo();
+        // Simulate file read error for the test
+        String result = demo.readFile(filePath);
+        assertTrue(result.startsWith("IOException:"));  // Expected to start with IOException message
+    }
+}
+
+### Contents of GThrowingExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/*
+Problem Statement:
+Demonstrate **throwing exceptions** in Java. The task is to throw a custom exception `InvalidAgeException` when an invalid age is provided.
+
+Steps to Implement:
+1. **Custom Exception**: Implement a custom exception `InvalidAgeException` to be thrown when an invalid age is encountered.
+2. **SetAge Method**: Implement a method `setAge()` in the `User` class that throws `InvalidAgeException` if the age is negative.
+
+Test Scenarios:
+1. Test setting a valid age.
+2. Test setting an invalid age, ensuring that `InvalidAgeException` is thrown.
+
+Expected Output:
+1. For valid age, the age should be set.
+2. For invalid age, an exception should be thrown with the message: "Age cannot be negative."
+*/
+
+public class GThrowingExceptionsTest {
+
+    @Test
+    public void testSetValidAge() throws InvalidAgeException1 {
+        User user = new User();
+        user.setAge(25);  // Expected: No exception, age is set
+        assertEquals(25, user.getAge());  // Verify that age is set correctly
+    }
+
+    @Test
+    public void testSetInvalidAge() {
+        User user = new User();
+        try {
+            user.setAge(-1);  // Expected: InvalidAgeException is thrown
+            fail("Expected InvalidAgeException to be thrown");
+        } catch (InvalidAgeException1 e) {
+            assertEquals("Age cannot be negative", e.getMessage());
+        }
+    }
+}
+
+### Contents of HReThrowingExceptionsTest.java ###
+package com.jh.iht.java.basics.exceptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+/*
+Problem Statement:
+Demonstrate **re-throwing exceptions**. The task is to catch an exception, log it, and then re-throw it.
+
+Steps to Implement:
+1. **Re-throwing Exceptions**: Implement a method that catches an exception, prints it, and re-throws it.
+2. **Test the behavior** of exception re-throwing.
+
+Test Scenarios:
+1. Test the re-throwing of the exception, ensuring that the exception is caught and re-thrown correctly.
+
+Expected Output:
+1. The exception should be re-thrown and caught in the calling code.
+*/
+
+public class HReThrowingExceptionsTest {
+
+    @Test
+    public void testReThrowException() {
+        ReThrowingDemo demo = new ReThrowingDemo();
+        try {
+            demo.process();  // Expected: Initial exception re-thrown
+            fail("Expected Exception to be re-thrown");
+        } catch (Exception e) {
+            assertEquals("Initial exception", e.getMessage());  // Verify exception message
+        }
+    }
+}
+

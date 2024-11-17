@@ -1,0 +1,70 @@
+### Contents of Animal.java ###
+package com.jh.iht.java.basics.molr;
+
+// Superclass Animal
+class Animal {
+    public String makeSound() {
+        System.out.println("Animal makes sound");
+        return "Animal makes sound";
+    }
+}
+
+// Subclass Dog that overrides the makeSound method
+class Dog extends Animal {
+    @Override
+    public String makeSound() {
+        System.out.println("Dog barks");
+        return "Dog barks";
+    }
+}
+
+### Contents of Calculator.java ###
+package com.jh.iht.java.basics.molr;
+
+class Calculator {
+
+    // Overloaded add method with two integer arguments
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded add method with two double arguments
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    // Overloaded add method with three integer arguments
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+### Contents of Shape.java ###
+package com.jh.iht.java.basics.molr;
+
+// Superclass Shape
+class Shape {
+    public String draw() {
+        System.out.println("Drawing a shape");
+        return "Drawing a shape";
+    }
+}
+
+// Subclass Circle that overrides the draw method
+class Circle extends Shape {
+    @Override
+    public String draw() {
+        System.out.println("Drawing a circle");
+        return "Drawing a circle";
+    }
+}
+
+// Subclass Rectangle that overrides the draw method
+class Rectangle extends Shape {
+    @Override
+    public String draw() {
+        System.out.println("Drawing a rectangle");
+        return "Drawing a rectangle";
+    }
+}
+

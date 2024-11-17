@@ -1,0 +1,119 @@
+### Contents of ATypesOfErrors.java ###
+package com.jh.iht.java.basics.dda;
+
+/*
+public class ATypesOfErrors {
+
+    // Method to demonstrate a runtime error (division by zero)
+    public int divideByZero() {
+        int result = 10 / 0; // This will throw an ArithmeticException
+        return result;
+    }
+
+    // Method to demonstrate a logical error
+    public int addNumbers(int a, int b) {
+        return a - b;  // Logical error: should be a + b
+    }
+
+    // Method to demonstrate a syntax error (missing semicolon)
+    public void printMessage() {
+        System.out.println("This is a message") // Syntax error: missing semicolon
+    }
+}*/
+
+### Contents of BCommonSyntaxErrors.java ###
+package com.jh.iht.java.basics.dda;
+
+/*
+public class BCommonSyntaxErrors {
+
+    // Method with a missing semicolon (compilation error)
+    public void missingSemicolon() {
+        System.out.println("Hello, world") // Missing semicolon will cause a compilation error
+    }
+
+    // Method with mismatched parentheses (compilation error)
+    public void mismatchedParentheses() {
+        if (true { // Mismatched parentheses will cause a compilation error
+            System.out.println("This will cause an error");
+        }
+    }
+
+    // Method with undeclared variable (compilation error)
+    public void undeclaredVariable() {
+        int x;
+        x = 5;
+        y = 10;  // y is undeclared and will cause a compilation error
+    }
+}*/
+
+### Contents of CDebuggingExample.java ###
+package com.jh.iht.java.basics.dda;
+
+public class CDebuggingExample {
+
+    // Method that contains a bug (returns incorrect sum)
+    public int addNumbers(int a, int b) {
+        int sum = a * b; // Bug: multiplication instead of addition
+        return sum;
+    }
+
+    // Method to simulate a logical error to debug
+    public int findMax(int[] numbers) {
+        int max = numbers[0];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        return max; // Bug: This will cause an IndexOutOfBoundsException if the array is empty
+    }
+}
+
+### Contents of DPackagingExample.java ###
+package com.jh.iht.java.basics.dda;
+
+public class DPackagingExample {
+
+    // Simple method to demonstrate a Java program that could be packaged
+    public String greet(String name) {
+        return "Hello, " + name + "!";
+    }
+
+    public static void main(String[] args) {
+        DPackagingExample example = new DPackagingExample();
+        System.out.println(example.greet("World"));
+    }
+    /*#### **Packaging Instructions**
+
+            1. **Compile the Java files**:
+            - Open a terminal/command prompt and navigate to the directory containing the Java file(s).
+            - Compile the files using the following command:
+            ```bash
+    javac PackagingExample.java
+     ```
+
+             2. **Create a manifest file** (`manifest.txt`):
+    Create a file named `manifest.txt` with the following content:
+            ```
+    Main-Class: PackagingExample
+   ```
+
+           3. **Package the class files into a JAR file**:
+            - In the terminal, run the following command:
+            ```bash
+    jar cfm PackagingExample.jar manifest.txt PackagingExample.class
+     ```
+
+             4. **Running the JAR file**:
+            - After creating the JAR, you can run it with:
+            ```bash
+    java -jar PackagingExample.jar
+     ```
+
+             #### **JUnit Test Case (PackagingExampleTest.java)**
+
+    JUnit tests are not applicable for packaging because JUnit tests focus on code functionality. However, you can verify that the application works by testing the class methods as shown earlier.
+*/
+}
+

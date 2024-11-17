@@ -4,13 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Problem: Demonstrate the use of the final keyword for constants.
- * 
- * Input:
- * - final int CONSTANT_VALUE = 50
- * 
- * Expected Output:
- * - The constant value should be 50
+ * Problem: Demonstrate the use of the final keyword for constants. Create a class with a constant as final int CONSTANT_VALUE = 50
+ * and a method which will return that constant value.
+ * Expected Output: - The constant value should be 50
  */
 public class QFinalExampleTest {
 

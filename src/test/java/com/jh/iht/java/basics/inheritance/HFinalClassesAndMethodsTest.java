@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Demonstrate the use of final classes and methods.
- *
  * Input:
  * - FinalClass object
- *
  * Expected Output:
  * - "Final class method" from speak() method
  */

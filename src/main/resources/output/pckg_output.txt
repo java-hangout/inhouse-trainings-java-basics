@@ -1,0 +1,152 @@
+### Contents of AccessModifiersExample.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class AccessModifiersExample {
+    public static void main(String[] args) {
+        Person1 p = new Person1("John", 30, "123 Main St", "New York");
+        System.out.println(p.name);  // Accessible
+        // System.out.println(p.age);  // Error: age is private
+        System.out.println(p.address);  // Accessible within the same package
+        System.out.println(p.city);  // Accessible within the same package
+
+        p.displayInfo();  // Outputs: Name: John, Age: 30, Address: 123 Main St, City: New York
+    }
+}
+
+### Contents of EncapsulationExample.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class EncapsulationExample {
+    public static void main(String[] args) {
+        // Create a new person object
+        Person2 person = new Person2("Alice", 30);
+
+        // Accessing private fields using public getter methods
+        System.out.println("Name: " + person.getName());  // Alice
+        System.out.println("Age: " + person.getAge());  // 30
+
+        // Modifying private fields using setter methods
+        person.setName("Bob");
+        person.setAge(35);
+
+        // Display the updated details
+        person.display();  // Outputs: Name: Bob, Age: 35
+
+        // Attempting to set an invalid age
+        person.setAge(-5);  // Outputs: Age cannot be negative.
+    }
+}
+
+### Contents of PackageExample.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class PackageExample {
+    public static void main(String[] args) {
+        Person p = new Person("Alice", 25);
+        p.display(); // Outputs: Name: Alice, Age: 25
+    }
+}
+
+### Contents of Person.java ###
+package com.jh.iht.java.basics.pckg;
+
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+### Contents of Person1.java ###
+package com.jh.iht.java.basics.pckg;
+
+class Person1 {
+    public String name;  // Accessible from anywhere
+    private int age;     // Only accessible within this class
+    protected String address;  // Accessible within the same package or subclasses
+    String city;  // Default access modifier, accessible within the same package
+
+    public Person1(String name, int age, String address, String city) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.city = city;
+    }
+
+    // Public method to access age (instead of accessing directly from outside)
+   /* public void setAge(int age) throws IllegalAccessException {
+        if (age < 0) {
+            throw new IllegalAccessException("Age cannot be negative");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }*/
+
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Address: " + address + ", City: " + city);
+    }
+}
+
+### Contents of Person2.java ###
+package com.jh.iht.java.basics.pckg;
+
+// Class representing a Person with encapsulated fields
+class Person2 {
+    // Private fields
+    private String name;
+    private int age;
+
+    // Constructor to initialize the person object
+    public Person2(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter method for age
+    public void setAge(int age) {
+        if(age >= 0) {  // Validation to ensure non-negative age
+            this.age = age;
+        } else {
+            System.out.println("Age cannot be negative.");
+        }
+    }
+
+    // Display method to show the details of the person
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+

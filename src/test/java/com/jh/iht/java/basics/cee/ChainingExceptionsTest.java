@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
  * Problem Statement:
  * Exception chaining allows the original exception to be preserved while throwing a new exception.
  * This example demonstrates the use of exception chaining for database connection failure.
+ * Define connectToDatabase() throws DatabaseConnectionException which will through custom  SQLException("Unable to connect to the database.")
+ * Catch that exception and re throw new DatabaseConnectionException("Database connection failed.", e);
  * Input: - SQLException (causing a DatabaseConnectionException)
  * Expected Output:
  * - "Database connection failed."

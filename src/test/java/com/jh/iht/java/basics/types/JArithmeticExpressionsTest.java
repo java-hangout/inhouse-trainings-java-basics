@@ -5,13 +5,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Problem: Calculate the arithmetic expression (a + b) * (c - d).
- * 
  * Input:
  * - int a = 5
  * - int b = 3
  * - int c = 8
  * - int d = 2
- * 
  * Expected Output:
  * - The result of (5 + 3) * (8 - 2) = 8 * 6 = 48
  */

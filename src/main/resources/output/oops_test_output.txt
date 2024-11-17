@@ -1,0 +1,109 @@
+### Contents of BenefitsOfOOPTest.java ###
+package com.jh.iht.java.basics.oops;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+/**
+ * Problem: Demonstrate the benefits of OOP (Modularity, Reusability, Inheritance, Maintainability).
+ *
+ * Input:
+ * - Product object: Name = "Laptop", Price = 1000
+ * - Electronics object: Name = "Laptop", Price = 1000, Warranty = 2 years
+ * 
+ * Expected Output:
+ * - Product Name: Laptop, Price: 1000
+ * - Discounted Price (10%): 900
+ * - Electronics Warranty: 2 years
+ */
+public class BenefitsOfOOPTest {
+
+    @Test
+    public void testProduct() {
+        Product product = new Product("Laptop", 1000);
+        Assertions.assertEquals("Laptop", product.getName());
+        Assertions.assertEquals(1000, product.getPrice(), 0.01);
+    }
+
+    @Test
+    public void testCalculateDiscount() {
+        Product product = new Product("Laptop", 1000);
+        double discountedPrice = product.calculateDiscount(10);  // 10% discount
+        Assertions.assertEquals(900, discountedPrice, 0.01);
+   
+
+ }
+
+    @Test
+    public void testElectronics() {
+        Electronics laptop = new Electronics("Laptop", 1000, 2);
+        Assertions.assertEquals("Laptop", laptop.getName());
+        Assertions.assertEquals(1000, laptop.getPrice(), 0.01);
+        Assertions.assertEquals(2, laptop.getWarrantyYears());
+    }
+}
+
+### Contents of OOPConceptsTest.java ###
+package com.jh.iht.java.basics.oops;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Problem: Demonstrate the four main principles of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+ *
+ * Input:
+ * - Car object: Model = "Tesla Model X", Year = 2023
+ * - ElectricCar object: Model = "Tesla Model S", Year = 2023, Battery Capacity = 100 kWh
+ * - Animal sound examples: Dog, Cat, and Animal
+ * - Shape drawing: Circle and Rectangle
+ * 
+ * Expected Output:
+ * - Car details printed: "Model: Tesla Model X, Year: 2023"
+ * - Electric car details printed with battery capacity
+ * - Animal sound examples: Animal, Dog barks, Cat meows
+ * - Shape drawing: Circle and Rectangle
+ */
+public class OOPConceptsTest {
+
+    @Test
+    public void testEncapsulation() {
+        Car car = new Car();
+        car.setModel("Tesla Model X");
+        car.setYear(2023);
+        
+        Assertions.assertEquals("Tesla Model X", car.getModel());
+        Assertions.assertEquals(2023, car.getYear());
+    }
+
+    @Test
+    public void testInheritance() {
+        ElectricCar electricCar = new ElectricCar();
+        electricCar.setModel("Tesla Model S");
+        electricCar.setYear(2023);
+        electricCar.setBatteryCapacity(100);
+        
+        Assertions.assertEquals("Tesla Model S", electricCar.getModel());
+        Assertions.assertEquals(2023, electricCar.getYear());
+    }
+
+    @Test
+    public void testPolymorphism() {
+        Animal animal = new Animal();
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+
+        /*Assertions.assertEquals("Animal makes a sound", animal.sound());  // Polymorphism demonstration
+        Assertions.assertEquals("Dog barks", dog.sound());
+        Assertions.assertEquals("Cat meows", cat.sound());*/
+    }
+
+    @Test
+    public void testAbstraction() {
+        Shape circle = new Circle();
+        Shape rectangle = new Rectangle();
+        
+       /* Assertions.assertEquals("Drawing a Circle", circle.draw());  // Abstract method implementation in Circle class
+        Assertions.assertEquals("Drawing a Rectangle", rectangle.draw()); */ // Abstract method implementation in Rectangle class
+    }
+}
+

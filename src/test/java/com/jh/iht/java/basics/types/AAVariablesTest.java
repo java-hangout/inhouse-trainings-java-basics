@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test;
  * Input: int a = 7, int b = 3
  * Expected Output: The sum of the variables is 7 + 3 = 10.
  */
+
+/**
+ * @author Veeresh N
+ * @version 1.0
+ */
+
 public class AAVariablesTest {
 
     @Test

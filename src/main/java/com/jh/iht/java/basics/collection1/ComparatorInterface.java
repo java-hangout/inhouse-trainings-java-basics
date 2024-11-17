@@ -1,6 +1,5 @@
 package com.jh.iht.java.basics.collection1;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -21,11 +20,9 @@ class Person1{
 }
 
 public class ComparatorInterface {
-    public List<Person1> getPeople() {
-        List<Person1> people = new ArrayList<>();
-        people.add(new Person1("Alice", 30));
-        people.add(new Person1("Bob", 25));
-        people.add(new Person1("Charlie", 35));
+    public List<Person1> getPeople(List<Person1> people) {
+        // Sort exceptedResult by name using the Comparator
+        Collections.sort(people, sortByName());
         return people;
     }
 

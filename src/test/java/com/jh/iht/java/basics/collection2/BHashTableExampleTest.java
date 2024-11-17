@@ -8,11 +8,9 @@ import java.util.Hashtable;
 /**
  * Problem Statement:
  * A HashTable allows storing key-value pairs, providing quick access to values by keys.
- * This test checks if the HashTable can store and retrieve values correctly.
- * 
+ * Checks if the HashTable can store and retrieve values correctly.
  * Input:
  * - Country codes map: {"US" -> "1", "IN" -> "91", "DE" -> "49"}
- * 
  * Expected Output:
  * - Code for US: "1", Code for IN: "91", Contains "UK": false
  */

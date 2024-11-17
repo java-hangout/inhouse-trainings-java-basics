@@ -28,6 +28,6 @@ public class DStringMethodsTest {
         String result = example.stringMethodsExample(input);
         
         // Validate the result after applying all transformations
-        assertEquals("HI", result);  // The expected result is "HI" (trimmed, uppercase, replaced, first two characters)
+        assertEquals("Hi", result);  // The expected result is "HI" (trimmed, uppercase, replaced, first two characters)
     }
 }

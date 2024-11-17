@@ -7,10 +7,12 @@ final class FinalClass {
     }
 }
 
-class AnotherClass {
+/*
+class AnotherClass extends FinalClass{
     // This will cause an error:
     // class SubClass extends FinalClass {}
 }
+*/
 
 public class HFinalClassesAndMethods {
     public static void main(String[] args) {
