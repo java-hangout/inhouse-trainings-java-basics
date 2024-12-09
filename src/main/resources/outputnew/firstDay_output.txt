@@ -1,0 +1,319 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\iht\javabasics\Car.java ###
+package com.iht.javabasics;
+
+public class Car {
+
+    // Encapsulation: Private fields
+    private String model;
+    private int year;
+    private static int carCount = 0;  // Static member to track number of cars created
+
+    // Constructor Overloading: Two constructors with different parameter signatures
+    public Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+        carCount++;  // Increment carCount whenever a car object is created
+    }
+
+    public Car(String model) {
+        this.model = model;
+        this.year = 2024;  // Default year
+        carCount++;
+    }
+
+    // Getter and Setter methods (Encapsulation)
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    // Abstraction: Method that hides the implementation details of car information
+    public void displayCarInfo() {
+        System.out.println("Car Model: " + model + ", Year: " + year);
+    }
+
+    // Method Overloading: A method that displays additional information based on the input
+    public void displayCarInfo(boolean showCarCount) {
+        displayCarInfo();
+        if (showCarCount) {
+            System.out.println("Total cars created: " + carCount);
+        }
+    }
+
+    // Static Method: A static method to get the car count
+    public static int getCarCount() {
+        return carCount;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Run the test cases manually
+        testCreateCar();
+        testCreateCarWithDefaultYear();
+        testDisplayCarInfo();
+        testGetCarCount();
+    }
+
+    // 1. Test case: Creating a Car object and checking the model and year
+    public static void testCreateCar() {
+        System.out.println("Running testCreateCar...");
+        Car car = new Car("Toyota", 2020);
+        if (car.getModel().equals("Toyota") && car.getYear() == 2020) {
+            System.out.println("testCreateCar PASSED");
+        } else {
+            System.out.println("testCreateCar FAILED");
+        }
+    }
+
+    // 2. Test case: Creating a Car object with default year and checking the model
+    public static void testCreateCarWithDefaultYear() {
+        System.out.println("Running testCreateCarWithDefaultYear...");
+        Car car = new Car("Honda");
+        if (car.getModel().equals("Honda") && car.getYear() == 2024) {
+            System.out.println("testCreateCarWithDefaultYear PASSED");
+        } else {
+            System.out.println("testCreateCarWithDefaultYear FAILED");
+        }
+    }
+
+    // 3. Test case: Display car information and checking output manually
+    public static void testDisplayCarInfo() {
+        System.out.println("Running testDisplayCarInfo...");
+        Car car = new Car("BMW", 2023);
+        // Manually verify if the displayed car info matches expected output
+        System.out.println("Expected: Car Model: BMW, Year: 2023");
+        car.displayCarInfo();
+    }
+
+    // 4. Test case: Checking total car count
+    public static void testGetCarCount() {
+        System.out.println("Running testGetCarCount...");
+        Car car1 = new Car("Toyota", 2020);
+        Car car2 = new Car("Honda");
+        int expectedCarCount = 2;
+        if (Car.getCarCount() == expectedCarCount) {
+            System.out.println("testGetCarCount PASSED");
+        } else {
+            System.out.println("testGetCarCount FAILED");
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\iht\javabasics\ClassAndObjectTopic.java ###
+package com.iht.javabasics;
+
+public class ClassAndObjectTopic {
+
+    // Encapsulation: Private fields
+    private String model;
+    private int year;
+    private static int carCount = 0;  // Static member to track number of cars created
+
+    // Constructor Overloading: Two constructors with different parameter signatures
+    public ClassAndObjectTopic(String model, int year) {
+        this.model = model;
+        this.year = year;
+        carCount++;  // Increment carCount whenever a car object is created
+    }
+
+    public ClassAndObjectTopic(String model) {
+        this.model = model;
+        this.year = 2024;  // Default year
+        carCount++;
+    }
+
+    // Getter and Setter methods (Encapsulation)
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    // Abstraction: Method that hides the implementation details of car information
+    public void displayCarInfo() {
+        System.out.println("ClassAndObjectTopic Model: " + model + ", Year: " + year);
+    }
+
+    // Method Overloading: A method that displays additional information based on the input
+    public void displayCarInfo(boolean showCarCount) {
+        displayCarInfo();
+        if (showCarCount) {
+            System.out.println("Total cars created: " + carCount);
+        }
+    }
+
+    // Static Method: A static method to get the car count
+    public static int getCarCount() {
+        return carCount;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Create car objects
+        ClassAndObjectTopic car1 = new ClassAndObjectTopic("Toyota", 2020);
+        ClassAndObjectTopic car2 = new ClassAndObjectTopic("Honda");
+
+        // Display car information
+        System.out.println("ClassAndObjectTopic 1 Info:");
+        car1.displayCarInfo(true);  // Show car info along with car count
+
+        System.out.println("\nClassAndObjectTopic 2 Info:");
+        car2.displayCarInfo(false);  // Show car info without car count
+
+        // Display total number of cars created
+        System.out.println("\nTotal cars created: " + ClassAndObjectTopic.getCarCount());  // Static method call
+
+        // Testing setter methods
+        car1.setModel("BMW");
+        car1.setYear(2023);
+        System.out.println("\nAfter updating ClassAndObjectTopic 1 Info:");
+        car1.displayCarInfo(true);  // Display updated info of car1
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\iht\javabasics\ControlFlowTopic.java ###
+package com.iht.javabasics;
+
+public class ControlFlowTopic {
+
+    // Static method to classify numbers using comparison and logical operators
+    public static String processNumber(int num) {
+        if (num > 0) {
+            return "Positive";
+        } else if (num < 0) {
+            return "Negative";
+        } else {
+            return "Zero";
+        }
+    }
+
+    // Static method for FizzBuzz using correct logic
+    public static String fizzBuzz(int num) {
+        if (num % 3 == 0 && num % 5 == 0) {
+            return "FizzBuzz";  // divisible by both 3 and 5
+        } else if (num % 3 == 0) {
+            return "Fizz";      // divisible by of 3 only
+        } else if (num % 5 == 0) {
+            return "Buzz";      // divisible by of 5 only
+        } else {
+            return Integer.toString(num);  // Other numbers
+        }
+    }
+
+    // Static method for using loops (for, while, do-while) with break and continue
+    public static int sumEvenNumbers() {
+        int sum = 0;
+        for (int i = 2; i <= 20; i += 2) {  // Only loop over even numbers (i = 2, 4, 6, ..., 20)
+            if (sum + i > 100) {
+                break;  // Stop summing once adding this even number would exceed 100
+            }
+            sum += i;  // Add the even number to the sum
+        }
+        return sum;
+    }
+
+
+    // Method to demonstrate a for-each loop (now returns a String for testing)
+    public static String printNumbers(int[] numbers) {
+        StringBuilder result = new StringBuilder();
+        for (int number : numbers) {
+            result.append(number).append(" ");
+        }
+        return result.toString().trim();  // Return the result as a string
+    }
+
+    // Main function (optional, for testing purposes)
+    public static void main(String[] args) {
+        // Example usage of the static methods
+        System.out.println(ControlFlowTopic.processNumber(5));   // Positive
+        System.out.println(ControlFlowTopic.fizzBuzz(15));        // FizzBuzz
+        System.out.println(ControlFlowTopic.sumEvenNumbers());   // Sum of even numbers
+        int[] numbers = {1, 2, 3, 4, 5};
+        ControlFlowTopic.printNumbers(numbers);  // Prints numbers 1 to 5
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\iht\javabasics\ErrorHandlingExample.java ###
+package com.iht.javabasics;
+
+public class ErrorHandlingExample {
+
+    // Method to demonstrate types of errors
+    public static String demonstrateErrors(int a, int b) {
+        // Debugging: Print values to trace the flow
+        System.out.println("Debugging: a = " + a + ", b = " + b);
+
+        // Common syntax error (missing semicolon here will cause compilation error)
+        // int sum = a + b (syntax error: semicolon is missing)
+
+        // Compilation error: Uncommenting the above line will throw a syntax error.
+        int sum = a + b; // Correct syntax
+
+        // Runtime error: Division by zero (handled)
+        if (b == 0) {
+            return "Error: Division by zero";
+        }
+        
+        int result = sum / b; // Possible runtime error: division by zero
+        return "Result: " + result;
+    }
+
+    // Main method to run the example
+    public static void main(String[] args) {
+        System.out.println(demonstrateErrors(10, 2));  // Correct input, no errors
+        System.out.println(demonstrateErrors(10, 0));  // Runtime error: division by zero
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\iht\javabasics\TypesTopic.java ###
+package com.iht.javabasics;
+
+public class TypesTopic {
+
+    // 1. Static method to sum two variables (Arithmetic Operations)
+    public static int sumVariables(int a, int b) {
+        return a + b;  // Return the sum of the two variables
+    }
+
+    // 2. Static method to concatenate two strings and return the result in uppercase (String Operations)
+    public static String concatenate(String a, String b) {
+        return (a + b).toUpperCase();  // Concatenate and convert to uppercase
+    }
+
+    // 3. Static method to double the values in an array (Array Operations)
+    public static int[] doubleArrayValues(int[] array) {
+        int[] doubledArray = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            doubledArray[i] = array[i] * 2;  // Double each value in the array
+        }
+        return doubledArray;
+    }
+
+    // 4. Static method to return a constant value (Constants and Static Final Variables)
+    public static int getConstantValue() {
+        final int CONSTANT_VALUE = 100;  // Constant value
+        return CONSTANT_VALUE;  // Return the constant value
+    }
+}
+

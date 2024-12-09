@@ -1,0 +1,294 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\javabasics\ClassAndObjectTopicTest.java ###
+package com.jh.iht.javabasics;
+
+import com.jh.iht.javabasics.ClassAndObjectTopic;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class ClassAndObjectTopicTest {
+
+    /**
+     * Problem: Test the ClassAndObjectTopic constructor and getter methods for initialization.
+     * Input: model = "Toyota", year = 2020
+     * Expected Output: "Toyota", 2020
+     */
+    @Test
+    public void testCarConstructorAndGetters() {
+        ClassAndObjectTopic car = new ClassAndObjectTopic("Toyota", 2020);
+        Assertions.assertEquals("Toyota", car.getModel());  // Verify the model
+        Assertions.assertEquals(2020, car.getYear());      // Verify the year
+    }
+
+    /**
+     * Problem: Test method overloading and show car count functionality.
+     * Input: car = "Honda", displayCarInfo with showCarCount = true
+     * Expected Output: "ClassAndObjectTopic Model: Honda, Year: 2024", "Total cars created: 1"
+     */
+    @Test
+    public void testMethodOverloading() {
+        ClassAndObjectTopic car = new ClassAndObjectTopic("Honda");
+        car.displayCarInfo(true);  // Should show the car info and the total car count
+    }
+
+    /**
+     * Problem: Test the static method getCarCount for the count of car objects.
+     * Input: No input, create a car object
+     * Expected Output: carCount should be 1 after creating one car object
+     */
+    @Test
+    public void testCarCount() {
+        new ClassAndObjectTopic("Nissan", 2022);  // Create a new car
+        Assertions.assertEquals(3, ClassAndObjectTopic.getCarCount());  // Verify car count is 1
+    }
+
+    /**
+     * Problem: Test setter methods for modifying the car object.
+     * Input: Change car model to "BMW" and year to 2023
+     * Expected Output: "BMW", 2023
+     */
+    @Test
+    public void testSetters() {
+        ClassAndObjectTopic car = new ClassAndObjectTopic("Audi", 2020);  // Initial car object
+        car.setModel("BMW");  // Modify the model
+        car.setYear(2023);    // Modify the year
+        Assertions.assertEquals("BMW", car.getModel());  // Verify updated model
+        Assertions.assertEquals(2023, car.getYear());    // Verify updated year
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\javabasics\ControlFlowTopicTests.java ###
+package com.jh.iht.javabasics;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.jh.iht.javabasics.ControlFlowTopic;
+import org.junit.jupiter.api.Test;
+
+public class ControlFlowTopicTests {
+
+    // Test Case 1: Test for Comparison Operators & Logical Operators
+    /*
+     * Problem Statement: 
+     * Classify the number as Positive, Negative, or Zero based on the input number.
+     * 
+     * Input: 5
+     * Expected Value: "Positive"
+     * Explanation: The method checks if the number is greater than 0 (positive),
+     * less than 0 (negative), or exactly 0 (zero).
+     */
+    @Test
+    public void testProcessNumber() {
+        // Test for Positive number
+        {
+            int num = 5;  // Input number is 5
+            String result = ControlFlowTopic.processNumber(num);  // Call the method
+            assertEquals("Positive", result);  // Expected: "Positive"
+        }
+
+        // Test for Negative number
+        {
+            int num = -3;  // Input number is -3
+            String result = ControlFlowTopic.processNumber(num);  // Call the method
+            assertEquals("Negative", result);  // Expected: "Negative"
+        }
+
+        // Test for Zero
+        {
+            int num = 0;  // Input number is 0
+            String result = ControlFlowTopic.processNumber(num);  // Call the method
+            assertEquals("Zero", result);      // Expected: "Zero"
+        }
+    }
+
+    // Test Case 2: Test for FizzBuzz using the Static Method
+    /*
+     * Problem Statement:
+     * Implement the FizzBuzz logic:
+     * Return "Fizz" if the number is divisible by 3,
+     * "Buzz" if the number is divisible by 5,
+     * "FizzBuzz" if divisible by both 3 and 5, or the number itself if neither.
+     * 
+     * Input: 15
+     * Expected Value: "FizzBuzz"
+     * Explanation: Since 15 is divisible by both 3 and 5, it should return "FizzBuzz".
+     */
+    @Test
+    public void testFizzBuzz() {
+        // Test for FizzBuzz (multiples of both 3 and 5)
+        {
+            int num = 15;  // Input number is 15
+            String result = ControlFlowTopic.fizzBuzz(num);  // Call the method
+            assertEquals("FizzBuzz", result);  // Expected: "FizzBuzz"
+        }
+
+        // Test for Fizz (multiples of 3 only)
+        {
+            int num = 6;  // Input number is 6
+            String result = ControlFlowTopic.fizzBuzz(num);  // Call the method
+            assertEquals("Fizz", result);      // Expected: "Fizz"
+        }
+
+        // Test for Buzz (multiples of 5 only)
+        {
+            int num = 10;  // Input number is 10
+            String result = ControlFlowTopic.fizzBuzz(num);  // Call the method
+            assertEquals("Buzz", result);      // Expected: "Buzz"
+        }
+
+        // Test for a number that is not divisible by 3 or 5
+        {
+            int num = 7;  // Input number is 7
+            String result = ControlFlowTopic.fizzBuzz(num);  // Call the method
+            assertEquals("7", result);         // Expected: "7" (since it's neither divisible by 3 nor 5)
+        }
+    }
+
+    // Test Case 3: Test for Loops with Break and Continue
+    /*
+     * Problem Statement:
+     * Sum all even numbers from 1 to 20, but stop if the sum exceeds 100.
+     * 
+     * Input: No direct input as the method loops from 1 to 20
+     * Expected Value: 90
+     * Explanation: The sum of even numbers (2 + 4 + 6 + ... + 20) is 90.
+     * The method should stop once the sum exceeds 100, which doesn't happen here.
+     */
+    @Test
+    public void testSumEvenNumbers() {
+        // Test for sum of even numbers
+        {
+            int expectedSum = 90;  // Sum of even numbers from 1 to 20
+            int result = ControlFlowTopic.sumEvenNumbers();  // Call the method
+            assertEquals(expectedSum, result);  // Expected: 90
+        }
+    }
+
+    // Test Case 4: Test for For-Each Loop without ByteArrayOutputStream
+    /*
+     * Problem Statement:
+     * Print the elements of the given array using a for-each loop.
+     *
+     * Input: Array [1, 2, 3, 4, 5]
+     * Expected Value: "1 2 3 4 5"
+     * Explanation: The method should print the elements of the array in sequence,
+     * separated by a space.
+     */
+    @Test
+    public void testPrintNumbers() {
+        // Prepare the array
+        {
+            int[] numbers = {1, 2, 3, 4, 5};  // Input array
+
+            // Call the method to print the numbers
+            String result = ControlFlowTopic.printNumbers(numbers);  // Print the numbers from the array
+
+            // Call the method to print the numbers
+            ControlFlowTopic.printNumbers(numbers);  // Print the numbers from the array
+
+            // Check if the output is correct
+            assertEquals("1 2 3 4 5", result);  // Expected output: "1 2 3 4 5 "
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\javabasics\ErrorHandlingExampleTest.java ###
+package com.jh.iht.javabasics;
+
+import com.jh.iht.javabasics.ErrorHandlingExample;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ErrorHandlingExampleTest {
+
+    /**
+     * Problem: Test the method `demonstrateErrors()` to handle different inputs, including division by zero.
+     * Input: a = 10, b = 2
+     * Expected Output: The result should be "Result: 6" because sum is 10 + 2 = 12 and 12 / 2 = 6.
+     */
+    @Test
+    public void testDemonstrateErrorsCorrectInput() {
+        String result = ErrorHandlingExample.demonstrateErrors(10, 2);
+        String expected = "Result: 6";  // 10 + 2 = 12, 12 / 2 = 6
+        assertEquals(expected, result);
+    }
+
+    /**
+     * Problem: Test the method `demonstrateErrors()` for division by zero.
+     * Input: a = 10, b = 0
+     * Expected Output: The method should return "Error: Division by zero" as b is zero.
+     */
+    @Test
+    public void testDemonstrateErrorsDivisionByZero() {
+        String result = ErrorHandlingExample.demonstrateErrors(10, 0);
+        String expected = "Error: Division by zero";  // Division by zero should be handled
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\javabasics\TypesTopicTests.java ###
+package com.jh.iht.javabasics;
+
+import com.jh.iht.javabasics.TypesTopic;
+import com.jh.iht.java.basics.types.AVariables;
+import com.jh.iht.java.basics.types.EStrings;
+import com.jh.iht.java.basics.types.GArrays;
+import com.jh.iht.java.basics.types.IConstants;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class TypesTopicTests {
+
+    // 1. Test: Summing two variables (Arithmetic Operations)
+    /**
+     * Problem: Implement a static method to sum two integer variables.
+     * Input: int a = 7, int b = 3
+     * Expected Output: The sum of the variables is 7 + 3 = 10.
+     */
+    @Test
+    public void testSumVariables() {
+        int a = 7;
+        int b = 3;
+        int expected = 10;  // Expected sum: 7 + 3 = 10
+        Assertions.assertEquals(expected, TypesTopic.sumVariables(a, b));
+    }
+
+    // 2. Test: Concatenate two strings and convert to uppercase (String Operations)
+    /**
+     * Problem: Implement a static method to concatenate two strings and return the concatenated string in uppercase.
+     * Input: String a = "Hello", String b = "World"
+     * Expected Output: The concatenated string in uppercase is "HELLOWORLD".
+     */
+    @Test
+    public void testConcatenateAndUppercase() {
+        String a = "Hello";
+        String b = "World";
+        String expected = "HELLOWORLD";  // Expected result: "HELLOWORLD"
+        Assertions.assertEquals(expected, TypesTopic.concatenate(a, b));
+    }
+
+    // 3. Test: Doubling values in an array (Array Operations)
+    /**
+     * Problem: Implement a static method to double the values of each element in an array.
+     * Input: int[] array = {1, 2, 3}
+     * Expected Output: The modified array should be {2, 4, 6}.
+     */
+    @Test
+    public void testDoubleArrayValues() {
+        int[] inputArray = {1, 2, 3};
+        int[] expectedArray = {2, 4, 6};  // Expected result: {2, 4, 6}
+        Assertions.assertArrayEquals(expectedArray, TypesTopic.doubleArrayValues(inputArray));
+    }
+
+    // 4. Test: Return constant value (Constants and Static Final Variables)
+    /**
+     * Problem: Implement a static method to return a constant value.
+     * Input: CONSTANT_VALUE = 100
+     * Expected Output: The method should return 100.
+     */
+    @Test
+    public void testConstantValue() {
+        int expected = 100;  // Expected constant value: 100
+        Assertions.assertEquals(expected, TypesTopic.getConstantValue());
+    }
+}
+

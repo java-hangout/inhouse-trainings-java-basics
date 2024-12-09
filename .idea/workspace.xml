@@ -5,41 +5,227 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e088a74-3cc3-4b90-be8a-98fefb7168fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/jvm.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/maven.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/jh/iht/java/basics/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/javabasics/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/javabasics/ClassAndObjectTopic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/javabasics/ControlFlowTopic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/javabasics/ErrorHandlingExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/javabasics/TypesTopic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/controlflow/ComparisonLogicalOperators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/controlflow/ErrorHandlingDebugging.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/controlflow/IfTernarySwitchStatements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/controlflow/LoopsBreakContinue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/types/ConsolidatedExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/jh/iht/javabasics/ClassAndObjectTopicTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/jh/iht/javabasics/ControlFlowTopicTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/jh/iht/javabasics/ErrorHandlingExampleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/jh/iht/javabasics/TypesTopicTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/controlflow/ComparisonLogicalOperatorsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/controlflow/ErrorHandlingDebuggingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/controlflow/IfTernarySwitchStatementsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/controlflow/LoopsBreakContinueTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram01Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/types/ConsolidatedExampleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/AVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/AVariables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/EStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/EStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/GArrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/GArrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/IConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/types/IConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/zfilereader/JavaFilesToTextWithSubfolders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jh/iht/java/basics/zfilereader/JavaFilesToTextWithSubfolders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ControlFlowProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ControlFlowProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ControlFlowProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ControlFlowProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ControlFlowProgram04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/ControlFlowProgram04.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/TypeTopicProgram03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/TypeTopicProgram03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/TypeTopicProgram04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day01/TypeTopicProgram04.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/EncapsulationProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/EncapsulationProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InheritanceProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InheritanceProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InheritanceProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InheritanceProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InheritanceProgram03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InheritanceProgram03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InterfacesProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InterfacesProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InterfacesProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/InterfacesProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/PolymorphismProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/PolymorphismProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/PolymorphismProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/PolymorphismProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day02/StringProgram04.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/AgeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/AgeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections1Program04.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections2Program01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections2Program01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections2Program02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/Collections2Program02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/CustomExceptionsAndErrorsProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/CustomExceptionsAndErrorsProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/ExceptionsProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/ExceptionsProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/UserInputException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day03/UserInputException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/IOOperationsProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/IOOperationsProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/IOOperationsProgram03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/IOOperationsProgram03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/RegexProgram01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/RegexProgram01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/RegexProgram02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jh/iht/java/basics/day04/RegexProgram02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jh/iht/java/basics/types/AAVariablesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jh/iht/java/basics/types/AAVariablesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram03Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram03Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram04Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ClassAndObjectProgram04Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram03Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram03Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram04Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/ControlFlowProgram04Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram03Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram03Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram04Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01/TypeTopicProgram04Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/EncapsulationProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/EncapsulationProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/InheritanceProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/InheritanceProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/InheritanceProgram03Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/InheritanceProgram03Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/InterfacesProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/InterfacesProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/PolymorphismProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/PolymorphismProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/PolymorphismProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/PolymorphismProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/StringProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/StringProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/StringProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/StringProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/StringProgram04Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day02/StringProgram04Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections1Program01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections1Program01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections1Program02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections1Program02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections1Program04Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections1Program04Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections2Program01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections2Program01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections2Program02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/Collections2Program02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/CustomExceptionsAndErrorsProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/CustomExceptionsAndErrorsProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/CustomExceptionsAndErrorsProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/CustomExceptionsAndErrorsProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/ExceptionsProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/ExceptionsProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/ExceptionsProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day03/ExceptionsProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/IOOperationsProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/IOOperationsProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/IOOperationsProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/IOOperationsProgram02Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/IOOperationsProgram04Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/IOOperationsProgram04Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/RegexProgram01Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/RegexProgram01Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/RegexProgram02Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day04/RegexProgram02Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2oZ1Cy73TnfdDr5i5DSJKq1pgTM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JavaFilesToTextWithSubfolders.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClassAndObjectProgram01Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClassAndObjectProgram02Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClassAndObjectProgram03Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClassAndObjectProgram03Test.testRun (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClassAndObjectProgram03Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Collections2Program01Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Collections2Program02Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ControlFlowProgram01Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ControlFlowProgram02Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ControlFlowProgram03Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ControlFlowProgram04Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ControlFlowProgram04Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TypeTopicArrayTest.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TypeTopicFinalStaticTest.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TypeTopicProgram01Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TypeTopicProgram02Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TypeTopicProgram03Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TypeTopicProgram04Test.testRun.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.iht.java.basics.day01.* and 3 more.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.iht.java.basics.latest in inhouse-trainings-java-basics.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.day01 in inhouse-trainings-java-basics (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.day01 in inhouse-trainings-java-basics.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.day02 in inhouse-trainings-java-basics.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.day03 in inhouse-trainings-java-basics.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.day04 in inhouse-trainings-java-basics.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.latest in inhouse-trainings-java-basics.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager" selected="JUnit.basics in inhouse-trainings-java-basics">
+    <configuration name="JavaFilesToTextWithSubfolders" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jh.iht.java.basics.zfilereader.JavaFilesToTextWithSubfolders" />
+      <module name="inhouse-trainings-java-basics" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jh.iht.java.basics.zfilereader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ControlFlowProgram02Test.testRun" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="inhouse-trainings-java-basics" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jh.iht.java.basics.latest.day01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jh.iht.java.basics.latest.day01" />
+      <option name="MAIN_CLASS_NAME" value="com.jh.iht.java.basics.latest.day01.ControlFlowProgram02Test" />
+      <option name="METHOD_NAME" value="testRun" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="basics in inhouse-trainings-java-basics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="inhouse-trainings-java-basics" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="day01 in inhouse-trainings-java-basics (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="inhouse-trainings-java-basics" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/org/jh/iht/java/basics/day01" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="day01 in inhouse-trainings-java-basics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="inhouse-trainings-java-basics" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/jh/iht/java/basics/latest/day01" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.basics in inhouse-trainings-java-basics" />
+        <item itemvalue="JUnit.day01 in inhouse-trainings-java-basics (1)" />
+        <item itemvalue="Application.JavaFilesToTextWithSubfolders" />
+        <item itemvalue="JUnit.day01 in inhouse-trainings-java-basics" />
+        <item itemvalue="JUnit.ControlFlowProgram02Test.testRun" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

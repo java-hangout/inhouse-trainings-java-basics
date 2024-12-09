@@ -6,10 +6,10 @@ public class JavaFilesToTextWithSubfolders {
 
     public static void main(String[] args) {
         // Folder containing .java files (can include subfolders)
-        String folderPath = "D:\\workspace\\inhouse-trainings-java-basics\\src\\test\\java\\com\\jh\\iht\\java\\basics";  // Change this to the folder path containing .java files
+        String folderPath = "D:\\workspace\\inhouse-trainings-java-basics\\src\\test\\java\\com\\jh\\iht\\java\\basics\\latest";  // Change this to the folder path containing .java files
         
         // Output file where the content of all .java files will be written
-        String outputFile = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\output\\combined_test_output.txt";  // Change this to your desired output file
+        String outputFile = "D:\\workspace\\inhouse-trainings-java-basics\\src\\main\\resources\\outputnew\\latestwithrunmethod_test_output.txt";  // Change this to your desired output file
         
         try {
             writeJavaFilesFromSubfoldersToSingleFile(folderPath, outputFile);

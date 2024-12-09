@@ -1,0 +1,1288 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ClassAndObjectProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly creates a Person object and retrieves its details.
+     *
+     * Input:
+     * name = "John", age = 25
+     *
+     * Expected Output:
+     * "Name: John, Age: 25"
+     */
+
+    @Test
+    public void testRun() {
+        String name = "John";
+        int age = 25;
+        // Run the method with input values
+        String result = ClassAndObjectProgram01.run(name, age);
+
+        // Assert the expected result
+        String expected = "Name: " + name + ", " + "Age: " + age;
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ClassAndObjectProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly sets and gets the values of the Book object using getters and setters.
+     *
+     * Input:
+     * title = "Java Programming", author = "James Gosling"
+     *
+     * Expected Output:
+     * "Title: Java Programming, Author: James Gosling"
+     */
+
+    @Test
+    public void testRun() {
+        String title = "Java Programming", author = "James Gosling";
+        // Run the method with input values
+        String result = ClassAndObjectProgram02.run(title, author);
+
+        // Assert the expected result
+        String expected = "Title: " + title + ", Author: " + author;
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram03Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ClassAndObjectProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method demonstrates abstraction with an animal sound and calculates area using constructor overloading.
+     *
+     * Input:
+     * animalType = "Dog", side = 4
+     * 
+     * Expected Output:
+     * "Animal sound: Woof!, Area of square: 16"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = ClassAndObjectProgram03.run("Dog", 4);
+        
+        // Assert the expected result
+        String expected = "Animal sound: Woof!, Area of square: 16";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram04Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ClassAndObjectProgram04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates static members by maintaining a shared count.
+     *
+     * Input:
+     * No input, the method simply increments the static count.
+     * 
+     * Expected Output:
+     * "Current count: 2"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = ClassAndObjectProgram04.run();
+        
+        // Assert the expected result
+        String expected = "Current count: 2";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ControlFlowProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly compares two integers and returns the correct comparison result.
+     *
+     * Input:
+     * a = 5, b = 10
+     *
+     * Expected Output:
+     * "5 is smaller than 10"
+     */
+
+    @Test
+    public void testRun() {
+        int a = 5, b = 10;
+        // Run the method with input values
+        String result = ControlFlowProgram01.run(a, b);
+        // Assert the expected result
+        String expected = a + " is smaller than " + b;
+
+//        String expected = a + " is greater than " + b;
+//        String expected = a + " is equal to " + b;
+
+
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ControlFlowProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly uses logical operators to check if both, one, or neither condition is true.
+     *
+     * Input:
+     * a = true, b = false
+     * 
+     * Expected Output:
+     * "One of them is true"
+     */
+    
+    @Test
+    public void testRun() {
+        boolean flag1 = true, flag2 = false;
+        // Run the method with input values
+        String result = ControlFlowProgram02.run(flag1, flag2);
+        // Assert the expected result
+        String expected = "One of them is true";
+//        String expected = "Both are true";
+//        String expected = "Both are false";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram03Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ControlFlowProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method uses both if statements and ternary operators to classify a number as even or odd, and positive or negative.
+     *
+     * Input:
+     * number = -4
+     * 
+     * Expected Output:
+     * "Even and Negative"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = ControlFlowProgram03.run(-4);
+        
+        // Assert the expected result
+        String expected = "Even and Negative";
+//        String expected = "Even and Positive";
+//        String expected = "Odd and Negative";
+//        String expected = "Odd and Positive";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram04Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class ControlFlowProgram04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly uses the for loop, while loop, and do-while loop to print numbers up to a given limit.
+     *
+     * Input:
+     * limit = 3
+     *
+     * Expected Output:
+     * "0 1 2 0 1 2 0 1 2"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = ControlFlowProgram04.run(3);
+        // Assert the expected result
+        String expected = "0 1 2 0 1 2 0 1 2";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class TypeTopicProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly calculates the sum of two integers,
+     *  and returns the expected result.
+     * Input: intVar1 = 10, intVar2 = 5
+     * Expected Output: "The sum of 10 and 5 is 15"
+     */
+
+    @Test
+    public void testRun() {
+        int intVar1 = 10, intVar2 = 5;
+        // Run the method and capture the result
+        String result = TypeTopicProgram01.run(intVar1, intVar2);
+
+        // Assert the expected result
+        String expected = "The sum of " + intVar1 + " and " + intVar2 + " is " + (intVar1 + intVar2);
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class TypeTopicProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly concatenates the name with a greeting,
+     * converts the concatenated string to uppercase, and returns the correct result.
+     * Input:
+     * name = "OSBIndia"
+     * Expected Output:
+     * "HELLO, OSBINDIA!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input "OSBIndia" and capture the result
+        String name = "OSBIndia";
+        String result = TypeTopicProgram02.run(name);
+
+        // Assert the expected result
+        String expected = "HELLO, OSBINDIA!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram03Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class TypeTopicProgram03Test {
+    
+    /*
+     * Problem Statement:
+     * Verify that the method correctly calculates the sum of the squares of integers
+     * and computes the square root of the sum correctly.
+     *
+     * Input: 
+     * An array of integers: {0, 1, 2, 3, 4}
+     * 
+     * Expected Output:
+     * "Sum of array elements: 30\nSquare root of sum: 5.477226"
+     */
+    
+    @Test
+    public void testRun() {
+        // Prepare the input array
+        int[] inputArray = {0, 1, 2, 3, 4};
+        
+        // Run the method with the input array and capture the result
+        String result = TypeTopicProgram03.run(inputArray);
+        
+        // Assert the expected result
+        String expected = "Sum of square of array elements: 30\nSquare root of sum: 5.477226";
+        System.out.println("expected : " + expected);
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram04Test.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class TypeTopicProgram04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method increments the static counter correctly and
+     * returns the constant value correctly.
+     * Input:
+     * increment = 5
+     * Expected Output:
+     * "Counter: 5\nConstant Value: 100"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with an increment of 5
+        String result = TypeTopicProgram04.run(5);
+//        System.out.println("result : " + result);
+        // Assert the expected result
+        String expected = "Counter: 5\nConstant Value: 100";
+//        System.out.println("expected : " + expected);
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\EncapsulationProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class EncapsulationProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly demonstrates EncapsulationProgram01 and access modifiers.
+     * The name and age should be encapsulated and accessed via getters and setters.
+     * The method should return the formatted user information.
+     *
+     * Input:
+     * name = "John", age = 25
+     *
+     * Expected Output:
+     * "Name: John, Age: 25"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = EncapsulationProgram01.run("John", 25);
+
+        // Assert the expected result
+        String expected = "Name: John, Age: 25";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\InheritanceProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class InheritanceProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method demonstrates inheritance, constructor usage, and access modifiers
+     * by creating a Dog object and calling its describe method.
+     *
+     * Input:
+     * name = "Buddy"
+     *
+     * Expected Output:
+     * "I am a dog, and my name is Buddy"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = InheritanceProgram01.run("Buddy");
+
+        // Assert the expected result
+        String expected = "I am a dog, and my name is Buddy";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\InheritanceProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class InheritanceProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method demonstrates upcasting and downcasting,
+     * and compares objects based on their actual types.
+     *
+     * Input:
+     * animalType = "Dog"
+     *
+     * Expected Output:
+     * "It's a dog! Sound: Woof!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = InheritanceProgram02.run("Dog");
+
+        // Assert the expected result
+        String expected = "It's a dog! Sound: Woof!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\InheritanceProgram03Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class InheritanceProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method demonstrates the usage of abstract classes, final classes,
+     * and multiple inheritance by creating Dog and Cat objects and calling their methods.
+     *
+     * Input:
+     * animalType = "Cat"
+     *
+     * Expected Output:
+     * "Meow!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = InheritanceProgram03.run("Cat");
+
+        // Assert the expected result
+        String expected = "Meow!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\InterfacesProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class InterfacesProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program implements the interface correctly and returns the expected greeting message.
+     * The method should greet the input name with "Hello, <name>!".
+     *
+     * Input:
+     * name = "Alice"
+     *
+     * Expected Output:
+     * "Hello, Alice!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = InterfacesProgram01.run("Alice");
+
+        // Assert the expected result
+        String expected = "Hello, Alice!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\InterfacesProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class InterfacesProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly sends an email message.
+     * The method should return a confirmation message indicating that the email has been sent.
+     *
+     * Input:
+     * email = "test@example.com", message = "Hello!"
+     *
+     * Expected Output:
+     * "Email sent to test@example.com with message: Hello!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = InterfacesProgram02.run("test@example.com", "Hello!");
+
+        // Assert the expected result
+        String expected = "Email sent to test@example.com with message: Hello!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\PolymorphismProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class PolymorphismProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method demonstrates method overriding and dynamic binding.
+     * The `sound` method should behave differently based on the object type (Dog or Cat).
+     *
+     * Input:
+     * animalType = "Dog"
+     *
+     * Expected Output:
+     * "Woof!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = PolymorphismProgram01.run("Dog");
+
+        // Assert the expected result
+        String expected = "Woof!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\PolymorphismProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class PolymorphismProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates method overloading.
+     * The correct overloaded method should be invoked based on the number of arguments.
+     *
+     * Input:
+     * methodType = "int3", a = 2, b = 3, c = 4
+     *
+     * Expected Output:
+     * "Sum is: 9"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = PolymorphismProgram02.run("int3", 2, 3, 4);
+
+        // Assert the expected result
+        String expected = "Sum is: 9";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\StringProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class StringProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly concatenates a greeting message with the input string.
+     * The program should return "Hello, <input>!".
+     *
+     * Input:
+     * input = "John"
+     *
+     * Expected Output:
+     * "Hello, John!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = StringProgram01.run("John");
+
+        // Assert the expected result
+        String expected = "Hello, John!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\StringProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class StringProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the string is immutable. When we concatenate a string,
+     * the original string remains unchanged.
+     *
+     * Input:
+     * input = "World"
+     *
+     * Expected Output:
+     * "Hello Hello, World!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = StringProgram02.run("World");
+
+        // Assert the expected result
+        String expected = "Hello Hello, World!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\StringProgram03Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class StringProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly compares two strings and concatenates them.
+     * It should check string equality and return the concatenated result.
+     *
+     * Input:
+     * str1 = "Hello", str2 = "Hello"
+     *
+     * Expected Output:
+     * "Equality: true, Concatenation: Hello Hello"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = StringProgram03.run("Hello", "Hello");
+
+        // Assert the expected result
+        String expected = "Equality: true, Concatenation: Hello Hello";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day02\StringProgram04Test.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class StringProgram04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly demonstrates the usage of StringBuffer and StringBuilder.
+     * StringBuffer is synchronized, while StringBuilder is not.
+     *
+     * Input:
+     * None (uses default data)
+     *
+     * Expected Output:
+     * "StringBuffer: Hello World!, StringBuilder: Goodbye World!"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = StringProgram04.run();
+
+        // Assert the expected result
+        String expected = "StringBuffer: Hello World!, StringBuilder: Goodbye World!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\Collections1Program01Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class Collections1Program01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly adds elements to a collection (List) and returns the correct output.
+     *
+     * Input:
+     * A list of strings ["Apple", "Banana", "Cherry"]
+     * 
+     * Expected Output:
+     * "Items in collection: [Apple, Banana, Cherry]"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = Collections1Program01.run();
+        
+        // Expected output
+        String expected = "Items in collection: [Apple, Banana, Cherry]";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\Collections1Program02Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class Collections1Program02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly iterates through a collection using the Iterable interface.
+     *
+     * Input:
+     * A list of strings ["Apple", "Banana", "Cherry"]
+     * 
+     * Expected Output:
+     * "Items: Apple Banana Cherry"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = Collections1Program02.run();
+        
+        // Expected output
+        String expected = "Items: Apple Banana Cherry";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\Collections1Program03Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class Collections1Program03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly sorts the list using a custom Comparator that compares strings by their length.
+     *
+     * Input:
+     * A list of strings ["Apple", "Banana", "Cherry"]
+     *
+     * Expected Output:
+     * "Sorted fruits by length: [Apple, Cherry, Banana]"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = Collections1Program03.run();
+
+        // Expected output
+        String expected = "Sorted fruits by length: [Apple, Banana, Cherry]";
+
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\Collections1Program04Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class Collections1Program04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates the Queue interface by adding items to the queue and removing one.
+     *
+     * Input:
+     * Queue with elements ["Apple", "Banana", "Cherry"]
+     * 
+     * Expected Output:
+     * "Removed item: Apple, Remaining queue: [Banana, Cherry]"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = Collections1Program04.run();
+        
+        // Expected output
+        String expected = "Removed item: Apple, Remaining queue: [Banana, Cherry]";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\Collections2Program01Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class Collections2Program01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates the Set interface by adding elements
+     * to a HashSet. Ensure that duplicate elements are not added to the set.
+     *
+     * Input:
+     * A HashSet with elements ["Apple", "Banana", "Cherry", "Apple"]
+     *
+     * Expected Output:
+     * "Set contains: [Apple, Banana, Cherry]"
+     */
+
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = Collections2Program01.run();
+
+        // Expected output
+        String expected = "Set contains: [Apple, Cherry, Banana]";
+
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\Collections2Program02Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class Collections2Program02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates the Map interface by adding key-value pairs
+     * to a HashMap. Ensure the correct retrieval of values using keys.
+     *
+     * Input:
+     * A HashMap with elements {"Apple" -> 5, "Banana" -> 3, "Cherry" -> 7}
+     * 
+     * Expected Output:
+     * "Apple count: 5, Map contains: {Apple=5, Banana=3, Cherry=7}"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = Collections2Program02.run();
+        
+        // Expected output
+        String expected = "Apple count: 5, Map contains: {Apple=5, Cherry=7, Banana=3}";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\CustomExceptionsAndErrorsProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class CustomExceptionsAndErrorsProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program throws a custom exception when the age is less than 18.
+     * It should return the custom error message defined in the `InvalidAgeException` class.
+     *
+     * Input:
+     * age = 16
+     * 
+     * Expected Output:
+     * "Age must be 18 or older!"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = CustomExceptionsAndErrorsProgram01.run(16);
+        
+        // Assert the expected result
+        String expected = "Age must be 18 or older!";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\CustomExceptionsAndErrorsProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+
+public class CustomExceptionsAndErrorsProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly chains exceptions when an invalid age is provided.
+     * The program should throw a UserInputException with the original AgeException as the cause.
+     *
+     * Input:
+     * age = 15
+     * 
+     * Expected Output:
+     * Exception should be thrown with message "Invalid user input" and the cause should be "Age must be 18 or older!"
+     */
+    
+    @Test
+    public void testRun() {
+        try {
+            // Run the method with input values
+            CustomExceptionsAndErrorsProgram02.run(15);
+        } catch (UserInputException e) {
+            // Assert that the exception message is correct and the cause is an AgeException
+            assertTrue(e.getMessage().contains("Invalid user input"));
+            assertTrue(e.getCause() instanceof AgeException);
+            assertTrue(e.getCause().getMessage().contains("Age must be 18 or older!"));
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\ExceptionsProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExceptionsProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly handles division by zero.
+     * It should return an appropriate error message and indicate that the finally block was executed.
+     *
+     * Input:
+     * a = 10, b = 0
+     * 
+     * Expected Output:
+     * "Error: Division by zero! - Finally block executed."
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method with input values
+        String result = ExceptionsProgram01.run(10, 0);
+        
+        // Assert the expected result
+        String expected = "Error: Division by zero! - Finally block executed.";
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day03\ExceptionsProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExceptionsProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the program correctly throws and rethrows an exception when a negative number is passed.
+     * The program should catch the exception and throw a new one with a custom message.
+     *
+     * Input:
+     * a = -5
+     * 
+     * Expected Output:
+     * "Caught and rethrown: Negative number is not allowed!"
+     */
+    
+    @Test
+    public void testRun() {
+        try {
+            // Run the method with input values
+            ExceptionsProgram02.run(-5);
+        } catch (Exception e) {
+            // Assert the expected exception message
+            assertEquals("Caught and rethrown: Negative number is not allowed!", e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class IOOperationsProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly reads data from an InputStream and returns the correct string.
+     *
+     * Input:
+     * InputStream with data "Hello, Java!"
+     * 
+     * Expected Output:
+     * "Read from InputStream: Hello, Java!"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = IOOperationsProgram01.run();
+        
+        // Expected output
+        String expected = "Read from InputStream: Hello, Java!";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class IOOperationsProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly writes data to an OutputStream.
+     *
+     * Input:
+     * Data "Java I/O"
+     * 
+     * Expected Output:
+     * "Written to OutputStream: Java I/O"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = IOOperationsProgram02.run();
+        
+        // Expected output
+        String expected = "Written to OutputStream: Java I/O";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram03Test.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class IOOperationsProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates File I/O by writing and then reading data from a file.
+     *
+     * Input:
+     * Data "File I/O in Java" written to "example.txt"
+     * 
+     * Expected Output:
+     * "Read from file: File I/O in Java"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = IOOperationsProgram03.run();
+        
+        // Expected output
+        String expected = "Read from file: File I/O in Java";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram04Test.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class IOOperationsProgram04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly demonstrates Buffered I/O by writing and reading data from a file.
+     *
+     * Input:
+     * Data "Buffered I/O in Java" written to "buffered_example.txt"
+     * 
+     * Expected Output:
+     * "Read from file: Buffered I/O in Java"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method
+        String result = IOOperationsProgram04.run();
+        
+        // Expected output
+        String expected = "Read from file: Buffered I/O in Java";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day04\RegexProgram01Test.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class RegexProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly finds and returns words starting with "Ja" in the input string.
+     *
+     * Input:
+     * "Java is a great language. Javalin is also interesting."
+     * 
+     * Expected Output:
+     * "Found match: Java\nFound match: Javalin"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method with input string
+        String input = "Java is a great language. Javalin is also interesting.";
+        String result = RegexProgram01.run(input);
+        
+        // Expected output
+        String expected = "Found match: Java\nFound match: Javalin\n";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\test\java\com\jh\iht\java\basics\latest\day04\RegexProgram02Test.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class RegexProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method handles invalid regular expressions correctly and catches PatternSyntaxException.
+     *
+     * Input:
+     * "Sample Text"
+     * 
+     * Expected Output:
+     * "Pattern Syntax Error: Unclosed character class"
+     */
+    
+    @Test
+    public void testRun() {
+        // Run the method with input string that causes a pattern syntax error
+        String input = "Sample Text";
+        String result = RegexProgram02.run(input);
+        
+        // Expected output due to invalid regex
+        String expected = "Pattern Syntax Error: Unclosed character class";
+        
+        // Assert the expected result
+        assertEquals(expected, result);
+    }
+}
+

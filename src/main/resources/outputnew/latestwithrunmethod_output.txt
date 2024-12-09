@@ -1,0 +1,1125 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram01.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ClassAndObjectProgram01 {
+
+    // A simple class to represent a person
+    public static class Person {
+        String name;
+        int age;
+
+        // Constructor to initialize the Person object
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // Method to get the details of the person
+        public String getDetails() {
+            return "Name: " + name + ", Age: " + age;
+        }
+    }
+
+    public static String run(String name, int age) {
+        // Creating an object of the Person class
+        Person person = new Person(name, age);
+        
+        // Returning the details of the person object
+        return person.getDetails();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram02.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ClassAndObjectProgram02 {
+
+    // A class with encapsulation of fields using private access modifier
+    public static class Book {
+        private String title;
+        private String author;
+
+        // Getter for title
+        public String getTitle() {
+            return title;
+        }
+
+        // Setter for title
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        // Getter for author
+        public String getAuthor() {
+            return author;
+        }
+
+        // Setter for author
+        public void setAuthor(String author) {
+            this.author = author;
+        }
+
+        // Method to get book details
+        public String getBookDetails() {
+            return "Title: " + title + ", Author: " + author;
+        }
+    }
+
+    public static String run(String title, String author) {
+        // Creating a Book object and setting values via setters
+        Book book = new Book();
+        book.setTitle(title);
+        book.setAuthor(author);
+        
+        // Returning the details of the book
+        return book.getBookDetails();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram03.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ClassAndObjectProgram03 {
+
+    // Abstract class to demonstrate abstraction
+    public static  class Animal {
+        public  String makeSound(){
+            return "Sound";
+        };
+    }
+
+    // Concrete class inheriting from Animal
+    public static class Dog extends Animal {
+        @Override
+        public String makeSound() {
+            return "Woof!";
+        }
+    }
+
+    // Constructor Overloading
+    public static class Rectangle {
+        int length;
+        int breadth;
+
+        // Constructor to initialize with both length and breadth
+        public Rectangle(int length, int breadth) {
+            this.length = length;
+            this.breadth = breadth;
+        }
+
+        // Constructor to initialize with a square (length = breadth)
+        public Rectangle(int side) {
+            this.length = side;
+            this.breadth = side;
+        }
+
+        // Method to calculate area
+        public int area() {
+            return length * breadth;
+        }
+    }
+
+    public static String run(String animalType, int side) {
+        // Demonstrating Abstraction (using Dog object)
+        Animal animal;
+        if ("Dog".equals(animalType)) {
+            animal = new Dog();
+        } else {
+            animal = new Animal();
+        }
+
+        // Creating a Rectangle object with constructor overloading
+        Rectangle rectangle = new Rectangle(side);
+
+        // Returning sound and area
+        return "Animal sound: " + animal.makeSound() + ", Area of square: " + rectangle.area();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ClassAndObjectProgram04.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ClassAndObjectProgram04 {
+
+    // Static variable to demonstrate static members
+    public static class Counter {
+        private static int count = 0;
+
+        // Static method to increment and get the count
+        public static void incrementCount() {
+            count++;
+        }
+
+        public static int getCount() {
+            return count;
+        }
+    }
+
+    // Method to show reducing coupling using static method
+    public static String run() {
+        Counter.incrementCount();
+        Counter.incrementCount();
+        
+        // Returning the current count value
+        return "Current count: " + Counter.getCount();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram01.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ControlFlowProgram01 {
+
+    public static String run(int a, int b) {
+        if (a > b) {
+            return a + " is greater than " + b;
+        } else if (a < b) {
+            return a + " is smaller than " + b;
+        } else {
+            return a + " is equal to " + b;
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram02.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ControlFlowProgram02 {
+
+    public static String run(boolean a, boolean b) {
+        if (a && b) {
+            return "Both are true";
+        } else if (a || b) {
+            return "One of them is true";
+        } else {
+            return "Both are false";
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram03.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ControlFlowProgram03 {
+
+    public static String run(int number) {
+        String result;
+        
+        // Using if statement
+        if (number % 2 == 0) {
+            result = "Even";
+        } else {
+            result = "Odd";
+        }
+
+        // Using ternary operator
+        result += " and " + (number < 0 ? "Negative" : "Positive");
+
+        return result;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\ControlFlowProgram04.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class ControlFlowProgram04 {
+
+    public static String run(int limit) {
+        StringBuilder result = new StringBuilder();
+        
+        // Using for loop
+        for (int i = 0; i < limit; i++) {
+            result.append(i).append(" ");
+        }
+
+        // Using while loop
+        int j = 0;
+        while (j < limit) {
+            result.append(j).append(" ");
+            j++;
+        }
+
+        // Using do-while loop
+        int k = 0;
+        do {
+            result.append(k).append(" ");
+            k++;
+        } while (k < limit);
+        
+        return result.toString().trim();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram01.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class TypeTopicProgram01 {
+    public static String run(int intVar1, int intVar2) {
+        // Calculate sum of integers and double multiplication
+        int sum = intVar1 + intVar2;
+
+        // Append a greeting to the input string
+        String result = "The sum of " + intVar1 + " and " + intVar2 + " is " + sum;
+        System.out.println("result: " + result);
+        // Return the formatted output as a string
+        return result;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram02.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class TypeTopicProgram02 {
+    public static String run(String name) {
+        // Concatenate greeting message with the provided name
+        String greeting = "Hello, " + name + "!";
+
+        // Convert the greeting message to uppercase
+        greeting = greeting.toUpperCase();
+
+        // Return the final uppercase greeting
+        return greeting;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram03.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class TypeTopicProgram03 {
+    /*
+     * Method to calculate the sum of the squares of an array of integers
+     * and then compute the square root of the sum.
+     *
+     * @param numbers Array of integers
+     * @return A string that includes the sum of the squares and its square root
+     */
+    public static String run(int[] numbers) {
+        int sum = 0;
+        
+        // Calculate sum of squares
+        for (int number : numbers) {
+            sum += number * number;
+        }
+        
+        // Calculate square root of the sum
+        double sqrtSum = Math.sqrt(sum);
+        
+        // Return the result as a formatted string
+        return String.format("Sum of square of array elements: %d\nSquare root of sum: %f", sum, sqrtSum);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day01\TypeTopicProgram04.java ###
+package com.jh.iht.java.basics.latest.day01;
+
+public class TypeTopicProgram04 {
+    public static final int CONSTANT_VALUE = 100;
+    public static int counter = 0;
+
+    public static String run(int increment) {
+        // Increment the static counter by the input value
+        counter += increment;
+        // Return the formatted output as a string
+        return "Counter: " + counter + "\nConstant Value: " + CONSTANT_VALUE;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\EncapsulationProgram01.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class EncapsulationProgram01 {
+
+    // Private fields (EncapsulationProgram01)
+    private String name;
+    private int age;
+
+    // Public constructor to initialize the object
+    public EncapsulationProgram01(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter for 'name'
+    public String getName() {
+        return name;
+    }
+
+    // Setter for 'name'
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for 'age'
+    public int getAge() {
+        return age;
+    }
+
+    // Setter for 'age'
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // Method to display user info (using EncapsulationProgram01)
+    public String displayInfo() {
+        return "Name: " + getName() + ", Age: " + getAge();
+    }
+
+    // Static method for demonstration
+    public static String run(String name, int age) {
+        // Create an object with encapsulated fields
+        EncapsulationProgram01 person = new EncapsulationProgram01(name, age);
+
+        // Return formatted string displaying user info
+        return person.displayInfo();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\InheritanceProgram01.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class InheritanceProgram01 {
+
+    // Base class
+    public static class Animal {
+        private String name;  // Private field
+
+        // Constructor
+        public Animal(String name) {
+            this.name = name;
+        }
+
+        // Getter for name
+        public String getName() {
+            return name;
+        }
+
+        // Method to describe the animal
+        public String describe() {
+            return "I am an animal, and my name is " + name;
+        }
+    }
+
+    // Derived class (extends Animal)
+    public static class Dog extends Animal {
+
+        // Constructor
+        public Dog(String name) {
+            super(name);  // Call to base class constructor
+        }
+
+        // Overridden method
+        @Override
+        public String describe() {
+            return "I am a dog, and my name is " + getName();
+        }
+    }
+
+    public static String run(String name) {
+        // Create Dog object and call describe method
+        Dog dog = new Dog(name);
+        return dog.describe();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\InheritanceProgram02.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class InheritanceProgram02 {
+
+    // Base class
+    public static class Animal {
+        public String makeSound() {
+            return "Some sound";
+        }
+    }
+
+    // Derived class (extends Animal)
+    public static class Dog extends Animal {
+        @Override
+        public String makeSound() {
+            return "Woof!";
+        }
+    }
+
+    // Another derived class (extends Animal)
+    public static class Cat extends Animal {
+        @Override
+        public String makeSound() {
+            return "Meow!";
+        }
+    }
+
+    public static String run(String animalType) {
+        Animal animal;
+
+        // Upcasting: Assigning subclass object to superclass reference
+        if ("Dog".equals(animalType)) {
+            animal = new Dog();
+        } else {
+            animal = new Cat();
+        }
+
+        // Downcasting back to the specific type and comparing objects
+        if (animal instanceof Dog) {
+            return "It's a dog! Sound: " + animal.makeSound();
+        } else {
+            return "It's a cat! Sound: " + animal.makeSound();
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\InheritanceProgram03.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class InheritanceProgram03 {
+
+    // Abstract class (cannot be instantiated)
+    public static abstract class Animal {
+        public abstract String makeSound();
+    }
+
+    // Final class (cannot be inherited)
+    public static final class Dog extends Animal {
+        @Override
+        public String makeSound() {
+            return "Woof!";
+        }
+    }
+
+    // Another class that inherits from Animal
+    public static class Cat extends Animal {
+        @Override
+        public String makeSound() {
+            return "Meow!";
+        }
+    }
+
+    // Method demonstrating final class, abstract classes, and multiple inheritance
+    public static String run(String animalType) {
+        Animal animal;
+
+        // Based on input, instantiate either Dog or Cat
+        if ("Dog".equals(animalType)) {
+            animal = new Dog();
+        } else {
+            animal = new Cat();
+        }
+
+        // Returning the sound made by the selected animal
+        return animal.makeSound();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\InterfacesProgram01.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+// Defining an interface
+interface Greetable {
+    String greet(String name);
+}
+
+// Class implementing the interface
+public class InterfacesProgram01 implements Greetable {
+
+    @Override
+    public String greet(String name) {
+        return "Hello, " + name + "!";
+    }
+
+    // Static run method to demonstrate the interface usage
+    public static String run(String name) {
+        Greetable greeter = new InterfacesProgram01(); // Create object of implementing class
+        return greeter.greet(name); // Call the method from the interface
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\InterfacesProgram02.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+// Class with tightly-coupled code
+public class InterfacesProgram02 {
+
+    public String sendEmail(String email, String message) {
+        EmailService emailService = new EmailService(); // Creating a concrete class dependency
+        return emailService.send(email, message); // Using tightly-coupled email service
+    }
+
+    // Static run method to demonstrate tightly-coupled code
+    public static String run(String email, String message) {
+        InterfacesProgram02 program = new InterfacesProgram02();
+        return program.sendEmail(email, message);
+    }
+}
+
+// Concrete class with tightly-coupled logic
+class EmailService {
+    public String send(String email, String message) {
+        // Simulate email sending
+        return "Email sent to " + email + " with message: " + message;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\PolymorphismProgram01.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class PolymorphismProgram01 {
+
+    // Base class
+    public static class Animal {
+        public String sound() {
+            return "Some generic animal sound";
+        }
+    }
+
+    // Derived class (overriding the sound method)
+    public static class Dog extends Animal {
+        @Override
+        public String sound() {
+            return "Woof!";  // Overridden method
+        }
+    }
+
+    // Another derived class (overriding the sound method)
+    public static class Cat extends Animal {
+        @Override
+        public String sound() {
+            return "Meow!";  // Overridden method
+        }
+    }
+
+    public static String run(String animalType) {
+        Animal animal;
+
+        // Using dynamic binding: the method call resolves at runtime based on the actual object type
+        if ("Dog".equals(animalType)) {
+            animal = new Dog();
+        } else {
+            animal = new Cat();
+        }
+
+        return animal.sound();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\PolymorphismProgram02.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class PolymorphismProgram02 {
+
+    // Overloaded method that calculates the sum of two integers
+    public static int calculateSum(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method that calculates the sum of three integers
+    public static int calculateSum(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Overloaded method that calculates the sum of two doubles
+    public static double calculateSum(double a, double b) {
+        return a + b;
+    }
+
+    public static String run(String methodType, int a, int b, int c) {
+        int result;
+        if ("int".equals(methodType)) {
+            result = calculateSum(a, b);  // Calls the method with two integers
+        } else if ("int3".equals(methodType)) {
+            result = calculateSum(a, b, c);  // Calls the method with three integers
+        } else {
+            result = (int) calculateSum(a, b);  // Calls the method with two doubles
+        }
+
+        return "Sum is: " + result;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\StringProgram01.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class StringProgram01 {
+
+    public static String run(String input) {
+        // Creating a new string
+        String str = "Hello, " + input + "!";
+        return str;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\StringProgram02.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class StringProgram02 {
+
+    public static String run(String input) {
+        // Creating an immutable string
+        String str1 = "Hello";
+        String str2 = str1.concat(", " + input + "!");
+        
+        // str1 remains unchanged as strings are immutable
+        return str1 + " " + str2;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\StringProgram03.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class StringProgram03 {
+
+    public static String run(String str1, String str2) {
+        // String comparison using equals() and concatenation using "+"
+        boolean isEqual = str1.equals(str2);
+        String concatenated = str1 + " " + str2;
+
+        return "Equality: " + isEqual + ", Concatenation: " + concatenated;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day02\StringProgram04.java ###
+package com.jh.iht.java.basics.latest.day02;
+
+public class StringProgram04 {
+
+    public static String run() {
+        // Using StringBuffer (synchronized)
+        StringBuffer sb = new StringBuffer("Hello");
+        sb.append(" World!");
+
+        // Using StringBuilder (not synchronized)
+        StringBuilder sbuilder = new StringBuilder("Goodbye");
+        sbuilder.append(" World!");
+
+        return "StringBuffer: " + sb.toString() + ", StringBuilder: " + sbuilder.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\AgeException.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+// Custom exception class for age-related issues
+public class AgeException extends Exception {
+    public AgeException(String message) {
+        super(message);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\Collections1Program01.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Collections1Program01 {
+
+    // Run method to demonstrate an overview of Collections
+    public static String run() {
+        List<String> items = new ArrayList<>();
+        items.add("Apple");
+        items.add("Banana");
+        items.add("Cherry");
+        
+        return "Items in collection: " + items;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\Collections1Program02.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Collections1Program02 {
+
+    // Run method to demonstrate Iterable interface
+    public static String run() {
+        List<String> items = new ArrayList<>();
+        items.add("Apple");
+        items.add("Banana");
+        items.add("Cherry");
+
+        // Using Iterable to iterate over the list
+        StringBuilder result = new StringBuilder("Items: ");
+        for (String item : items) {
+            result.append(item).append(" ");
+        }
+        return result.toString().trim();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\Collections1Program03.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class Collections1Program03 {
+
+    // Run method to demonstrate Comparator interface
+    public static String run() {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+
+        // Sorting the list using a custom Comparator
+        Collections.sort(fruits, new Comparator<String>() {
+            @Override
+            public int compare(String fruit1, String fruit2) {
+                return fruit1.length() - fruit2.length(); // Compare by string length
+            }
+        });
+
+        return "Sorted fruits by length: " + fruits;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\Collections1Program04.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Collections1Program04 {
+
+    // Run method to demonstrate Queue interface
+    public static String run() {
+        Queue<String> queue = new LinkedList<>();
+        queue.add("Apple");
+        queue.add("Banana");
+        queue.add("Cherry");
+
+        // Removing elements from the queue
+        String removedItem = queue.poll();
+
+        return "Removed item: " + removedItem + ", Remaining queue: " + queue;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\Collections2Program01.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Collections2Program01 {
+
+    // Run method to demonstrate Set interface and HashSet (which implements Set)
+    public static String run() {
+        Set<String> fruits = new HashSet<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        fruits.add("Apple");  // Duplicate item, should not be added
+        
+        return "Set contains: " + fruits;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\Collections2Program02.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Collections2Program02 {
+
+    // Run method to demonstrate Map interface and HashMap (which implements Map)
+    public static String run() {
+        Map<String, Integer> fruitQuantities = new HashMap<>();
+        fruitQuantities.put("Apple", 5);
+        fruitQuantities.put("Banana", 3);
+        fruitQuantities.put("Cherry", 7);
+        
+        // Retrieving the value associated with a specific key
+        int appleCount = fruitQuantities.get("Apple");
+        
+        return "Apple count: " + appleCount + ", Map contains: " + fruitQuantities;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\CustomExceptionsAndErrorsProgram01.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+// Custom exception class
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionsAndErrorsProgram01 {
+
+    public static String run(int age) {
+        try {
+            // Throwing a custom exception if age is less than 18
+            if (age < 18) {
+                throw new InvalidAgeException("Age must be 18 or older!");
+            }
+            return "Valid age: " + age;
+        } catch (InvalidAgeException e) {
+            return e.getMessage();
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\CustomExceptionsAndErrorsProgram02.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+public class CustomExceptionsAndErrorsProgram02 {
+
+    public static String run(int age) throws UserInputException {
+        try {
+            if (age < 0) {
+                // Throwing an AgeException if age is negative
+                throw new AgeException("Age cannot be negative!");
+            } else if (age < 18) {
+                // Throwing an AgeException for underage
+                throw new AgeException("Age must be 18 or older!");
+            }
+            return "Valid age: " + age;
+        } catch (AgeException e) {
+            // Chaining the exception to a UserInputException with a custom message
+            throw new UserInputException("Invalid user input", e);
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\ExceptionsProgram01.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+public class ExceptionsProgram01 {
+
+    public static String run(int a, int b) {
+        String result = "";
+        try {
+            // Attempting division, which may throw an exception
+            result = "Result: " + (a / b);
+        } catch (ArithmeticException e) {
+            result = "Error: Division by zero!";
+        } finally {
+            // This block always executes regardless of exception
+            result += " - Finally block executed.";
+        }
+        return result;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\ExceptionsProgram02.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+public class ExceptionsProgram02 {
+
+    public static String run(int a) throws Exception {
+        try {
+            if (a < 0) {
+                // Throwing a custom exception
+                throw new IllegalArgumentException("Negative number is not allowed!");
+            }
+            return "Valid input: " + a;
+        } catch (IllegalArgumentException e) {
+            // Catching the exception and re-throwing it
+            throw new Exception("Caught and rethrown: " + e.getMessage());
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day03\UserInputException.java ###
+package com.jh.iht.java.basics.latest.day03;
+
+// Custom exception class for user input issues
+public class UserInputException extends Exception {
+    public UserInputException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram01.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import java.io.InputStream;
+import java.io.ByteArrayInputStream;
+
+public class IOOperationsProgram01 {
+
+    // Run method to demonstrate InputStream and reading data
+    public static String run() {
+        String data = "Hello, Java!";
+        InputStream inputStream = new ByteArrayInputStream(data.getBytes());
+
+        StringBuilder result = new StringBuilder();
+        int byteRead;
+        try {
+            while ((byteRead = inputStream.read()) != -1) {
+                result.append((char) byteRead);
+            }
+        } catch (Exception e) {
+            return "Error reading data: " + e.getMessage();
+        }
+
+        return "Read from InputStream: " + result.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram02.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import java.io.OutputStream;
+import java.io.ByteArrayOutputStream;
+
+public class IOOperationsProgram02 {
+
+    // Run method to demonstrate OutputStream and writing data
+    public static String run() {
+        String data = "Java I/O";
+        OutputStream outputStream = new ByteArrayOutputStream();
+
+        try {
+            outputStream.write(data.getBytes());
+        } catch (Exception e) {
+            return "Error writing data: " + e.getMessage();
+        }
+
+        return "Written to OutputStream: " + data;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram03.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class IOOperationsProgram03 {
+
+    // Run method to demonstrate File I/O
+    public static String run() {
+        String filename = "example.txt";
+        String data = "File I/O in Java";
+
+        // Write to file
+        try (FileWriter writer = new FileWriter(filename)) {
+            writer.write(data);
+        } catch (IOException e) {
+            return "Error writing to file: " + e.getMessage();
+        }
+
+        // Read from file
+        StringBuilder result = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (IOException e) {
+            return "Error reading from file: " + e.getMessage();
+        }
+
+        return "Read from file: " + result.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day04\IOOperationsProgram04.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import java.io.*;
+
+public class IOOperationsProgram04 {
+
+    // Run method to demonstrate Data, Buffer, Byte I/O
+    public static String run() {
+        String data = "Buffered I/O in Java";
+        String filename = "buffered_example.txt";
+
+        // Write to file using BufferedWriter
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            writer.write(data);
+        } catch (IOException e) {
+            return "Error writing to file: " + e.getMessage();
+        }
+
+        // Read from file using BufferedReader
+        StringBuilder result = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (IOException e) {
+            return "Error reading from file: " + e.getMessage();
+        }
+
+        return "Read from file: " + result.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day04\RegexProgram01.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import java.util.regex.*;
+
+public class RegexProgram01 {
+
+    // Run method to demonstrate Pattern and Matcher
+    public static String run(String input) {
+        // Define a regular expression pattern to match words starting with "Ja"
+        String regex = "Ja\\w*";
+
+        // Compile the pattern
+        Pattern pattern = Pattern.compile(regex);
+
+        // Create a matcher to find the pattern in the input string
+        Matcher matcher = pattern.matcher(input);
+
+        // StringBuilder to store the result
+        StringBuilder result = new StringBuilder();
+
+        // Find matches
+        while (matcher.find()) {
+            result.append("Found match: ").append(matcher.group()).append("\n");
+        }
+
+        // Return the result or a message if no match found
+        if (result.length() == 0) {
+            return "No matches found";
+        }
+
+        return result.toString();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\iht\java\basics\latest\day04\RegexProgram02.java ###
+package com.jh.iht.java.basics.latest.day04;
+
+import java.util.regex.*;
+
+public class RegexProgram02 {
+
+    // Run method to demonstrate PatternSyntaxException handling and MatchResult
+    public static String run(String input) {
+        // Define a regular expression pattern with invalid syntax
+        String regex = "([A-Z";
+
+        try {
+            // Compile the pattern, which will throw a PatternSyntaxException
+            Pattern pattern = Pattern.compile(regex);
+
+            // Create a matcher
+            Matcher matcher = pattern.matcher(input);
+
+            // Using MatchResult interface to return match details
+            MatchResult result = matcher.toMatchResult();
+            return "First match group: " + result.group(0);
+
+        } catch (PatternSyntaxException e) {
+            // Return the exception message
+            return "Pattern Syntax Error: " + e.getDescription();
+        }
+    }
+}
+
