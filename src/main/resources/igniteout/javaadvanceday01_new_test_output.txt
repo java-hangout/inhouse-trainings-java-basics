@@ -1,0 +1,625 @@
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class DesignPattern01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the Singleton pattern ensures only one instance of the class.
+     * The instance must return the expected output when run method is invoked.
+     * Input: "TestInput"
+     * Expected Output: "Singleton instance received: TestInput"
+     */
+
+    @Test
+    public void testRun() {
+        // Get Singleton instance
+        DesignPattern01 singletonInstance = DesignPattern01.getInstance();
+
+        // Run the method and capture the result
+        String result = singletonInstance.run("TestInput");
+
+        // Assert the expected result
+        String expected = "Singleton instance received: TestInput";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class DesignPattern02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the Adapter pattern allows compatibility between old and new systems.
+     * The run method should use the adapter to play an old media type.
+     * Input: "VHS"
+     * Expected Output: "Playing old media type: VHS"
+     */
+
+    @Test
+    public void testRun() {
+        // Input media type
+        String mediaType = "VHS";
+
+        // Run the method and capture the result
+        String result = DesignPattern02.run(mediaType);
+
+        // Assert the expected result
+        String expected = "Playing old media type: VHS";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class GenericsProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly calculates the sum of two numbers using generics
+     * and constraints. The method should work with any type extending Number.
+     * Input: num1 = 5.5, num2 = 10.2 (Double values)
+     * Expected Output: "The sum of 5.5 and 10.2 is 15.7"
+     */
+
+    @Test
+    public void testRun() {
+        Double num1 = 5.5, num2 = 10.2;
+
+        // Run the method and capture the result
+        String result = GenericsProgram01.run(num1, num2);
+
+        // Assert the expected result
+        String expected = "The sum of 5.5 and 10.2 is " + (num1 + num2);
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class GenericsProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the method correctly compares two different types using generics,
+     * and the Comparable interface. The method should print whether the first value is
+     * greater than, less than, or equal to the second value.
+     * Input: firstValue = 5, secondValue = 10 (Integer and Integer)
+     * Expected Output: "Comparison of 5 and 10: 5 is less than 10"
+     */
+
+    @Test
+    public void testRun() {
+        Integer firstValue = 5;
+        Integer secondValue = 10;
+
+        // Run the method and capture the result
+        String result = GenericsProgram02.run(firstValue, secondValue);
+
+        // Assert the expected result
+        String expected = "Comparison of 5 and 10: 5 is less than 10";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class LambdaFunctional01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly uses an anonymous inner class and a lambda expression 
+     * to implement the Greeting interface and return the expected greeting message.
+     * Input: "Alice"
+     * Expected Output: "Hello, Alice | Hello, Alice"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String name = "Alice";
+
+        // Run the method and capture the result
+        String result = LambdaFunctional01.run(name);
+
+        // Assert the expected result
+        String expected = "Hello, Alice | Hello, Alice";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class LambdaFunctional02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method demonstrates the use of method references and lambda expressions 
+     * for multiplying two integers and returns the correct results.
+     * Input: 3, 4
+     * Expected Output: 24 (12 from method reference + 12 from lambda expression)
+     */
+
+    @Test
+    public void testRun() {
+        // Input values
+        int a = 3;
+        int b = 4;
+
+        // Run the method and capture the result
+        int result = LambdaFunctional02.run(a, b);
+
+        // Assert the expected result
+        int expected = 24; // 12 + 12
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class LambdaFunctional03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly uses the Consumer interface to print a value 
+     * and the Supplier interface to return a value.
+     * Input: "Hello, World!"
+     * Expected Output: "Hello from Supplier!"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Hello, World!";
+
+        // Run the method and capture the result
+        String result = LambdaFunctional03.run(input);
+
+        // Assert the expected result
+        String expected = "Hello from Supplier!";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class LambdaFunctional04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly applies different functional interfaces such as Function, 
+     * Predicate, BinaryOperator, and UnaryOperator to manipulate an integer and return the correct result.
+     * Input: 5
+     * Expected Output: 225 (Doubled to 10, added 10 to get 20, squared to get 225)
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        int input = 5;
+
+        // Run the method and capture the result
+        int result = LambdaFunctional04.run(input);
+
+        // Assert the expected result
+        int expected = 400; // (5 * 2 = 10), (10 + 10 = 20), (20 * 20 = 225)
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import java.util.Arrays;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+
+public class StreamProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method filters positive numbers, doubles them, and sorts them in ascending order.
+     * Input: [3, -1, 4, 0, 5]
+     * Expected Output: [6, 8, 10]
+     */
+
+    @Test
+    public void testRun() {
+        // Input list
+        List<Integer> numbers = Arrays.asList(3, -1, 4, 0, 5);
+
+        // Run the method and capture the result
+        List<Integer> result = StreamProgram01.run(numbers);
+
+        // Assert the expected result
+        List<Integer> expected = Arrays.asList(6, 8, 10);
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import java.util.Arrays;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+
+public class StreamProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method filters even numbers, skips the first one, and limits the result to 3 elements.
+     * Input: [1, 2, 3, 4, 5, 6]
+     * Expected Output: [4, 6]
+     */
+
+    @Test
+    public void testRun() {
+        // Input list
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        // Run the method and capture the result
+        List<Integer> result = StreamProgram02.run(numbers);
+
+        // Assert the expected result
+        List<Integer> expected = Arrays.asList(4, 6);
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day01;
+
+import org.junit.Test;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import static org.junit.Assert.assertEquals;
+
+public class StreamProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method partitions numbers into even and odd numbers using Collectors.partitioningBy.
+     * Input: [1, 2, 3, 4, 5, 6]
+     * Expected Output: {false=[1, 3, 5], true=[2, 4, 6]}
+     */
+
+    @Test
+    public void testRun() {
+        // Input list
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        // Run the method and capture the result
+        Map<Boolean, List<Integer>> result = StreamProgram03.run(numbers);
+
+        // Assert the expected result
+        Map<Boolean, List<Integer>> expected = Map.of(
+                false, Arrays.asList(1, 3, 5),
+                true, Arrays.asList(2, 4, 6)
+        );
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ConcurrencyThreadsProgram01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method starts a new thread and passes the correct input.
+     * Input: "Hello from thread!"
+     * Expected Output: "Thread started with input: Hello from thread!"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Hello from thread!";
+
+        // Run the method and capture the result
+        String result = ConcurrencyThreadsProgram01.run(input);
+
+        // Assert the expected result
+        String expected = "Thread started with input: Hello from thread!";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ConcurrencyThreadsProgram02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method starts a new thread, pauses it for 2 seconds, and resumes it.
+     * Input: "Pausing for 2 seconds"
+     * Expected Output: "Thread started with input: Pausing for 2 seconds"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Pausing for 2 seconds";
+
+        // Run the method and capture the result
+        String result = ConcurrencyThreadsProgram02.run(input);
+
+        // Assert the expected result
+        String expected = "Thread started with input: Pausing for 2 seconds";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ConcurrencyThreadsProgram03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method starts a new thread, waits for it to complete using join(), and then returns a message.
+     * Input: "Joining thread task"
+     * Expected Output: "Thread has completed its task with input: Joining thread task"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Joining thread task";
+
+        // Run the method and capture the result
+        String result = ConcurrencyThreadsProgram03.run(input);
+
+        // Assert the expected result
+        String expected = "Thread has completed its task with input: Joining thread task";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ConcurrencyThreadsProgram04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method starts a new thread and interrupts it immediately.
+     * Input: "Interrupting thread"
+     * Expected Output: "Thread has been interrupted with input: Interrupting thread"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Interrupting thread";
+
+        // Run the method and capture the result
+        String result = ConcurrencyThreadsProgram04.run(input);
+
+        // Assert the expected result
+        String expected = "Thread has been interrupted with input: Interrupting thread";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ConcurrencyThreadsProgram05Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly synchronizes access to the counter variable to avoid race conditions.
+     * Input: No input, counter will be incremented by two threads.
+     * Expected Output: "Counter value after both threads have finished: 2000"
+     */
+
+    @Test
+    public void testRun() throws InterruptedException {
+        // Run the method and capture the result
+        String result = ConcurrencyThreadsProgram05.run();
+
+        // Assert the expected result
+        String expected = "Counter value after both threads have finished: 2000";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExecutiveFramework01Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly submits a task to the thread pool and returns the expected message.
+     * Input: "Task 1"
+     * Expected Output: "Task submitted to the thread pool: Task 1"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Task 1";
+
+        // Run the method and capture the result
+        String result = ExecutiveFramework01.run(input);
+
+        // Assert the expected result
+        String expected = "Task submitted to the thread pool: Task 1";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExecutiveFramework02Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly executes a callable task and returns the expected result.
+     * Input: "Task 2"
+     * Expected Output: "Task result: Task 2"
+     */
+
+    @Test
+    public void testRun() throws Exception {
+        // Input value
+        String input = "Task 2";
+
+        // Run the method and capture the result
+        String result = ExecutiveFramework02.run(input);
+
+        // Assert the expected result
+        String expected = "Task result: Task 2";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExecutiveFramework03Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method correctly executes a task asynchronously and returns the expected message.
+     * Input: "Task 3"
+     * Expected Output: "Task executed asynchronously: Task 3"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Task 3";
+
+        // Run the method and capture the result
+        String result = ExecutiveFramework03.run(input);
+
+        // Assert the expected result
+        String expected = "Task executed asynchronously: Task 3";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExecutiveFramework04Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method creates a CompletableFuture, applies a transformation, and returns the final result.
+     * Input: "Task 4"
+     * Expected Output: "Task result: Task 4 (processed)"
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "Task 4";
+
+        // Run the method and capture the result
+        String result = ExecutiveFramework04.run(input);
+
+        // Assert the expected result
+        String expected = "Task result: Task 4 (processed)";
+        assertEquals(expected, result);
+    }
+}
+
+
+package com.jh.igniteprogram.java.advance.day02;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class ExecutiveFramework05Test {
+
+    /*
+     * Problem Statement:
+     * Verify that the run method handles timeouts or exceptions properly.
+     * Input: "timeout"
+     * Expected Output: "Task timed out or encountered an exception."
+     */
+
+    @Test
+    public void testRun() {
+        // Input value
+        String input = "timeout";
+
+        // Run the method and capture the result
+        String result = ExecutiveFramework05.run(input);
+
+        // Assert the expected result
+        String expected = "Task timed out or encountered an exception.";
+        assertEquals(expected, result);
+    }
+}
+

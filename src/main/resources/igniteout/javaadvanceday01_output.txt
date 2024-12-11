@@ -1,0 +1,533 @@
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\DesignPattern01.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+public class DesignPattern01 {
+
+    // Singleton pattern: Ensure only one instance of the class
+    private static DesignPattern01 instance;
+
+    // Private constructor to prevent instantiation
+    private DesignPattern01() {}
+
+    // Public method to provide access to the instance
+    public static DesignPattern01 getInstance() {
+        if (instance == null) {
+            instance = new DesignPattern01();
+        }
+        return instance;
+    }
+
+    // Method to demonstrate some functionality
+    public String run(String input) {
+        return "Singleton instance received: " + input;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\DesignPattern02.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+// Target interface
+interface MediaPlayer {
+    String play(String mediaType);
+}
+
+// Adaptee class
+class MediaAdapter implements MediaPlayer {
+    private OldMediaPlayer oldMediaPlayer;
+
+    public MediaAdapter(OldMediaPlayer oldMediaPlayer) {
+        this.oldMediaPlayer = oldMediaPlayer;
+    }
+
+    @Override
+    public String play(String mediaType) {
+        return oldMediaPlayer.playOldMedia(mediaType);
+    }
+}
+
+// Old system interface
+class OldMediaPlayer {
+    public String playOldMedia(String mediaType) {
+        return "Playing old media type: " + mediaType;
+    }
+}
+
+public class DesignPattern02 {
+
+    // Method to demonstrate the Adapter pattern
+    public static String run(String mediaType) {
+        OldMediaPlayer oldMediaPlayer = new OldMediaPlayer();
+        MediaPlayer mediaAdapter = new MediaAdapter(oldMediaPlayer);
+        return mediaAdapter.play(mediaType);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\GenericsProgram01.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+public class GenericsProgram01 {
+
+    // A method demonstrating generics with constraints
+    public static <T extends Number> String run(T num1, T num2) {
+        // Calculate the sum of the two numbers
+        double sum = num1.doubleValue() + num2.doubleValue();
+        // Prepare the result message
+        String result = "The sum of " + num1 + " and " + num2 + " is " + sum;
+        System.out.println(result);
+        // Return the formatted output as a string
+        return result;
+    }
+
+    // A poor solution without generics
+    public static String runWithoutGenerics(Object num1, Object num2) {
+        if (num1 instanceof Number && num2 instanceof Number) {
+            double sum = ((Number) num1).doubleValue() + ((Number) num2).doubleValue();
+            return "The sum of " + num1 + " and " + num2 + " is " + sum;
+        }
+        return "Invalid input types!";
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\GenericsProgram02.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+public class GenericsProgram02 {
+
+    // A generic method that works with multiple type parameters and implements Comparable
+    public static <T extends Comparable<T>, U extends Comparable<U>> String run(T firstValue, U secondValue) {
+        int comparison = firstValue.compareTo((T) secondValue);  // Cast secondValue to T for comparison
+
+        String result = "Comparison of " + firstValue + " and " + secondValue + ": ";
+        if (comparison > 0) {
+            result += firstValue + " is greater than " + secondValue;
+        } else if (comparison < 0) {
+            result += firstValue + " is less than " + secondValue;
+        } else {
+            result += firstValue + " is equal to " + secondValue;
+        }
+        System.out.println(result);
+        return result;
+    }
+
+    // Generic class that demonstrates inheritance with generics
+    public static class Box<T> {
+        private T value;
+
+        public Box(T value) {
+            this.value = value;
+        }
+
+        public T getValue() {
+            return value;
+        }
+
+        public void setValue(T value) {
+            this.value = value;
+        }
+    }
+
+    public static class IntegerBox extends Box<Integer> {
+        public IntegerBox(Integer value) {
+            super(value);
+        }
+    }
+
+    public static class StringBox extends Box<String> {
+        public StringBox(String value) {
+            super(value);
+        }
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\LambdaFunctional01.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+public class LambdaFunctional01 {
+
+    // Functional Interface
+    @FunctionalInterface
+    public interface Greeting {
+        String greet(String name);
+    }
+
+    // Run method demonstrating Functional Interface, Anonymous Inner Class, and Lambda Expression
+    public static String run(String name) {
+        // Using an anonymous inner class
+        Greeting greeting1 = new Greeting() {
+            public String greet(String name) {
+                return "Hello, " + name;
+            }
+        };
+
+        // Using a lambda expression
+        Greeting greeting2 = (inputName) -> "Hello, " + inputName;
+
+        // Example output using both approaches
+        String result1 = greeting1.greet(name);
+        String result2 = greeting2.greet(name);
+
+        return result1 + " | " + result2;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\LambdaFunctional02.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+public class LambdaFunctional02 {
+
+    // Functional Interface
+    @FunctionalInterface
+    public interface Multiply {
+        int multiply(int a, int b);
+    }
+
+    // Run method demonstrating Method References and Variable Capture
+    public static int run(int a, int b) {
+        // Using method reference
+        Multiply multiply1 = LambdaFunctional02::multiplyMethod;
+        
+        // Using lambda expression
+        Multiply multiply2 = (x, y) -> x * y;
+
+        // Calculating results
+        int result1 = multiply1.multiply(a, b);
+        int result2 = multiply2.multiply(a, b);
+
+        return result1 + result2;
+    }
+
+    // Method for method reference
+    public static int multiplyMethod(int a, int b) {
+        return a * b;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\LambdaFunctional03.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+public class LambdaFunctional03 {
+
+    // Run method demonstrating Consumer and Supplier functional interfaces
+    public static String run(String input) {
+        // Using Consumer to print a value
+        Consumer<String> printer = value -> System.out.println("Value: " + value);
+        printer.accept(input);
+
+        // Using Supplier to provide a value
+        Supplier<String> supplier = () -> "Hello from Supplier!";
+        return supplier.get();
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\LambdaFunctional04.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.BinaryOperator;
+import java.util.function.UnaryOperator;
+
+public class LambdaFunctional04 {
+
+    // Run method demonstrating Function, Predicate, BinaryOperator, and UnaryOperator
+    public static int run(int input) {
+        // Using Function to double the value
+        Function<Integer, Integer> doubler = x -> x * 2;
+        int doubled = doubler.apply(input);
+
+        // Using Predicate to check if a number is even
+        Predicate<Integer> isEven = x -> x % 2 == 0;
+        boolean result = isEven.test(doubled);
+
+        // Using BinaryOperator to add two values
+        BinaryOperator<Integer> adder = (x, y) -> x + y;
+        int added = adder.apply(doubled, 10);
+
+        // Using UnaryOperator to square the value
+        UnaryOperator<Integer> squarer = x -> x * x;
+        return squarer.apply(added);
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\StreamProgram01.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamProgram01 {
+
+    // Run method demonstrating Stream creation, Mapping, Filtering, and Sorting
+    public static List<Integer> run(List<Integer> numbers) {
+        return numbers.stream()
+                .filter(n -> n > 0)          // Filter positive numbers
+                .map(n -> n * 2)             // Map each number to its double
+                .sorted()                    // Sort numbers in ascending order
+                .collect(Collectors.toList());  // Collect the results as a list
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\StreamProgram02.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamProgram02 {
+
+    // Run method demonstrating Filtering, Slicing, and Collecting with Streams
+    public static List<Integer> run(List<Integer> numbers) {
+        return numbers.stream()
+                .filter(n -> n % 2 == 0)          // Filter even numbers
+                .skip(1)                          // Skip the first element
+                .limit(3)                         // Limit the stream to the first 3 elements
+                .collect(Collectors.toList());    // Collect the results as a list
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day01\StreamProgram03.java ###
+package com.jh.igniteprogram.java.advance.day01;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class StreamProgram03 {
+
+    // Run method demonstrating Simple Reducers, Grouping, and Partitioning
+    public static Map<Boolean, List<Integer>> run(List<Integer> numbers) {
+        return numbers.stream()
+                .collect(Collectors.partitioningBy(n -> n % 2 == 0));  // Partition by even/odd numbers
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ConcurrencyThreadsProgram01.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+public class ConcurrencyThreadsProgram01 {
+
+    // Run method demonstrates starting a thread using the Thread class
+    public static String run(String input) {
+        Thread thread = new Thread(() -> {
+            System.out.println("Thread is running with input: " + input);
+        });
+        thread.start(); // Start the thread
+        return "Thread started with input: " + input;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ConcurrencyThreadsProgram02.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+public class ConcurrencyThreadsProgram02 {
+
+    // Run method demonstrates pausing a thread using Thread.sleep()
+    public static String run(String input) {
+        Thread thread = new Thread(() -> {
+            try {
+                System.out.println("Thread is running with input: " + input);
+                Thread.sleep(2000); // Pause for 2 seconds
+                System.out.println("Thread resumed after pause.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start(); // Start the thread
+        return "Thread started with input: " + input;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ConcurrencyThreadsProgram03.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+public class ConcurrencyThreadsProgram03 {
+
+    // Run method demonstrates using the join() method to wait for a thread to complete
+    public static String run(String input) {
+        Thread thread = new Thread(() -> {
+            System.out.println("Thread is running with input: " + input);
+        });
+
+        try {
+            thread.start(); // Start the thread
+            thread.join();  // Wait for the thread to finish
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return "Thread has completed its task with input: " + input;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ConcurrencyThreadsProgram04.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+public class ConcurrencyThreadsProgram04 {
+
+    // Run method demonstrates interrupting a thread
+    public static String run(String input) {
+        Thread thread = new Thread(() -> {
+            try {
+                System.out.println("Thread started with input: " + input);
+                Thread.sleep(5000); // Simulate work
+            } catch (InterruptedException e) {
+                System.out.println("Thread was interrupted");
+            }
+        });
+
+        thread.start();
+        thread.interrupt();  // Interrupt the thread immediately
+        return "Thread has been interrupted with input: " + input;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ConcurrencyThreadsProgram05.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+public class ConcurrencyThreadsProgram05 {
+
+    private static int counter = 0;
+
+    // Run method demonstrates race condition and thread safety using synchronization
+    public static String run() throws InterruptedException {
+        Runnable task = () -> {
+            for (int i = 0; i < 1000; i++) {
+                synchronized (ConcurrencyThreadsProgram05.class) {
+                    counter++;
+                }
+            }
+        };
+
+        Thread thread1 = new Thread(task);
+        Thread thread2 = new Thread(task);
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+
+        return "Counter value after both threads have finished: " + counter;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ExecutiveFramework01.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutiveFramework01 {
+
+    // Run method demonstrates the use of Thread Pools and Executors
+    public static String run(String taskDescription) {
+        ExecutorService executorService = Executors.newFixedThreadPool(2); // Create thread pool with 2 threads
+
+        executorService.submit(() -> {
+            System.out.println("Executing task: " + taskDescription);
+        });
+
+        executorService.shutdown();  // Shut down the executor service after task completion
+        return "Task submitted to the thread pool: " + taskDescription;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ExecutiveFramework02.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class ExecutiveFramework02 {
+
+    // Run method demonstrates the use of Callable and Future
+    public static String run(String taskDescription) throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        
+        Callable<String> callableTask = () -> {
+            return "Task result: " + taskDescription;
+        };
+
+        Future<String> future = executorService.submit(callableTask);
+        String result = future.get();  // Get the result of the task
+
+        executorService.shutdown();  // Shutdown the executor service
+        return result;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ExecutiveFramework03.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ExecutiveFramework03 {
+
+    // Run method demonstrates asynchronous programming using CompletableFuture
+    public static String run(String taskDescription) {
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            System.out.println("Executing task asynchronously: " + taskDescription);
+        });
+
+        // Wait for the task to complete
+        future.join();
+        return "Task executed asynchronously: " + taskDescription;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ExecutiveFramework04.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ExecutiveFramework04 {
+
+    // Run method demonstrates creating and composing Completable Futures
+    public static String run(String taskDescription) {
+        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+            return "Task result: " + taskDescription;
+        });
+
+        future = future.thenApplyAsync(result -> {
+            return result + " (processed)";
+        });
+
+        String finalResult = future.join();  // Wait for the result to be processed
+        return finalResult;
+    }
+}
+
+### Contents of D:\workspace\inhouse-trainings-java-basics\src\main\java\com\jh\igniteprogram\java\advance\day02\ExecutiveFramework05.java ###
+package com.jh.igniteprogram.java.advance.day02;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
+public class ExecutiveFramework05 {
+
+    // Run method demonstrates handling exceptions and timeouts with CompletableFuture
+    public static String run(String taskDescription) {
+        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+            if (taskDescription.equals("timeout")) {
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return "Task result: " + taskDescription;
+        });
+
+        try {
+            return future.get(2, TimeUnit.SECONDS);  // Set a timeout of 2 seconds
+        } catch (Exception e) {
+            return "Task timed out or encountered an exception.";
+        }
+    }
+}
+
